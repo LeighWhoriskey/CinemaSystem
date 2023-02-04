@@ -16,11 +16,11 @@ app.use(bodyParser.urlencoded({extended:false}));
 // -----------------------------------------------------------------------------------------------
 
 app.get("/movies", function(req,res){
-	model.getMovies(req,res);
+  model.getMovies(req,res);
 });
 
-app.get("/genres",function(req,res){
-  model.getGenres(req,res);
+app.get("/movie-details/:id?",function(req,res){
+  model.getMovieDetails(req,res ,{id : req.params.id});
 })
 
 // -----------------------------------------------------------------------------------------------
