@@ -1,3 +1,7 @@
+drop database if exists Cinema;
+
+create database Cinema;
+
 create table Films (
 	id INT,
 	name VARCHAR(50),
@@ -13,4 +17,4 @@ insert into Films (id, name, director, duration, trailer_url) values (5, 'Babylo
 insert into Films (id, name, director, duration, trailer_url) values (6, 'Life is a Jungle', 'Robert D. Hanna', '1:41', 'https://www.youtube.com/watch?v=rwyUzHEG_XY');
 insert into Films (id, name, director, duration, trailer_url) values (7, 'Guardians of the Galaxy Vol. 3', 'James Gunn', '2:22', 'https://www.youtube.com/watch?v=u3V5KDHRQvk');
 insert into Films (id, name, director, duration, trailer_url) values (8, 'Ant-Man and The Wasp: Quantumania', 'Peyton Reed', '2:05', 'https://www.youtube.com/watch?v=ZlNFpri-Y40');
-insert into Films (id, name, director, duration, trailer_url) values (9, 'Spider-Man Across the Spiderverse', 'Joaqium Dos Santos', '7:54', 'https://www.youtube.com/watch?v=cqGjhVJWtEg');
+insert into Films (id, name, director, duration, trailer_url) values (9, 'Spider-Man Across the Spiderverse', 'Joaqium Dos Santos', '1:54', 'https://www.youtube.com/watch?v=cqGjhVJWtEg');

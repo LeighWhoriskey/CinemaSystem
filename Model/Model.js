@@ -1,52 +1,36 @@
 var mysql = require('mysql');
 
-//change databas to our own and port number depending on our own system
-
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'netflix',
-  //change port to 3306 if using default settings
-  port: 3305
-
+  database : 'cinema'
 });
 
 connection.connect(function(err){
 	if(err) throw err;
-	console.log(`Sucessfully connected to MySQL database netflix`);
+	console.log(`Sucessfully connected to Cinema Database`);
 });
 
 
 exports.getMovies = function(req,res){
 
-	connection.query("SELECT * FROM movies", function(err, rows, fields) {
+	connection.query("SELECT * FROM films", function(err, rows, fields) {
 	  if (err) throw err;
 
 	  res.send(JSON.stringify(rows));
 	  
 	});
-	
 }
 
-exports.getGenres = function(req,res){
+// need to make a film details table that will hold a description of the moive etc 
+// maybe we can move some details that we have in films in there 
 
-	connection.query("SELECT * FROM genres", function(err, rows, fields) {
-	  if (err) throw err;
-
-	  res.send(JSON.stringify(rows));
-	  
+exports.getMovieDetails = function(req, res, movie){
+	connection.query("SELECT * FROM films, filmdetails WHERE films.id ='"+movie.id +"' AND filmdetails.id ='"+ movie.id +"'", function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));
 	});
-	
 }
 
-exports.getGenres = function(req,res){
-
-	connection.query("SELECT * FROM genres", function(err, rows, fields) {
-	  if (err) throw err;
-
-	  res.send(JSON.stringify(rows));
-	  
-	});
 	
-}
