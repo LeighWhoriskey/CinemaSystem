@@ -27,4 +27,10 @@ app.get("/movie-details/:id?",function(req,res){
 
 var myServer = app.listen(3000, function() {
   console.log("Server listening on port 3000");
+
+
+
+
+
+  
 });
