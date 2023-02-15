@@ -23,14 +23,10 @@ app.get("/movie-details/:id?",function(req,res){
   model.getMovieDetails(req,res ,{id : req.params.id});
 })
 
+
+app
 // -----------------------------------------------------------------------------------------------
 
 var myServer = app.listen(3000, function() {
   console.log("Server listening on port 3000");
-
-
-
-
-
-  
 });

@@ -1,9 +1,10 @@
 $("document").ready(function(){
 
-    $("#NavBar").append("<a href='Index.html'>Home</a> | " +
+    $("#NavBar").append("<a href='Home.html'>Home</a> | " +
         "<a href='Screening.html'>Screenings</a> | " +
         "<a href='Booking.html'>Bookings</a> | " +
-        "<a href='Login.html'>Login</a> " +
+        "<a href='Login.html'>Login</a> | " +
+        "<a href='CRUD.html'>CRUD</a> " +
         "<hr>");
 
 
