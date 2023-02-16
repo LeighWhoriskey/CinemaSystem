@@ -30,7 +30,27 @@ $("document").ready(function(){
 
         //clears form to add other fields 
         $("#form").empty();
+    
+    
+        //grabs the new selected option from the tables
+        var operationTbl = $("#crud").val();
+        console.log(operationTbl);
 
+        //clears form to add other fields 
+        $("#form").empty();
+
+        if(operationTbl == "READ"){
+            $("#form").append("<label for='id'>ID:</label><input id='RDid' name='id'></input>" +
+            "<button id ='POST'> Read</button>");
+        }
+
+        else if(operationTbl == "DELETE"){
+
+            $("#form").append("<label for='id'>ID:</label><input id='RDid' name='id'></input>" +
+            "<button id ='POST'> Delete</button>");
+        }
+        else
+        {
         if(tmpTable == "booking"){
             $("#form").append("<p>Customer ID: <input id='cust_id'></input> </p>" +
                                 "<p>Film ID: <input id='film_id'></input> </p>" +
@@ -80,7 +100,7 @@ $("document").ready(function(){
                                 "<p>Password: <input id='password'></input> </p> " +
                                 "<p>Phone Number: <input id='phone_no'></input> </p>" +
                                 "<button id='POST'>Submit</button>");
-        }
+        }}
 
         //changes to the new button, if not here it will try find the old button
         $("#POST").on('click', function(){
@@ -100,7 +120,7 @@ $("document").ready(function(){
 
     });
 
-
+    
     //when the button is clicked its going to send data to a route to create or update
     $("#POST").on('click', function(){
         $.ajax({
@@ -108,10 +128,12 @@ $("document").ready(function(){
             cache: false,
             dataType: "json",
             type: "Post",
-            sucess: function(res){
-                alert(res);
+            data:{
+                Operation: $("#CRUD").val(),
+                Table: $("#sqltable").val(),
+                ID: $("#RDid").val()
             },
-            error: function(res){
+            sucess: function(res){
                 alert(res);
             }
         });
