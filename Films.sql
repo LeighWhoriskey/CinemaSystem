@@ -144,11 +144,11 @@ insert into Customers (name, email, age, password, phone_no) values (99, 'Esteba
 insert into Customers (name, email, age, password, phone_no) values (100, 'Amble Shere', 'ashere2r@lulu.com', 67, 'OzeEyaETvl8T', '7399892030');
 
 create table Booking (
-	cust_id INT,
-	film_id INT,
+	booking_id INT NOT NULL AUTO_INCREMENT,
 	screen_id INT,
 	no_of_seats INT,
-	capacity INT
+	PRIMARY KEY(booking_id)
+
 );
 insert into Booking (film_id, screen_id, no_of_seats, capacity) values (1, 55, 45, 15, 77);
 
@@ -168,14 +168,12 @@ insert into Staff (name, email, age, password, phone_no) values (4, 'Bee Playle'
 insert into Staff (name, email, age, password, phone_no) values (5, 'Ari Siggs', 'asiggs4@acquirethisname.com', 45, '5JmkLhiBGjw', '5674631432');
 
 create table Screening (
-	booking_id INT NOT NULL AUTO_INCREMENT,
-	screen_id INT,
+	screen_id INT NOT NULL AUTO_INCREMENT,
 	price VARCHAR(50),
 	dateTime DATE,
 	film_id INT,
 	phone_no VARCHAR(50)
-	PRIMARY KEY(booking_id)
-	FOREIGN KEY(screen_id)
+	PRIMARY KEY(screen_id)
 );
 insert into Screening (screen_id, price, dateTime, film_id, phone_no) values (1, 7, '€44,32', '12/03/2023', 53, '4968684638');
 insert into Screening (screen_id, price, dateTime, film_id, phone_no) values (2, 6, '€18,11', '22/09/2023', 34, '6232781023');
