@@ -32,13 +32,6 @@ exports.getMovieDetails = function(req, res, movie){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));
 	});
-
-
-
-
-
-
-	
 }
 
 	
