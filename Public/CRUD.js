@@ -23,6 +23,9 @@ $("document").ready(function(){
                         "<button id='POST'>Submit</button>");
 
 
+
+
+
     $("#sqltable").change(function(){
 
         //grabs the new selected option from the tables
@@ -32,11 +35,11 @@ $("document").ready(function(){
         $("#form").empty();
 
         if(tmpTable == "booking"){
-            $("#form").append("<p>Customer ID: <input id='cust_id'></input> </p>" +
-                                "<p>Film ID: <input id='film_id'></input> </p>" +
-                                "<p>Screen ID: <input id='screen_id'></input> </p>" +
-                                "<p>Number of Seat: <input id='no_of_seats'></input> </p>" +
-                                "<p>Capacity: <input id='capacity'></input> </p>" +
+            $("#form").append(" <label for='cust_id'>Customer ID:</label><input id='cust_id' name='cust_id'></input> " +
+                                "<label for='film_id'>Film ID:</label> <input id='film_id' name='film_id'></input>" +
+                                "<label for='screen_id'>Screen ID:</label> <input id='screen_id' name='screen_id'></input>" +
+                                "<label for='no_of_seats'>Number of Seat: </label><input id='no_of_seats' name='no_of_seats'</input> " +
+                                "<label for='capacity'>Capacity: </label><input id='capacity' name='capacity'></input> " +
                                 "<button id='POST'>Submit</button>");
         }
         else if(tmpTable == "customers"){
@@ -89,6 +92,9 @@ $("document").ready(function(){
                 cache: false,
                 dataType: "json",
                 type: "Post",
+                data:{
+                    
+                },
                 sucess: function(res){
                     alert(res);
                 },

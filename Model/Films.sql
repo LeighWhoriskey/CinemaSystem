@@ -10,7 +10,8 @@ create table Films (
 	director VARCHAR(50),
 	duration VARCHAR(50),
 	trailer_url VARCHAR(1000),
-	age VARCHAR(3)
+	age VARCHAR(3),
+	PRIMARY KEY(id)
 );
 
 insert into Films (id, name, director, duration, trailer_url) values (1, 'Inception', 'Christopher Nolan', '2:28', 'https://www.youtube.com/watch?v=YoHD9XEInc0');
