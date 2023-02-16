@@ -1,10 +1,17 @@
+Drop Database if exists Cinema;
+
+Create Database Cinema;
+
+Use Cinema;
+
 create table Films (
 	id INT,
 	name VARCHAR(50),
 	director VARCHAR(50),
 	duration VARCHAR(50),
 	trailer_url VARCHAR(1000),
-	age VARCHAR(3)
+	age VARCHAR(3),
+	PRIMARY KEY(id)
 );
 
 insert into Films (id, name, director, duration, trailer_url) values (1, 'Inception', 'Christopher Nolan', '2:28', 'https://www.youtube.com/watch?v=YoHD9XEInc0');
@@ -168,11 +175,10 @@ create table Screening (
 	screen_id INT,
 	price VARCHAR(50),
 	dateTime DATE,
-	film_id INT,
-	phone_no VARCHAR(50)
+	film_id INT
 );
-insert into Screening (booking_id, screen_id, price, dateTime, film_id, phone_no) values (1, 7, '€44,32', '12/03/2023', 53, '4968684638');
-insert into Screening (booking_id, screen_id, price, dateTime, film_id, phone_no) values (2, 6, '€18,11', '22/09/2023', 34, '6232781023');
-insert into Screening (booking_id, screen_id, price, dateTime, film_id, phone_no) values (3, 6, '€28,61', '23/07/2023', 54, '8812910356');
-insert into Screening (booking_id, screen_id, price, dateTime, film_id, phone_no) values (4, 4, '€6,25', '07/02/2024', 59, '5021894372');
-insert into Screening (booking_id, screen_id, price, dateTime, film_id, phone_no) values (5, 5, '€72,05', '06/12/2023', 84, '7281147680');
+insert into Screening (booking_id, screen_id, price, dateTime, film_id) values (1, 7, '€44,32', '12/03/2023', 53);
+insert into Screening (booking_id, screen_id, price, dateTime, film_id) values (2, 6, '€18,11', '22/09/2023', 34);
+insert into Screening (booking_id, screen_id, price, dateTime, film_id) values (3, 6, '€28,61', '23/07/2023', 54);
+insert into Screening (booking_id, screen_id, price, dateTime, film_id) values (4, 4, '€6,25', '07/02/2024', 59);
+insert into Screening (booking_id, screen_id, price, dateTime, film_id) values (5, 5, '€72,05', '06/12/2023', 84);
