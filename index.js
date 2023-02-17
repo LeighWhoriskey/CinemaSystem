@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 
-// -----------------------------------------------------------------------------------------------
+
 
 app.get("/movies", function(req,res){
   model.getMovies(req,res);
@@ -24,13 +24,11 @@ app.get("/movie-details/:id?",function(req,res){
   model.getMovieDetails(req,res ,{id : req.params.id});
 })
 
+app.post("/Booking",function(req,res){
 
-app.post("/UpdateCreate",function(req,res){
-
-  var data = res.body;
-  model.UpdateCreate(req, res, data);
-});
-// -----------------------------------------------------------------------------------------------
+  var data = req.body;
+  model.Booking(req, res, data);
+})
 
 var myServer = app.listen(3000, function() {
   console.log("Server listening on port 3000");
