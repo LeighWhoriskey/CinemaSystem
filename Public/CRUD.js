@@ -35,14 +35,34 @@ $("document").ready(function(){
             $("#form").append("<label for='id'>ID:</label><input id='RDid' name='id'></input>" +
             "<button id ='POST' type='button'> Read</button>");
 
+            //booking
+            if(tmpTable == "booking" ){
             $("#POST").on('click', function(){
+                $("#empDiv").empty();
+
             $.getJSON("http://localhost:3000/getBooking/" + $("#RDid").val(), function(data){
                 $.each(data,function(i, value){
-                    $("#empDiv").append("<label>BookingID </label>" + value.id + "<label> screening_id </label>" + value.screening_id + "<label> Seats </label>" + value.no_of_seats)
+                    $("#empDiv").append("<label>BookingID </label>" + value.id + "<label> screening_id </label>" + value.screening_id + "<label> Seats </label>" + value.no_of_seats + "<label> Customer ID </label> " + Cust_ID)
                 })
             })
-        
+            
+        })}
+        //customer
+        else if(tmpTable =="customers")
+        {
+            $("#POST").on('click', function(){
+                $("#empDiv").empty();
+
+            $.getJSON("http://localhost:3000/getCustomers/" + $("#RDid").val(), function(data){
+                console.log(data);
+                $.each(data,function(i, value){
+                    $("#empDiv").append("<label>Name </label>" + value.name + "<label> email </label>" + value.email+ "<label> age </label>" + value.age + "<label> password </label>" + value.password  + "<label> phoneNumber </label>" + value.phone_no)
+                })
+            })
+            
         })
+        }
+        //else if FILMs
     }
     
         else if(operationTbl == "DELETE"){
