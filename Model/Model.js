@@ -61,6 +61,34 @@ exports.Booking = function(req, res, data){
 		});
 	}
 
+	exports.getFilms = function(req,res,data){
+		connection.query("SELECT * FROM films WHERE id =" + data.id ,function(error, rows, feilds){
+			if(error){throw error};
+			res.send(JSON.stringify(rows));	
+		});
+	}
+
+	exports.getScreenings= function(req,res,data){
+		connection.query("SELECT * FROM screening WHERE id =" + data.id ,function(error, rows, feilds){
+			if(error){throw error};
+			res.send(JSON.stringify(rows));	
+		});
+	}
+
+	exports.getScreens= function(req,res,data){
+		connection.query("SELECT * FROM screens WHERE id =" + data.id ,function(error, rows, feilds){
+			if(error){throw error};
+			res.send(JSON.stringify(rows));	
+		});
+	}
+
+	exports.getStaff= function(req,res,data){
+		connection.query("SELECT * FROM staff WHERE id =" + data.id ,function(error, rows, feilds){
+			if(error){throw error};
+			res.send(JSON.stringify(rows));	
+		});
+	}
+
 
 
 	

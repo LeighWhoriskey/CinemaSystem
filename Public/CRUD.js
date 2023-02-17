@@ -35,19 +35,18 @@ $("document").ready(function(){
             $("#form").append("<label for='id'>ID:</label><input id='RDid' name='id'></input>" +
             "<button id ='POST' type='button'> Read</button>");
 
-            //booking
+            //Booking
             if(tmpTable == "booking" ){
             $("#POST").on('click', function(){
                 $("#empDiv").empty();
 
             $.getJSON("http://localhost:3000/getBooking/" + $("#RDid").val(), function(data){
                 $.each(data,function(i, value){
-                    $("#empDiv").append("<label>BookingID </label>" + value.id + "<label> screening_id </label>" + value.screening_id + "<label> Seats </label>" + value.no_of_seats + "<label> Customer ID </label> " + Cust_ID)
+                    $("#empDiv").append("<label>Booking ID: </label>" + value.id + "<br>" + "<label>Screening ID: </label>" + value.screening_id + "<br>" + "<label>Number of Seats booked: </label>" + value.no_of_seats + "<br>" + "<label>Customer ID: </label> " + Cust_ID)
                 })
             })
-            
         })}
-        //customer
+        //Customer
         else if(tmpTable =="customers")
         {
             $("#POST").on('click', function(){
@@ -56,13 +55,77 @@ $("document").ready(function(){
             $.getJSON("http://localhost:3000/getCustomers/" + $("#RDid").val(), function(data){
                 console.log(data);
                 $.each(data,function(i, value){
-                    $("#empDiv").append("<label>Name </label>" + value.name + "<label> email </label>" + value.email+ "<label> age </label>" + value.age + "<label> password </label>" + value.password  + "<label> phoneNumber </label>" + value.phone_no)
+                    $("#empDiv").append("<label>Customer Name: </label>" + value.name + "<br>" + "<label>Email: </label>" + value.email + "<br>" + "<label>Age: </label>" + value.age + "<br>" + "<label>Password: </label>" + value.password  + "<br>" + "<label>Phone Number: </label>" + value.phone_no)
                 })
             })
             
         })
         }
-        //else if FILMs
+
+        //Film
+        else if(tmpTable =="films")
+        {
+            $("#POST").on('click', function(){
+                $("#empDiv").empty();
+
+            $.getJSON("http://localhost:3000/getFilms/" + $("#RDid").val(), function(data){
+                console.log(data);
+                $.each(data,function(i, value){
+                    $("#empDiv").append("<label>Film ID: </label>" + value.id +"<br>" + "<label>Film Name: </label>" + value.name+ "<br>" +"<label>Director: </label>" + value.director + "<br>" + "<label>Duration: </label>" + value.duration  + "<br>" + "<label>Trailer Url: </label>" + value.trailer_url + "<br>" + "<label>Description: </label>" + value.description + "<br>" + "<label>Age Rating: </label>" + value.age)
+                })
+            })
+            
+        })
+        }
+
+        //Screenings
+        else if(tmpTable =="screening")
+        {
+            $("#POST").on('click', function(){
+                $("#empDiv").empty();
+
+            $.getJSON("http://localhost:3000/getScreenings/" + $("#RDid").val(), function(data){
+                console.log(data);
+                $.each(data,function(i, value){
+                    $("#empDiv").append("<label>Screen ID: </label>" + value.id + "<br>" + "<label>Price: </label>" + value.price + "<br>" + "<label>Time & Date: </label>" + value.dateTime + "<br>" + "<label>Film ID: </label>" + value.film_id)
+                })
+            })
+            
+        })
+        }
+
+        //Screen
+        else if(tmpTable =="screens")
+        {
+            $("#POST").on('click', function(){
+                $("#empDiv").empty();
+
+            $.getJSON("http://localhost:3000/getScreens/" + $("#RDid").val(), function(data){
+                console.log(data);
+                $.each(data,function(i, value){
+                    $("#empDiv").append("<label>Screen ID: </label>" + value.id + "<br>" + "<label>Capacity: </label>" + value.capacity + "<br>" + "<label>Open: </label>" + value.open)
+                })
+            })
+            
+        })
+        }
+
+        //Staff
+        else if(tmpTable =="staff")
+        {
+            $("#POST").on('click', function(){
+                $("#empDiv").empty();
+
+            $.getJSON("http://localhost:3000/getStaff/" + $("#RDid").val(), function(data){
+                console.log(data);
+                $.each(data,function(i, value){
+                    $("#empDiv").append("<label>Staff ID: </label>" + value.id + "<br>" + "<label>Staff Name: </label>" + value.name + "<br>" + "<label>Email: </label>" + value.email + "<br>" + "<label>Age: </label>" + value.age + "<br>" + "<label>Password: </label>" + value.password + "<br>" + "<label>Phone Number: </label>" + value.phone_no)
+                })
+            })
+            
+        })
+        }
+
     }
     
         else if(operationTbl == "DELETE"){
