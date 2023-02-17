@@ -10,19 +10,20 @@ create table Films (
 	director VARCHAR(50),
 	duration VARCHAR(50),
 	trailer_url VARCHAR(1000),
+	description VARCHAR(1000),
 	age VARCHAR(3),
 	PRIMARY KEY (id)
 );
 
-insert into Films (name, director, duration, trailer_url, age) values ('Inception', 'Christopher Nolan', '2:28', 'https://www.youtube.com/watch?v=YoHD9XEInc0', '12A');
-insert into Films (name, director, duration, trailer_url, age) values ('Avatar: The Way of the Water', 'James Cameron', '3:13', 'https://www.youtube.com/watch?v=d9MyW72ELq0','PG');
-insert into Films (name, director, duration, trailer_url, age) values ('The Fabelmans', 'Steven Spielberg', '2:31', 'https://www.youtube.com/watch?v=D1G2iLSzOe8','18');
-insert into Films (name, director, duration, trailer_url, age) values ('Puss in Boots: The Last Wish', 'Joel Crawford', '1:42', 'https://www.youtube.com/watch?v=RqrXhwS33yc','U');
-insert into Films (name, director, duration, trailer_url, age) values ('Babylon', 'Damien Chazelle', '3:09', 'https://www.youtube.com/watch?v=5muQK7CuFtY','18');
-insert into Films (name, director, duration, trailer_url, age) values ('Life is a Jungle', 'Robert D. Hanna', '1:41', 'https://www.youtube.com/watch?v=rwyUzHEG_XY','U');
-insert into Films (name, director, duration, trailer_url, age) values ('Guardians of the Galaxy Vol. 3', 'James Gunn', '2:22', 'https://www.youtube.com/watch?v=u3V5KDHRQvk','12A');
-insert into Films (name, director, duration, trailer_url, age) values ('Ant-Man and The Wasp: Quantumania', 'Peyton Reed', '2:05', 'https://www.youtube.com/watch?v=ZlNFpri-Y40','12A');
-insert into Films (name, director, duration, trailer_url, age) values ('Spider-Man Across the Spiderverse', 'Joaqium Dos Santos', '1:54', 'https://www.youtube.com/watch?v=cqGjhVJWtEg','U');
+insert into Films (name, director, duration, trailer_url, description, age) values ('Inception', 'Christopher Nolan', '2:28', 'https://www.youtube.com/watch?v=YoHD9XEInc0','A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.', '12A');
+insert into Films (name, director, duration, trailer_url, description,  age) values ('Avatar: The Way of the Water', 'James Cameron', '3:13', 'https://www.youtube.com/watch?v=d9MyW72ELq0',"Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.",'PG');
+insert into Films (name, director, duration, trailer_url, description, age) values ('The Fabelmans', 'Steven Spielberg', '2:31', 'https://www.youtube.com/watch?v=D1G2iLSzOe8',"Growing up in post-World War II era Arizona, young Sammy Fabelman aspires to become a filmmaker as he reaches adolescence, but soon discovers a shattering family secret and explores how the power of films can help him see the truth.",'18');
+insert into Films (name, director, duration, trailer_url, description, age) values ('Puss in Boots: The Last Wish', 'Joel Crawford', '1:42', 'https://www.youtube.com/watch?v=RqrXhwS33yc',"When Puss in Boots discovers that his passion for adventure has taken its toll and he has burned through eight of his nine lives, he launches an epic journey to restore them by finding the mythical Last Wish.",'U');
+insert into Films (name, director, duration, trailer_url, description, age) values ('Babylon', 'Damien Chazelle', '3:09', 'https://www.youtube.com/watch?v=5muQK7CuFtY',"A tale of outsized ambition and outrageous excess, it traces the rise and fall of multiple characters during an era of unbridled decadence and depravity in early Hollywood.",'18');
+insert into Films (name, director, duration, trailer_url, description, age) values ('Life is a Jungle', 'Robert D. Hanna', '1:41', 'https://www.youtube.com/watch?v=rwyUzHEG_XY',"When Pip, a pampered and snobbish puppy, gets separated from his owners on an African safari, he is forced to adapt a new way of life in the jungle where he learns that caviar and manicures can never bring the same happiness as friendship.",'U');
+insert into Films (name, director, duration, trailer_url, description, age) values ('Guardians of the Galaxy Vol. 3', 'James Gunn', '2:22', 'https://www.youtube.com/watch?v=u3V5KDHRQvk',"Still reeling from the loss of Gamora, Peter Quill rallies his team to defend the universe and one of their own - a mission that could mean the end of the Guardians if not successful.",'12A');
+insert into Films (name, director, duration, trailer_url, description, age) values ('Ant-Man and The Wasp: Quantumania', 'Peyton Reed', '2:05', 'https://www.youtube.com/watch?v=ZlNFpri-Y40',"Scott Lang and Hope Van Dyne, along with Hank Pym and Janet Van Dyne, explore the Quantum Realm, where they interact with strange creatures and embark on an adventure that goes beyond the limits of what they thought was possible.",'12A');
+insert into Films (name, director, duration, trailer_url, description, age) values ('Spider-Man Across the Spiderverse', 'Joaqium Dos Santos', '1:54', 'https://www.youtube.com/watch?v=cqGjhVJWtEg',"Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.",'U');
 
 create table Screens (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -152,13 +153,13 @@ insert into Customers (name, email, age, password, phone_no) values ('Amble Sher
 
 create table Booking (
 	id INT NOT NULL AUTO_INCREMENT,
-	screen_id INT,
+	screening_id INT,
 	no_of_seats INT,
 	PRIMARY KEY(id)
 
 );
 
-insert into Booking (screen_id, no_of_seats) values (45, 15);
+insert into Booking (screening_id, no_of_seats) values (45, 15);
 
 create table Staff (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -181,12 +182,11 @@ create table Screening (
 	price VARCHAR(50),
 	dateTime DATE,
 	film_id INT,
-	phone_no VARCHAR(50),
 	PRIMARY KEY(id)
 );
 
-insert into Screening (price, dateTime, film_id, phone_no) values ('€44,32', '12/03/2023', 53, '4968684638');
-insert into Screening (price, dateTime, film_id, phone_no) values ('€18,11', '22/09/2023', 34, '6232781023');
-insert into Screening (price, dateTime, film_id, phone_no) values ('€28,61', '23/07/2023', 54, '8812910356');
-insert into Screening (price, dateTime, film_id, phone_no) values ('€6,25', '07/02/2024', 59, '5021894372');
-insert into Screening (price, dateTime, film_id, phone_no) values ('€72,05', '06/12/2023', 84, '7281147680');
+insert into Screening (price, dateTime, film_id) values ('€44,32', '12/03/2023', 53);
+insert into Screening (price, dateTime, film_id) values ('€18,11', '22/09/2023', 34);
+insert into Screening (price, dateTime, film_id) values ('€28,61', '23/07/2023', 54);
+insert into Screening (price, dateTime, film_id) values ('€6,25', '07/02/2024', 59);
+insert into Screening (price, dateTime, film_id) values ('€72,05', '06/12/2023', 84);
