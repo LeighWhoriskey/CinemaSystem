@@ -1,14 +1,20 @@
 $("document").ready(function(){
 
-    // just some placeholder code for now, we should get images for all the movies 
-    // and make it so when clicked they can redirect to a details page for the movie or something
-
+    
     $.getJSON("http://localhost:3000/movies",function(data){
+        var output =""
        
         $.each(data, function(i, value){
-            $("#movies").append("Movie: " + value.name + " RunTime: " + value.duration +"<br>");
+          
+
+
+            $("#movies").append(`<img src='images/${value.id}.jpg'style='width: 200px;'></img>` +"<h2 style='margin: top'>"+ value.name+"</h2>" + " " + value.duration +"h"+ value.age + " " + value.description + `<button class = 'trailer' value = '${value.trailer_url}'>Trailer</button>` +' <br> <hr>');
+         
         });
-        
+        $(".trailer").click(function(event){
+         
+            window.location.replace(event.target.value);
+        });
     });
 
     
