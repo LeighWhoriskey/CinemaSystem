@@ -48,12 +48,18 @@ exports.Booking = function(req, res, data){
 	}
 }
 
-exports.getBooking = function(req,res,data){
-	connection.query("SELECT * FROM booking WHERE id =" + data.id ,function(error, rows, feilds){
-		if(error){throw error};
-		res.send(JSON.stringify(rows));	
-	});
-}
+	exports.getBooking = function(req,res,data){
+		connection.query("SELECT * FROM booking WHERE id =" + data.id ,function(error, rows, feilds){
+			if(error){throw error};
+			res.send(JSON.stringify(rows));	
+		});
+	}
+	exports.getCustomer = function(req,res,data){
+		connection.query("SELECT * FROM customers WHERE id =" + data.id ,function(error, rows, feilds){
+			if(error){throw error};
+			res.send(JSON.stringify(rows));	
+		});
+	}
 
 
 
