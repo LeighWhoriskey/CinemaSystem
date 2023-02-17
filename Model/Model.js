@@ -4,8 +4,8 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema',
-  port: 3305
+  database : 'cinema'
+  
 });
 
 connection.connect(function(err){
@@ -46,8 +46,13 @@ exports.Booking = function(req, res, data){
 		});
 
 	}
-	
+}
 
+exports.getBooking = function(req,res,data){
+	connection.query("SELECT * FROM booking WHERE id =" + data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
 }
 
 

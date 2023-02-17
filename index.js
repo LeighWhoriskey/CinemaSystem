@@ -30,6 +30,11 @@ app.post("/Booking",function(req,res){
   model.Booking(req, res, data);
 })
 
+app.get("/getBooking/:id?",function(req,res){
+  console.log({id : req.params.id});
+  model.getBooking(req,res ,{id : req.params.id});
+})
+
 var myServer = app.listen(3000, function() {
   console.log("Server listening on port 3000");
 });

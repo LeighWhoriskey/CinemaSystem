@@ -34,11 +34,38 @@ $("document").ready(function(){
         if(operationTbl == "READ"){
             $("#form").append("<label for='id'>ID:</label><input id='RDid' name='id'></input>" +
             "<button id ='POST' type='button'> Read</button>");
-        }
+
+            $("#POST").on('click', function(){
+            $.getJSON("http://localhost:3000/getBooking/" + $("#RDid").val(), function(data){
+                $.each(data,function(i, value){
+                    $("#empDiv").append("<label>BookingID </label>" + value.id + "<label> screening_id </label>" + value.screening_id + "<label> Seats </label>" + value.no_of_seats)
+                })
+            })
+        
+        })
+    }
+    
         else if(operationTbl == "DELETE"){
 
             $("#form").append("<label for='id'>ID:</label><input id='RDid' name='id'></input>" +
             "<button id ='POST' type='button'> Delete</button>");
+            
+            $("#POST").on('click', function(){
+                $.ajax({
+                    url: "http://localhost:3000/Booking",
+                    cache: false,
+                    dataType: "json",
+                    type: "Post",
+                    data:{
+                        operation: operationTbl,
+                        ID: $("RDid").val(),
+                       table: tmpTable
+                    },
+                    sucess: function(res){
+                        alert(res);
+                    }
+                });
+            });
         }
         else if( operationTbl == "CREATE"){
 
