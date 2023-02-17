@@ -5,7 +5,6 @@ var connection = mysql.createConnection({
   user     : 'root',
   password : '',
   database : 'cinema'
-  
 });
 
 connection.connect(function(err){
