@@ -4,7 +4,8 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema'
+  database : 'cinema',
+  port: 3305
 });
 
 connection.connect(function(err){
@@ -39,7 +40,7 @@ exports.Booking = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE booking SET screen_id =" +data.ScreenID  + ",no_of_seats =" +data.Seats +" WHERE ID =" + data.BookingID,function(error, rows, feilds){
+		connection.query("UPDATE booking SET screening_id =" +data.ScreenID  + ",no_of_seats =" +data.Seats +" WHERE ID =" + data.BookingID,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
