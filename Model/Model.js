@@ -4,8 +4,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema',
-  port: 3305
+  database : 'cinema'
 });
 
 connection.connect(function(err){
@@ -24,14 +23,32 @@ exports.getMovies = function(req,res){
 	});
 }
 
-// need to make a film details table that will hold a description of the moive etc 
-// maybe we can move some details that we have in films in there 
-
 exports.getMovieDetails = function(req, res, movie){
 	connection.query("SELECT * FROM films, filmdetails WHERE films.id ='"+movie.id +"' AND filmdetails.id ='"+ movie.id +"'", function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));
 	});
 }
+
+
+exports.Booking = function(req, res, data){
+	if(data.operation == "CREATE"){
+		connection.query("INSERT INTO booking (screen_id, no_of_seats) VALUES(" + data.ScreenID +", " + data.Seats +");",function(error, rows, feilds){
+			if(error){throw error};
+			res.send("200");
+		});
+	}
+	else{
+		connection.query("UPDATE booking SET screen_id =" +data.ScreenID  + ",no_of_seats =" +data.Seats +" WHERE ID =" + data.BookingID,function(error, rows, feilds){
+			if(error){throw error};
+			res.send("200");
+		});
+
+	}
+	
+
+}
+
+
 
 	
