@@ -155,11 +155,12 @@ create table Booking (
 	id INT NOT NULL AUTO_INCREMENT,
 	screening_id INT,
 	no_of_seats INT,
+	cust_id INT,
 	PRIMARY KEY(id)
 
 );
 
-insert into Booking (screening_id, no_of_seats) values (45, 15);
+insert into Booking (screening_id, no_of_seats, cust_id) values (45, 15,1);
 
 create table Staff (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -180,13 +181,18 @@ insert into Staff (name, email, age, password, phone_no) values ('Ari Siggs', 'a
 create table Screening (
 	id INT NOT NULL AUTO_INCREMENT,
 	price VARCHAR(50),
-	dateTime DATE,
+	date DATE,
+	time VARCHAR(50),
 	film_id INT,
+	screen_id INT,
+	totalSeatsBooked INT,
 	PRIMARY KEY(id)
 );
 
-insert into Screening (price, dateTime, film_id) values ('€44,32', '12/03/2023', 53);
-insert into Screening (price, dateTime, film_id) values ('€18,11', '22/09/2023', 34);
-insert into Screening (price, dateTime, film_id) values ('€28,61', '23/07/2023', 54);
-insert into Screening (price, dateTime, film_id) values ('€6,25', '07/02/2024', 59);
-insert into Screening (price, dateTime, film_id) values ('€72,05', '06/12/2023', 84);
+#need to fix the date va;ue it doesnt work maybe change to varchar
+
+insert into Screening (price, date ,time, film_id, screen_id, totalSeatsBooked) values ('€44,32', '12/03/2023','15:00', 53, 1, 20);
+insert into Screening (price, date, time, film_id, screen_id, totalSeatsBooked) values ('€18,11', '22/09/2023','15:00', 53, 1, 20);
+insert into Screening (price, date, time, film_id, screen_id, totalSeatsBooked) values ('€28,61', '23/07/2023','15:00', 53, 1, 20);
+insert into Screening (price, date, time, film_id, screen_id, totalSeatsBooked) values ('€6,25', '07/02/2024','15:00', 53, 1, 20);
+insert into Screening (price, date, time, film_id, screen_id, totalSeatsBooked) values ('€72,05', '06/12/2023','15:00', 53, 1, 20);

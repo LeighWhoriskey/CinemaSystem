@@ -37,97 +37,92 @@ $("document").ready(function(){
 
             //Booking
             if(tmpTable == "booking" ){
-            $("#POST").on('click', function(){
-                $("#empDiv").empty();
+                $("#POST").on('click', function(){
+                    $("#empDiv").empty();
 
-            $.getJSON("http://localhost:3000/getBooking/" + $("#RDid").val(), function(data){
-                $.each(data,function(i, value){
-                    $("#empDiv").append("<label>Booking ID: </label>" + value.id + "<br>" + "<label>Screening ID: </label>" + value.screening_id + "<br>" + "<label>Number of Seats booked: </label>" + value.no_of_seats + "<br>" + "<label>Customer ID: </label> " + Cust_ID)
-                })
-            })
-        })}
-        //Customer
-        else if(tmpTable =="customers")
-        {
-            $("#POST").on('click', function(){
-                $("#empDiv").empty();
+                    $.getJSON("http://localhost:3000/getBooking/" + $("#RDid").val(), function(data){
+                        $.each(data,function(i, value){
+                            $("#empDiv").append("<label>Booking ID: </label>" + value.id + "<br>" + "<label>Screening ID: </label>" + value.screening_id + "<br>" + "<label>Number of Seats booked: </label>" + value.no_of_seats + "<br>" + "<label>Customer ID: </label> " + Cust_ID)
+                        })
+                    });
+                });
+            }
+            //Customer
+            else if(tmpTable =="customers")
+            {
+                $("#POST").on('click', function(){
+                    $("#empDiv").empty();
 
-            $.getJSON("http://localhost:3000/getCustomers/" + $("#RDid").val(), function(data){
-                console.log(data);
-                $.each(data,function(i, value){
-                    $("#empDiv").append("<label>Customer Name: </label>" + value.name + "<br>" + "<label>Email: </label>" + value.email + "<br>" + "<label>Age: </label>" + value.age + "<br>" + "<label>Password: </label>" + value.password  + "<br>" + "<label>Phone Number: </label>" + value.phone_no)
-                })
-            })
-            
-        })
+                    $.getJSON("http://localhost:3000/getCustomers/" + $("#RDid").val(), function(data){
+                        console.log(data);
+                        $.each(data,function(i, value){
+                            $("#empDiv").append("<label>Customer Name: </label>" + value.name + "<br>" + "<label>Email: </label>" + value.email + "<br>" + "<label>Age: </label>" + value.age + "<br>" + "<label>Password: </label>" + value.password  + "<br>" + "<label>Phone Number: </label>" + value.phone_no)
+                        });
+                    });
+                });
+            }
+
+            //Film
+            else if(tmpTable =="films")
+            {
+                $("#POST").on('click', function(){
+                    $("#empDiv").empty();
+
+                    $.getJSON("http://localhost:3000/getFilms/" + $("#RDid").val(), function(data){
+                        console.log(data);
+                        $.each(data,function(i, value){
+                            $("#empDiv").append("<label>Film ID: </label>" + value.id +"<br>" + "<label>Film Name: </label>" + value.name+ "<br>" +"<label>Director: </label>" + value.director + "<br>" + "<label>Duration: </label>" + value.duration  + "<br>" + "<label>Trailer Url: </label>" + value.trailer_url + "<br>" + "<label>Description: </label>" + value.description + "<br>" + "<label>Age Rating: </label>" + value.age)
+                        });
+                    });
+                });
+            }
+
+            //Screenings
+            else if(tmpTable =="screening")
+            {
+                $("#POST").on('click', function(){
+                    $("#empDiv").empty();
+
+                    $.getJSON("http://localhost:3000/getScreenings/" + $("#RDid").val(), function(data){
+                        console.log(data);
+                        $.each(data,function(i, value){
+                            $("#empDiv").append("<label>Screen ID: </label>" + value.id + "<br>" + "<label>Price: </label>" + value.price + "<br>" + "<label>Time & Date: </label>" + value.dateTime + "<br>" + "<label>Film ID: </label>" + value.film_id)
+                        });
+                    });
+                });
+            }
+
+            //Screen
+            else if(tmpTable =="screens")
+            {
+                $("#POST").on('click', function(){
+                    $("#empDiv").empty();
+
+                    $.getJSON("http://localhost:3000/getScreens/" + $("#RDid").val(), function(data){
+                        console.log(data);
+                        $.each(data,function(i, value){
+                            $("#empDiv").append("<label>Screen ID: </label>" + value.id + "<br>" + "<label>Capacity: </label>" + value.capacity + "<br>" + "<label>Open: </label>" + value.open)
+                        });
+                    });
+                });
+            }
+
+            //Staff
+            else if(tmpTable =="staff")
+            {
+                $("#POST").on('click', function(){
+                    $("#empDiv").empty();
+
+                    $.getJSON("http://localhost:3000/getStaff/" + $("#RDid").val(), function(data){
+                        console.log(data);
+                        $.each(data,function(i, value){
+                            $("#empDiv").append("<label>Staff ID: </label>" + value.id + "<br>" + "<label>Staff Name: </label>" + value.name + "<br>" + "<label>Email: </label>" + value.email + "<br>" + "<label>Age: </label>" + value.age + "<br>" + "<label>Password: </label>" + value.password + "<br>" + "<label>Phone Number: </label>" + value.phone_no)
+                        });
+                    });
+                });
+            }
+
         }
-
-        //Film
-        else if(tmpTable =="films")
-        {
-            $("#POST").on('click', function(){
-                $("#empDiv").empty();
-
-            $.getJSON("http://localhost:3000/getFilms/" + $("#RDid").val(), function(data){
-                console.log(data);
-                $.each(data,function(i, value){
-                    $("#empDiv").append("<label>Film ID: </label>" + value.id +"<br>" + "<label>Film Name: </label>" + value.name+ "<br>" +"<label>Director: </label>" + value.director + "<br>" + "<label>Duration: </label>" + value.duration  + "<br>" + "<label>Trailer Url: </label>" + value.trailer_url + "<br>" + "<label>Description: </label>" + value.description + "<br>" + "<label>Age Rating: </label>" + value.age)
-                })
-            })
-            
-        })
-        }
-
-        //Screenings
-        else if(tmpTable =="screening")
-        {
-            $("#POST").on('click', function(){
-                $("#empDiv").empty();
-
-            $.getJSON("http://localhost:3000/getScreenings/" + $("#RDid").val(), function(data){
-                console.log(data);
-                $.each(data,function(i, value){
-                    $("#empDiv").append("<label>Screen ID: </label>" + value.id + "<br>" + "<label>Price: </label>" + value.price + "<br>" + "<label>Time & Date: </label>" + value.dateTime + "<br>" + "<label>Film ID: </label>" + value.film_id)
-                })
-            })
-            
-        })
-        }
-
-        //Screen
-        else if(tmpTable =="screens")
-        {
-            $("#POST").on('click', function(){
-                $("#empDiv").empty();
-
-            $.getJSON("http://localhost:3000/getScreens/" + $("#RDid").val(), function(data){
-                console.log(data);
-                $.each(data,function(i, value){
-                    $("#empDiv").append("<label>Screen ID: </label>" + value.id + "<br>" + "<label>Capacity: </label>" + value.capacity + "<br>" + "<label>Open: </label>" + value.open)
-                })
-            })
-            
-        })
-        }
-
-        //Staff
-        else if(tmpTable =="staff")
-        {
-            $("#POST").on('click', function(){
-                $("#empDiv").empty();
-
-            $.getJSON("http://localhost:3000/getStaff/" + $("#RDid").val(), function(data){
-                console.log(data);
-                $.each(data,function(i, value){
-                    $("#empDiv").append("<label>Staff ID: </label>" + value.id + "<br>" + "<label>Staff Name: </label>" + value.name + "<br>" + "<label>Email: </label>" + value.email + "<br>" + "<label>Age: </label>" + value.age + "<br>" + "<label>Password: </label>" + value.password + "<br>" + "<label>Phone Number: </label>" + value.phone_no)
-                })
-            })
-            
-        })
-        }
-
-    }
-    
         else if(operationTbl == "DELETE"){
 
             $("#form").append("<label for='id'>ID:</label><input id='RDid' name='id'></input>" +
@@ -142,7 +137,7 @@ $("document").ready(function(){
                     data:{
                         operation: operationTbl,
                         ID: $("RDid").val(),
-                       table: tmpTable
+                        table: tmpTable
                     },
                     sucess: function(res){
                         alert(res);
@@ -178,18 +173,25 @@ $("document").ready(function(){
             else if(tmpTable == "customers"){
                 $("#form").append("<label for='name'>Name: </label> <input id='name' name='name'></input>" +
                                     "<label for='email'>Email: </label><input id='email' name='email'</input> " +
+                                    "<label for='age'>Age: </label><input id='age' name='age'</input> " +
+                                    "<label for='pasword'>Password: </label><input id='password' name='password'</input> " +
+                                    "<label for='phone'>Phone No: </label><input id='phone' name='phone'</input> " +
                                     "<button id='POST' type='button'>Submit</button>");
 
                 //changes to the new button, if not here it will try find the old button
                 $("#POST").on('click', function(){
                     $.ajax({
-                        url: "http://localhost:3000/CreateCustomer",
+                        url: "http://localhost:3000/Customer",
                         cache: false,
                         dataType: "json",
                         type: "Post",
                         data:{
-                            ScreenID: $("#screen_id").val(),
-                            Seats: $("#no_of_seats").val()
+                            operation: operationTbl,
+                            name: $("#name").val(),
+                            email: $("#email").val(),
+                            age: $("#age").val(),
+                            password: $("#password").val(),
+                            phone_no: $("#phone").val()
                         },
                         sucess: function(res){
                             alert(res);
@@ -198,37 +200,115 @@ $("document").ready(function(){
                 });
             }
             else if(tmpTable == "films"){
-                $("#form").append("<p>Film ID: <input id='film_id'></input> </p>" +
-                                    "<p>Name: <input id='name'></input> </p>" +
-                                    "<p>Director: <input id='director'></input> </p>" +
-                                    "<p>Duration: <input id='duration'></input> </p>" +
-                                    "<p>Trailer URL: <input id='trailer'></input> </p> " +
-                                    "<p>Age Rating: <input id='age'></input> </p>" +
-                                    "<button id='POST'>Submit</button>");
+                $("#form").append("<label for='name'>Name: <input id='name' name='name'></input> </label>" +
+                                    "<label for='director'>Director: <input id='director' name='director'></input> </label>" +
+                                    "<label for='duration'>Duration: <input id='duration' name='duration'></input> </label>" +
+                                    "<label for='trailer'>Trailer URL: <input id='trailer' name='trailer'></input> </label> " +
+                                    "<label for='desc'>Description: <input id='desc' name='desc'></input> </label> " +
+                                    "<label for='age'>Age Rating: <input id='age' name='age'></input> </p>" +
+                                    "<button id='POST' type='button'>Submit</button>");
+
+                $("#POST").on('click', function(){
+                    $.ajax({
+                        url: "http://localhost:3000/Film",
+                        cache: false,
+                        dataType: "json",
+                        type: "Post",
+                        data:{
+                            operation: operationTbl,
+                            name: $("#name").val(),
+                            director: $("#director").val(),
+                            duration: $("#duration").val(),
+                            trailer: $("#trailer").val(),
+                            desc: $("#desc").val(),
+                            age: $("#age").val()
+                        },
+                        sucess: function(res){
+                            alert(res);
+                        }
+                    });
+                });
             }
             else if(tmpTable == "screening"){
-                $("#form").append("<p>Booking ID: <input id='booking_id'></input> </p>" +
-                                    "<p>Screen ID: <input id='screen_id'></input> </p>" +
-                                    "<p>Price: <input id='price'></input> </p>" +
-                                    "<p>Date & Time: <input id='duration'></input> </p>" +
-                                    "<p>Film Id: <input id='film_id'></input> </p> " +
-                                    "<p>Phone Number: <input id='phone_no'></input> </p>" +
-                                    "<button id='POST'>Submit</button>");
+                $("#form").append("<label for='screen'>Screen ID: <input id='screen' name='screen'></input> </label>" +
+                                    "<label for='price'>Price: <input id='price' name='price'></input> </label>" +
+                                    "<label for ='date'>Date: <input id='date' name='date'></input> </label>" +
+                                    "<label for ='time'>Time: <input id='time' name='time'></input> </label>" +
+                                    "<label for ='film'>Film Id: <input id='film' name='film'></input> </label> " +
+                                    "<label for='seats'>Seats Booked: <input id='seats' name='seats'></input> </p>" +
+                                    "<button id='POST' type='button'>Submit</button>");
+
+                $("#POST").on('click', function(){
+                    $.ajax({
+                        url: "http://localhost:3000/Screening",
+                        cache: false,
+                        dataType: "json",
+                        type: "Post",
+                        data:{
+                            operation: operationTbl,
+                            screen: $("#screen").val(),
+                            price: $("#price").val(),
+                            date: $("#date").val(),
+                            time: $("#time").val(),
+                            film: $("#film").val(),
+                            seats: $("#seats").val()
+                        },
+                        sucess: function(res){
+                            alert(res);
+                        }
+                    });
+                });
             }
             else if(tmpTable == "screens"){
-                $("#form").append("<p>Screen ID: <input id='screen_id'></input> </p>" +
-                                    "<p>Capacity: <input id='capacity'></input> </p>" +
-                                    "<p>Open or Closed <input id='open' placeholder='1 = open  0 = closed'></input> </p>" +
-                                    "<button id='POST'>Submit</button>");
+                $("#form").append("<label for='capacity'>Capacity: <input id='capacity' name='capacity'></input> </label>" +
+                                    "<label for='open'>Open or Closed <input id='open' name='open' placeholder='1 = open  0 = closed'></input> </p>" +
+                                    "<button id='POST' type='button'>Submit</button>");
+
+                $("#POST").on('click', function(){
+                    $.ajax({
+                        url: "http://localhost:3000/Screens",
+                        cache: false,
+                        dataType: "json",
+                        type: "Post",
+                        data:{
+                            operation: operationTbl,
+                            screen: $("#screen").val(),
+                            capacity: $("#capacity").val(),
+                            open: $("#open").val()
+                        },
+                        sucess: function(res){
+                            alert(res);
+                        }
+                    });
+                });
             }
             else if(tmpTable == "staff"){
-                $("#form").append("<p>Staff ID: <input id='staff_id'></input> </p>" +
-                                    "<p>Name: <input id='name'></input> </p>" +
-                                    "<p>Email: <input id='email'></input> </p>" +
-                                    "<p>Age: <input id='age'></input> </p>" +
-                                    "<p>Password: <input id='password'></input> </p> " +
-                                    "<p>Phone Number: <input id='phone_no'></input> </p>" +
-                                    "<button id='POST'>Submit</button>");
+                $("#form").append("<label for='name'>Name: <input id='name' name='name'></input> </label>" +
+                                    "<label for='email'>Email: <input id='email' name='email'></input> </label>" +
+                                    "<label for='age'>Age: <input id='age' name='age'></input> </label>" +
+                                    "<label for='pass'>Password: <input id='pass' name='pass'></input> </label> " +
+                                    "<label for='phone'>Phone Number: <input id='phone' name='phone'></input> </p>" +
+                                    "<button id='POST' type='button'>Submit</button>");
+
+                $("#POST").on('click', function(){
+                    $.ajax({
+                        url: "http://localhost:3000/Staff",
+                        cache: false,
+                        dataType: "json",
+                        type: "Post",
+                        data:{
+                            operation: operationTbl,
+                            name: $("#name").val(),
+                            email: $("#email").val(),
+                            age: $("#age").val(),
+                            pass: $("#pass").val(),
+                            phone: $("#phone").val()
+                        },
+                        sucess: function(res){
+                            alert(res);
+                        }
+                    });
+                });
             }
         }
         else{
@@ -259,46 +339,154 @@ $("document").ready(function(){
                     });
             }
             else if(tmpTable == "customers"){
-                $("#form").append("<p>Customer ID: <input id='cust_id'></input> </p>" +
-                                    "<p>Name: <input id='name'></input> </p>" +
-                                    "<p>Email: <input id='email'></input> </p>" +
-                                    "<p>Age: <input id='age'></input> </p>" +
-                                    "<p>Password: <input id='password'></input> </p> " +
-                                    "<p>Phone Number: <input id='phone_no'></input> </p>" +
-                                    "<button id='POST'>Submit</button>");
+                $("#form").append("<label for='id'>ID: </label> <input id='id' name='id'></input>" +
+                                    "<label for='name'>Name: </label> <input id='name' name='name'></input>" +
+                                    "<label for='email'>Email: </label><input id='email' name='email'</input> " +
+                                    "<label for='age'>Age: </label><input id='age' name='age'</input> " +
+                                    "<label for='pasword'>Password: </label><input id='password' name='password'</input> " +
+                                    "<label for='phone'>Phone No: </label><input id='phone' name='phone'</input> " +
+                                    "<button id='POST' type='button'>Submit</button>");
+
+                //changes to the new button, if not here it will try find the old button
+                $("#POST").on('click', function(){
+                    $.ajax({
+                        url: "http://localhost:3000/Customer",
+                        cache: false,
+                        dataType: "json",
+                        type: "Post",
+                        data:{
+                            operation: operationTbl,
+                            id: $("#id").val(),
+                            name: $("#name").val(),
+                            email: $("#email").val(),
+                            age: $("#age").val(),
+                            password: $("#password").val(),
+                            phone_no: $("#phone").val()
+                        },
+                        sucess: function(res){
+                            alert(res);
+                        }
+                    });
+                });
             }
             else if(tmpTable == "films"){
-                $("#form").append("<p>Film ID: <input id='film_id'></input> </p>" +
-                                    "<p>Name: <input id='name'></input> </p>" +
-                                    "<p>Director: <input id='director'></input> </p>" +
-                                    "<p>Duration: <input id='duration'></input> </p>" +
-                                    "<p>Trailer URL: <input id='trailer'></input> </p> " +
-                                    "<p>Age Rating: <input id='age'></input> </p>" +
-                                    "<button id='POST'>Submit</button>");
+                $("#form").append("<label for='film'>Film ID: <input id='film' name='film'></input> </label>" +
+                                    "<label for='name'>Name: <input id='name' name='name'></input> </label>" +
+                                    "<label for='director'>Director: <input id='director' name='director'></input> </label>" +
+                                    "<label for='duration'>Duration: <input id='duration' name='duration'></input> </label>" +
+                                    "<label for='trailer'>Trailer URL: <input id='trailer' name='trailer'></input> </label> " +
+                                    "<label for='desc'>Description: <input id='desc' name='desc'></input> </label> " +
+                                    "<label for='age'>Age Rating: <input id='age' name='age'></input> </p>" +
+                                    "<button id='POST' type='button'>Submit</button>");
+
+                $("#POST").on('click', function(){
+                    $.ajax({
+                        url: "http://localhost:3000/Film",
+                        cache: false,
+                        dataType: "json",
+                        type: "Post",
+                        data:{
+                            operation: operationTbl,
+                            id: $("#film").val(),
+                            name: $("#name").val(),
+                            director: $("#director").val(),
+                            duration: $("#duration").val(),
+                            trailer: $("#trailer").val(),
+                            desc: $("#desc").val(),
+                            age: $("#age").val()
+                        },
+                        sucess: function(res){
+                            alert(res);
+                        }
+                    });
+                });
             }
             else if(tmpTable == "screening"){
-                $("#form").append("<p>Booking ID: <input id='booking_id'></input> </p>" +
-                                    "<p>Screen ID: <input id='screen_id'></input> </p>" +
-                                    "<p>Price: <input id='price'></input> </p>" +
-                                    "<p>Date & Time: <input id='duration'></input> </p>" +
-                                    "<p>Film Id: <input id='film_id'></input> </p> " +
-                                    "<p>Phone Number: <input id='phone_no'></input> </p>" +
-                                    "<button id='POST'>Submit</button>");
+                $("#form").append("<label for='booking'>Booking ID: <input id='booking' name='booking'></input> </label>" +
+                                    "<label for='screen'>Screen ID: <input id='screen' name='screen'></input> </label>" +
+                                    "<label for='price'>Price: <input id='price' name='price'></input> </label>" +
+                                    "<label for ='date'>Date: <input id='date' name='date'></input> </label>" +
+                                    "<label for ='time'>Time: <input id='time' name='time'></input> </label>" +
+                                    "<label for ='film'>Film Id: <input id='film' name='film'></input> </label> " +
+                                    "<label for='seats'>Seats Booked: <input id='seats' name='seats'></input> </p>" +
+                                    "<button id='POST' type='button'>Submit</button>");
+
+                $("#POST").on('click', function(){
+                    $.ajax({
+                        url: "http://localhost:3000/Screening",
+                        cache: false,
+                        dataType: "json",
+                        type: "Post",
+                        data:{
+                            operation: operationTbl,
+                            id: $("#booking").val(),
+                            screen: $("#screen").val(),
+                            price: $("#price").val(),
+                            date: $("#date").val(),
+                            time: $("#time").val(),
+                            film: $("#film").val(),
+                            seats: $("#seats").val()
+                        },
+                        sucess: function(res){
+                            alert(res);
+                        }
+                    });
+                });
             }
             else if(tmpTable == "screens"){
-                $("#form").append("<p>Screen ID: <input id='screen_id'></input> </p>" +
-                                    "<p>Capacity: <input id='capacity'></input> </p>" +
-                                    "<p>Open or Closed <input id='open' placeholder='1 = open  0 = closed'></input> </p>" +
-                                    "<button id='POST'>Submit</button>");
+                $("#form").append("<label for='screen'>Screen ID: <input id='screen' name='screen'></input> </label>" +
+                                    "<label for='capacity'>Capacity: <input id='capacity' name='capacity'></input> </label>" +
+                                    "<label for='open'>Open or Closed <input id='open' name='open' placeholder='1 = open  0 = closed'></input> </p>" +
+                                    "<button id='POST' type='button'>Submit</button>");
+
+                $("#POST").on('click', function(){
+                    $.ajax({
+                        url: "http://localhost:3000/Screens",
+                        cache: false,
+                        dataType: "json",
+                        type: "Post",
+                        data:{
+                            operation: operationTbl,
+                            id: $("#screen").val(),
+                            capacity: $("#capacity").val(),
+                            open: $("#open").val()
+                        },
+                        sucess: function(res){
+                            alert(res);
+                        }
+                    });
+                });
             }
             else if(tmpTable == "staff"){
-                $("#form").append("<p>Staff ID: <input id='staff_id'></input> </p>" +
-                                    "<p>Name: <input id='name'></input> </p>" +
-                                    "<p>Email: <input id='email'></input> </p>" +
-                                    "<p>Age: <input id='age'></input> </p>" +
-                                    "<p>Password: <input id='password'></input> </p> " +
-                                    "<p>Phone Number: <input id='phone_no'></input> </p>" +
-                                    "<button id='POST'>Submit</button>");
-            }}
+                $("#form").append("<label for='staff'>Staff ID: <input id='staff' name='staff'></input> </label>" +
+                                    "<label for='name'>Name: <input id='name' name='name'></input> </label>" +
+                                    "<label for='email'>Email: <input id='email' name='email'></input> </label>" +
+                                    "<label for='age'>Age: <input id='age' name='age'></input> </label>" +
+                                    "<label for='pass'>Password: <input id='pass' name='pass'></input> </label> " +
+                                    "<label for='phone'>Phone Number: <input id='phone' name='phone'></input> </p>" +
+                                    "<button id='POST' type='button'>Submit</button>");
+
+                $("#POST").on('click', function(){
+                    $.ajax({
+                        url: "http://localhost:3000/Staff",
+                        cache: false,
+                        dataType: "json",
+                        type: "Post",
+                        data:{
+                            operation: operationTbl,
+                            id: $("#staff").val(),
+                            name: $("#name").val(),
+                            email: $("#email").val(),
+                            age: $("#age").val(),
+                            pass: $("#pass").val(),
+                            phone: $("#phone").val()
+                        },
+                        sucess: function(res){
+                            alert(res);
+                        }
+                    });
+                });
+            }  
+        }
     });
 });
