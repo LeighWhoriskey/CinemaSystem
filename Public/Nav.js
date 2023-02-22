@@ -1,7 +1,9 @@
 $("document").ready(function(){
     $("#NavBar").addClass("navbar");
 
+
     $("#NavBar").append("<img src='images/logoback.png' height='90px'>");
+
     $("#NavBar").append("<div class='navbar-items'>" +
         "<a href='Home.html'>Home</a>" +
         "<a href='Screening.html'>Screenings</a>" +
@@ -9,6 +11,7 @@ $("document").ready(function(){
         "<a href='Login.html'>Login</a>" +
         "<a href='CRUD.html'>CRUD</a>" +
         "</div>");
+
             
         //$("#LogIn").append("a href<'Login.html'>Login</a>"),
 

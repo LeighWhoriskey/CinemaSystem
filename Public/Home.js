@@ -11,10 +11,7 @@ $.getJSON("http://localhost:3000/movies", function(data) {
       movieCard.append(movieImageLink, movieTitle, movieDuration);
       // Add the movie card to the movies container
       $("#films").append(movieCard);
-
-      
         
-				
     });
     
 });
