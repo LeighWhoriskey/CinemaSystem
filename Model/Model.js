@@ -24,7 +24,7 @@ exports.getMovies = function(req,res){
 }
 
 exports.getMovieDetails = function(req, res, movie){
-	connection.query("SELECT * FROM films, filmdetails WHERE films.id ='"+movie.id +"' AND filmdetails.id ='"+ movie.id +"'", function(error, rows, feilds){
+	connection.query("SELECT * FROM films  WHERE films.id ='"+movie.id+"'", function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));
 	});
