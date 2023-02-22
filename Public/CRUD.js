@@ -140,7 +140,7 @@ $("document").ready(function(){
                         table: tmpTable
                     },
                     sucess: function(res){
-                        alert(res);
+                        console.log(res);
                     }
                 });
             });

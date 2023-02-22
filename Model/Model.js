@@ -169,5 +169,10 @@ exports.getStaff= function(req,res,data){
 }
 
 
-
+exports.Login= function(req,res,data){
+	connection.query("SELECT * FROM staff WHERE email =" + data.Email +" AND password = " + data.Password,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
 	
