@@ -26,7 +26,7 @@ if (mysqli_num_rows($result) > 0) {
   $row = mysqli_fetch_assoc($result);
   // Verify the password
   if ($password === $row["password"]) {
-    echo "Login successful!";  
+    alert( "Login successful!");  
   } else {
     echo "Invalid email or password.";
   }
