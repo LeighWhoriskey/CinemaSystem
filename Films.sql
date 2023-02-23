@@ -5,18 +5,19 @@ create table Films (
 	duration VARCHAR(50),
 	trailer_url VARCHAR(1000),
 	age VARCHAR(3),
+	bool released(1);
 	PRIMARY KEY (id)
 );
 
-insert into Films (name, director, duration, trailer_url, age) values (1, 'Inception', 'Christopher Nolan', '2:28', 'https://www.youtube.com/watch?v=YoHD9XEInc0', '12A');
-insert into Films (name, director, duration, trailer_url, age) values (2, 'Avatar: The Way of the Water', 'James Cameron', '3:13', 'https://www.youtube.com/watch?v=d9MyW72ELq0','PG');
-insert into Films (name, director, duration, trailer_url, age) values (3, 'The Fabelmans', 'Steven Spielberg', '2:31', 'https://www.youtube.com/watch?v=D1G2iLSzOe8','18');
-insert into Films (name, director, duration, trailer_url, age) values (4, 'Puss in Boots: The Last Wish', 'Joel Crawford', '1:42', 'https://www.youtube.com/watch?v=RqrXhwS33yc','U');
-insert into Films (name, director, duration, trailer_url, age) values (5, 'Babylon', 'Damien Chazelle', '3:09', 'https://www.youtube.com/watch?v=5muQK7CuFtY','18');
-insert into Films (name, director, duration, trailer_url, age) values (6, 'Life is a Jungle', 'Robert D. Hanna', '1:41', 'https://www.youtube.com/watch?v=rwyUzHEG_XY','U');
-insert into Films (name, director, duration, trailer_url, age) values (7, 'Guardians of the Galaxy Vol. 3', 'James Gunn', '2:22', 'https://www.youtube.com/watch?v=u3V5KDHRQvk','12A');
-insert into Films (name, director, duration, trailer_url, age) values (8, 'Ant-Man and The Wasp: Quantumania', 'Peyton Reed', '2:05', 'https://www.youtube.com/watch?v=ZlNFpri-Y40','12A');
-insert into Films (name, director, duration, trailer_url, age) values (9, 'Spider-Man Across the Spiderverse', 'Joaqium Dos Santos', '1:54', 'https://www.youtube.com/watch?v=cqGjhVJWtEg','U');
+insert into Films (name, director, duration, trailer_url, age, released) values (1, 'Inception', 'Christopher Nolan', '2:28', 'YoHD9XEInc0', '12A','1');
+insert into Films (name, director, duration, trailer_url, age, released) values (2, 'Avatar: The Way of the Water', 'James Cameron', '3:13', 'd9MyW72ELq0','PG','1');
+insert into Films (name, director, duration, trailer_url, age, released) values (3, 'The Fabelmans', 'Steven Spielberg', '2:31', 'D1G2iLSzOe8','18','1');
+insert into Films (name, director, duration, trailer_url, age, released) values (4, 'Puss in Boots: The Last Wish', 'Joel Crawford', '1:42', 'RqrXhwS33yc','U','1');
+insert into Films (name, director, duration, trailer_url, age, released) values (5, 'Babylon', 'Damien Chazelle', '3:09', '5muQK7CuFtY','18','1');
+insert into Films (name, director, duration, trailer_url, age, released) values (6, 'Life is a Jungle', 'Robert D. Hanna', '1:41', 'rwyUzHEG_XY','U','1');
+insert into Films (name, director, duration, trailer_url, age, released) values (7, 'Guardians of the Galaxy Vol. 3', 'James Gunn', '2:22', 'u3V5KDHRQvk','12A','0');
+insert into Films (name, director, duration, trailer_url, age, released) values (8, 'Ant-Man and The Wasp: Quantumania', 'Peyton Reed', '2:05', 'ZlNFpri-Y40','12A','1');
+insert into Films (name, director, duration, trailer_url, age, released) values (9, 'Spider-Man Across the Spiderverse', 'Joaqium Dos Santos', '1:54', 'cqGjhVJWtEg','U','0');
 
 create table Screens (
 	id INT NOT NULL AUTO_INCREMENT,
