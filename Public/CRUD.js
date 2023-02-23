@@ -149,6 +149,7 @@ $("document").ready(function(){
             if(tmpTable == "booking"){
                 $("#form").append("<label for='screen_id'>Screen ID: </label> <input id='screen_id' name='screen_id'></input>" +
                                     "<label for='no_of_seats'>Number of Seat: </label><input id='no_of_seats' name='no_of_seats'</input> " +
+                                    "<label for='cust_id'>Customer ID: </label><input id='cust_id' name='cust_id'</input> "+
                                     "<button id='POST' type='button'>Submit</button>");
 
                 //changes to the new button, if not here it will try find the old button
@@ -161,7 +162,8 @@ $("document").ready(function(){
                         data:{
                             operation: operationTbl,
                             ScreenID: $("#screen_id").val(),
-                            Seats: $("#no_of_seats").val()
+                            Seats: $("#no_of_seats").val(),
+                            Customer: $("#cust_id").val()
                         },
                         success: function(res){
                             alert(res);
