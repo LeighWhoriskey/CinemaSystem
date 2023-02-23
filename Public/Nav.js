@@ -8,6 +8,7 @@ $("document").ready(function(){
         "<a href='Home.html'>Home</a>" +
         "<a href='Movie.html'>Screenings</a>" +
         "<a href='Booking.html'>Bookings</a>" +
+        "<a href='Movie.html'>Movie</a>" +
         "<a href='Login.html'>Login</a>" +
         "<a href='CRUD.html'>CRUD</a>" +
         "</div>");
