@@ -42,7 +42,7 @@ $("document").ready(function(){
 
                     $.getJSON("http://localhost:3000/getBooking/" + $("#RDid").val(), function(data){
                         $.each(data,function(i, value){
-                            $("#empDiv").append("<label>Booking ID: </label>" + value.id + "<br>" + "<label>Screening ID: </label>" + value.screening_id + "<br>" + "<label>Number of Seats booked: </label>" + value.no_of_seats + "<br>" + "<label>Customer ID: </label> " + Cust_ID)
+                            $("#empDiv").append("<label>Booking ID: </label>" + value.id + "<br>" + "<label>Screening ID: </label>" + value.screening_id + "<br>" + "<label>Number of Seats booked: </label>" + value.no_of_seats + "<br>" + "<label>Customer ID: </label> " + value.cust_id)
                         })
                     });
                 });
@@ -125,21 +125,20 @@ $("document").ready(function(){
         }
         else if(operationTbl == "DELETE"){
 
-            $("#form").append("<label for='id'>ID:</label><input id='RDid' name='id'></input>" +
+            $("#form").append("<label for='RDid'>ID:</label><input id='RDid' name='RDid'></input>" +
             "<button id ='POST' type='button'> Delete</button>");
             
             $("#POST").on('click', function(){
                 $.ajax({
-                    url: "http://localhost:3000/Booking",
+                    url: "http://localhost:3000/Delete",
                     cache: false,
                     dataType: "json",
                     type: "Post",
                     data:{
-                        operation: operationTbl,
-                        ID: $("RDid").val(),
-                        table: tmpTable
+                        Table: tmpTable,
+                        Id: $("#RDid").val(),
                     },
-                    sucess: function(res){
+                    success: function(res){
                         console.log(res);
                     }
                 });
@@ -150,6 +149,7 @@ $("document").ready(function(){
             if(tmpTable == "booking"){
                 $("#form").append("<label for='screen_id'>Screen ID: </label> <input id='screen_id' name='screen_id'></input>" +
                                     "<label for='no_of_seats'>Number of Seat: </label><input id='no_of_seats' name='no_of_seats'</input> " +
+                                    "<label for='cust_id'>Customer ID: </label><input id='cust_id' name='cust_id'</input> "+
                                     "<button id='POST' type='button'>Submit</button>");
 
                 //changes to the new button, if not here it will try find the old button
@@ -162,9 +162,10 @@ $("document").ready(function(){
                         data:{
                             operation: operationTbl,
                             ScreenID: $("#screen_id").val(),
-                            Seats: $("#no_of_seats").val()
+                            Seats: $("#no_of_seats").val(),
+                            Customer: $("#cust_id").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
@@ -193,7 +194,7 @@ $("document").ready(function(){
                             password: $("#password").val(),
                             phone_no: $("#phone").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
@@ -223,7 +224,7 @@ $("document").ready(function(){
                             desc: $("#desc").val(),
                             age: $("#age").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
@@ -253,7 +254,7 @@ $("document").ready(function(){
                             film: $("#film").val(),
                             seats: $("#seats").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
@@ -276,7 +277,7 @@ $("document").ready(function(){
                             capacity: $("#capacity").val(),
                             open: $("#open").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
@@ -304,7 +305,7 @@ $("document").ready(function(){
                             pass: $("#pass").val(),
                             phone: $("#phone").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
@@ -332,7 +333,7 @@ $("document").ready(function(){
                                 Seats: $("#no_of_seats").val(),
                                 BookingID: $("#booking_id").val()
                             },
-                            sucess: function(res){
+                            success: function(res){
                                 alert(res);
                             }
                         });
@@ -363,7 +364,7 @@ $("document").ready(function(){
                             password: $("#password").val(),
                             phone_no: $("#phone").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
@@ -395,7 +396,7 @@ $("document").ready(function(){
                             desc: $("#desc").val(),
                             age: $("#age").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
@@ -427,7 +428,7 @@ $("document").ready(function(){
                             film: $("#film").val(),
                             seats: $("#seats").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
@@ -451,7 +452,7 @@ $("document").ready(function(){
                             capacity: $("#capacity").val(),
                             open: $("#open").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
@@ -481,7 +482,7 @@ $("document").ready(function(){
                             pass: $("#pass").val(),
                             phone: $("#phone").val()
                         },
-                        sucess: function(res){
+                        success: function(res){
                             alert(res);
                         }
                     });
