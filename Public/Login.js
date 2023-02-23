@@ -1,9 +1,4 @@
 $("document").ready(function(){
-
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
-
-
   $("#post").on("click", function(){
       $.ajax({
         url: "http://localhost:3000/login",
@@ -11,15 +6,12 @@ $("document").ready(function(){
         dataType: "json",
         type: "Post",
         data:{
-            Email: email,
-            Password: password
+            Email: $("#email").val(),
+            Password: $("#password").val()
         },
-        sucess: function(res){
-            alert(res);
+        success: function(res){
+            console.log(res);
         }
     });
   });
-  
-
-
 });

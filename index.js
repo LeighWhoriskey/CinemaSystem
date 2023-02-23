@@ -90,9 +90,16 @@ var app = express();
     model.getStaff(req,res ,{id : req.params.id});
   })
 
-  app.get("/login",function(req,res){
+  app.post("/Login",function(req,res){
     var data = req.body;
+    console.log(data);
     model.Login(req, res, data);
+  })
+
+  app.post("/Delete",function(req,res){
+    var data = req.body;
+    console.log(data);
+    model.Delete(req, res, data);
   })
 
 var myServer = app.listen(3000, function() {
