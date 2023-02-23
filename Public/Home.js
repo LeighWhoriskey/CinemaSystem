@@ -7,9 +7,9 @@ $("document").ready(function(){
       var movieImage = $("<img src='images/" + value.id + ".jpg' alt='" + value.name + "'>");
       movieImageLink.append(movieImage);
       var movieTitle = $("<h3>" + value.name + "</h3>");
-      var movieDuration = $("<p>Runtime: " + value.duration + " mins</p>");
+      //var movieDuration = $("<p>Runtime: " + value.duration + " mins</p>");
       // Add the image and text to the movie card
-      movieCard.append(movieImageLink, movieTitle, movieDuration);
+      movieCard.append(movieImageLink, movieTitle);
       // Add the movie card to the movies container
       $("#films").append(movieCard);
     });
