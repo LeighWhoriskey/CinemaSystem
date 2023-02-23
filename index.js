@@ -90,6 +90,18 @@ var app = express();
     model.getStaff(req,res ,{id : req.params.id});
   })
 
+  app.post("/Login",function(req,res){
+    var data = req.body;
+    console.log(data);
+    model.Login(req, res, data);
+  })
+
+  app.post("/Delete",function(req,res){
+    var data = req.body;
+    console.log(data);
+    model.Delete(req, res, data);
+  })
+
 var myServer = app.listen(3000, function() {
   console.log("Server listening on port 3000");
 });
