@@ -1,12 +1,13 @@
 $("document").ready(function(){
-    $("#NavBar").addClass("navbar");
+  $("#NavBar").addClass("navbar");
 
+      "<a href='Booking.html'>Bookings</a>" +
 
     $("#NavBar").append("<img src='images/logoback.png' height='90px'>");
 
     $("#NavBar").append("<div class='navbar-items'>" +
         "<a href='Home.html'>Home</a>" +
-        "<a href='Movie.html'>Screenings</a>" +
+        "<a href='Movie.html'>Now Showing</a>" +
         "<a href='Booking.html'>Bookings</a>" +
         "<a href='Login.html'>Login</a>" +
         "<a href='CRUD.html'>CRUD</a>" +
@@ -15,8 +16,8 @@ $("document").ready(function(){
             
         //$("#LogIn").append("a href<'Login.html'>Login</a>"),
 
-    //$("#footer").append("<hr><p style='text-align " center'> Copyright © 2023 L00156477 - L00152828 - L00158710 - L00157862</p>");
-    // Create a div to hold the footer content
+  $("#NavBar").append("<a href ='Login.html'> <img src='images/login.png' height='60px'></a>");
+
 var footerDiv = $("<div id='footer'></div>");
 
 // Add a horizontal line to separate the footer from the rest of the page
