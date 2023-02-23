@@ -30,6 +30,36 @@ var app = express();
     model.Booking(req, res, data);
   })
 
+  app.post("/Customer",function(req,res){
+
+    var data = req.body;
+    model.Customer(req, res, data);
+  })
+
+  app.post("/Film",function(req,res){
+
+    var data = req.body;
+    model.Film(req, res, data);
+  })
+
+  app.post("/Staff",function(req,res){
+
+    var data = req.body;
+    model.Staff(req, res, data);
+  })
+
+  app.post("/Screens",function(req,res){
+
+    var data = req.body;
+    model.Screens(req, res, data);
+  })
+
+  app.post("/Screening",function(req,res){
+
+    var data = req.body;
+    model.Screening(req, res, data);
+  })
+
   app.get("/getBooking/:id?",function(req,res){
     console.log({id : req.params.id});
     model.getBooking(req,res ,{id : req.params.id});
@@ -58,6 +88,18 @@ var app = express();
   app.get("/getStaff/:id?",function(req,res){
     console.log({id : req.params.id});
     model.getStaff(req,res ,{id : req.params.id});
+  })
+
+  app.post("/Login",function(req,res){
+    var data = req.body;
+    console.log(data);
+    model.Login(req, res, data);
+  })
+
+  app.post("/Delete",function(req,res){
+    var data = req.body;
+    console.log(data);
+    model.Delete(req, res, data);
   })
 
 var myServer = app.listen(3000, function() {

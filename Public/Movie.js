@@ -1,14 +1,11 @@
 $("document").ready(function(){
-
-var queryString = window.location.search;
-var urlParams = new URLSearchParams(queryString);
-var filmId = urlParams.get('id');
-console.log(filmId);
-$.getJSON(`http://localhost:3000/movie-details/${filmId}/`,function(data){
+var colour;
+    
+    $.getJSON("http://localhost:3000/movies",function(data){
     
        
         $.each(data, function(i, value){
-          
+           
             $("#movies").append(`<div class="images"style=" display:inline-block; padding:0px; margin-top: 20px;  left: 100px;  position: relative;"><a href="http://localhost:3000/Movie-Detail.html?id=${value.id}"><img src='images/${value.id}.jpg'style='width: 230px; height: 300px; margin:0px; display:'></img></a></div>`);
             $("#movies").append(`<div class="name"style=" font-size:25px;left:150px; top:-250px; position: relative; display:inline-block; ">${value.name}</div>`);
             if(value.age == "12A" )
@@ -47,20 +44,18 @@ $.getJSON(`http://localhost:3000/movie-details/${filmId}/`,function(data){
             <text x="100" y="60" fill="black" font-size = 20px>${value.duration} hours</div></text>
           </svg></div>`);
             }
-            $("#movies").append(`<div class="name"style="width:500px; font-size:20px;left: 370px; top:-300px; position: relative; display:inline-block; ">${value.description}</div>`);
-          
-         
-
-         
+          $("#movies").append("<hr>");
         
           
 
 
-           
-        
+            //$("#movies").append(`<img src='images/${value.id}.jpg'style='width: 200px;'></img>` +"<h2 style='margin: top'>"+ value.name+"</h2>" + " " + value.duration +"h"+ value.age + " " + value.description + `<button class = 'trailer' value = '${value.trailer_url}'>Trailer</button>` +' <br> <hr>');
+         
         });
+       
+       
+     
+    });
 
-
-
-});
+    
 });
