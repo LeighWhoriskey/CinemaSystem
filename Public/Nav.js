@@ -6,7 +6,7 @@ $("document").ready(function(){
 
     $("#NavBar").append("<div class='navbar-items'>" +
         "<a href='Home.html'>Home</a>" +
-        "<a href='Movie.html'>Screenings</a>" +
+        "<a href='Movie.html'>Now Showing</a>" +
         "<a href='Booking.html'>Bookings</a>" +
         "<a href='Login.html'>Login</a>" +
         "<a href='CRUD.html'>CRUD</a>" +
