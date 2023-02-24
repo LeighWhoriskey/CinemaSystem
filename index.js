@@ -1,6 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var cors = require("cors");
+var path = require("path");
 
 var model = require('./model/model.js');
 const { response } = require("express");
@@ -14,7 +15,9 @@ var app = express();
   app.use(bodyParser.urlencoded({extended:false}));
 
 
-
+  app.get("/", function(req,res){
+    res.sendFile(path.join(__dirname + '/public/Home.html'));
+  });
 
   app.get("/movies", function(req,res){
     model.getMovies(req,res);
