@@ -71,7 +71,7 @@ exports.Film = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE films SET name =" +data.name  + ",director =" +data.director + ",age =" +data.age + ",duration =" + data.duration + ",trailer_url =" +data.trailer +",description =" +data.desc + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE films SET name =" +data.name  + ",director =" +data.director + ",age =" +data.age + ",duration =" + data.duration + ",trailer_url ='" +data.trailer +"',description =" +data.desc + " WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
