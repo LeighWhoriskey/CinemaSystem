@@ -65,7 +65,9 @@ exports.Customer = function(req, res, data){
 
 exports.Film = function(req, res, data){
 	if(data.operation == "CREATE"){
+
 		connection.query("INSERT INTO films (name, director, duration, trailer_url, description, age) VALUES('" + data.name +"', '" + data.director +"', '" + data.duration +"', '" + data.trailer +"', '" + data.desc + "','" + data.age  +"');",function(error, rows, feilds){
+
 			if(error){throw error};
 			res.send("200");
 		});
