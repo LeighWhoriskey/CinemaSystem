@@ -48,8 +48,8 @@ $.getJSON(`http://localhost:3000/movie-details/${filmId}/`,function(data){
           </svg></div>`);
             }
             $("#movies").append(`<div class="name"style="width:500px; font-size:20px;left: 370px; top:-300px; position: relative; display:inline-block; ">${value.description}</div>`);
-          
-         
+            $("#movies").append(`<div class="name"style=" left: 370px; top:-200px; position: relative;  "><iframe width="560" height="315" src="https://www.youtube.com/embed/${value.trailer_url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`);
+                      
 
          
         
