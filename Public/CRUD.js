@@ -42,7 +42,7 @@ $("document").ready(function(){
 
                     $.getJSON("http://localhost:3000/getBooking/" + $("#RDid").val(), function(data){
                         $.each(data,function(i, value){
-                            $("#empDiv").append("<label>Booking ID: </label>" + value.id + "<br>" + "<label>Screening ID: </label>" + value.screening_id + "<br>" + "<label>Number of Seats booked: </label>" + value.no_of_seats + "<br>" + "<label>Customer ID: </label> " + value.cust_id)
+                            $("#empDiv").append("<label>Booking ID: </label>" + value.id + "<br>" + "<label>Screening ID: </label>" + value.screening_id + "<br>" + "<label>Number of Seats booked: </label>" + value.no_of_seats + "<br>" + "<label>Customer ID: </label> " + Cust_ID)
                         })
                     });
                 });
@@ -125,20 +125,21 @@ $("document").ready(function(){
         }
         else if(operationTbl == "DELETE"){
 
-            $("#form").append("<label for='RDid'>ID:</label><input id='RDid' name='RDid'></input>" +
+            $("#form").append("<label for='id'>ID:</label><input id='RDid' name='id'></input>" +
             "<button id ='POST' type='button'> Delete</button>");
             
             $("#POST").on('click', function(){
                 $.ajax({
-                    url: "http://localhost:3000/Delete",
+                    url: "http://localhost:3000/Booking",
                     cache: false,
                     dataType: "json",
                     type: "Post",
                     data:{
-                        Table: tmpTable,
-                        Id: $("#RDid").val(),
+                        operation: operationTbl,
+                        ID: $("RDid").val(),
+                        table: tmpTable
                     },
-                    success: function(res){
+                    sucess: function(res){
                         console.log(res);
                     }
                 });
@@ -165,7 +166,7 @@ $("document").ready(function(){
                             Seats: $("#no_of_seats").val(),
                             Customer: $("#cust_id").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });
@@ -194,7 +195,7 @@ $("document").ready(function(){
                             password: $("#password").val(),
                             phone_no: $("#phone").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });
@@ -224,7 +225,7 @@ $("document").ready(function(){
                             desc: $("#desc").val(),
                             age: $("#age").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });
@@ -254,7 +255,7 @@ $("document").ready(function(){
                             film: $("#film").val(),
                             seats: $("#seats").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });
@@ -277,7 +278,7 @@ $("document").ready(function(){
                             capacity: $("#capacity").val(),
                             open: $("#open").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });
@@ -305,7 +306,7 @@ $("document").ready(function(){
                             pass: $("#pass").val(),
                             phone: $("#phone").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });
@@ -333,7 +334,7 @@ $("document").ready(function(){
                                 Seats: $("#no_of_seats").val(),
                                 BookingID: $("#booking_id").val()
                             },
-                            success: function(res){
+                            sucess: function(res){
                                 alert(res);
                             }
                         });
@@ -364,7 +365,7 @@ $("document").ready(function(){
                             password: $("#password").val(),
                             phone_no: $("#phone").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });
@@ -396,7 +397,7 @@ $("document").ready(function(){
                             desc: $("#desc").val(),
                             age: $("#age").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });
@@ -428,7 +429,7 @@ $("document").ready(function(){
                             film: $("#film").val(),
                             seats: $("#seats").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });
@@ -452,7 +453,7 @@ $("document").ready(function(){
                             capacity: $("#capacity").val(),
                             open: $("#open").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });
@@ -482,7 +483,7 @@ $("document").ready(function(){
                             pass: $("#pass").val(),
                             phone: $("#phone").val()
                         },
-                        success: function(res){
+                        sucess: function(res){
                             alert(res);
                         }
                     });

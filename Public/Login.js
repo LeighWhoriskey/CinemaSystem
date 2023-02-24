@@ -1,5 +1,6 @@
 $("document").ready(function(){
 
+
   $("#post").on("click", function(){
     var tmpEmail = $("#email").val();
     var tmp2 = tmpEmail.substring(tmpEmail.indexOf("@") + 1);
@@ -35,4 +36,7 @@ $("document").ready(function(){
       }
     });
   });
+  
+
+
 });
