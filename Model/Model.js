@@ -33,7 +33,7 @@ exports.getMovieDetails = function(req, res, movie){
 
 exports.Booking = function(req, res, data){
 	if(data.operation == "CREATE"){
-		connection.query("INSERT INTO booking (screen_id, no_of_seats) VALUES(" + data.ScreenID +", " + data.Seats +");",function(error, rows, feilds){
+		connection.query("INSERT INTO booking (screening_id, no_of_seats,cust_id) VALUES(" + data.ScreenID +", " + data.Seats +", " + data.Customer+");",function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -49,7 +49,7 @@ exports.Booking = function(req, res, data){
 
 exports.Customer = function(req, res, data){
 	if(data.operation == "CREATE"){
-		connection.query("INSERT INTO customers (name, email, age, password, phone_no) VALUES(" + data.name +", " + data.email +", " + data.age +", " + data.password +", " + data.phone_no +");",function(error, rows, feilds){
+		connection.query("INSERT INTO customers (name, email, age, password, phone_no) VALUES('" + data.name +"', '" + data.email +"', '" + data.age +"', '" + data.password +"', '" + data.phone_no +"');",function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -65,7 +65,9 @@ exports.Customer = function(req, res, data){
 
 exports.Film = function(req, res, data){
 	if(data.operation == "CREATE"){
-		connection.query("INSERT INTO films (name, director, duration, trailer_url, description, age) VALUES(" + data.name +", " + data.director +", " + data.duration +", '" + data.trailer +"', " + data.desc + "," + data.age  +");",function(error, rows, feilds){
+
+		connection.query("INSERT INTO films (name, director, duration, trailer_url, description, age) VALUES('" + data.name +"', '" + data.director +"', '" + data.duration +"', '" + data.trailer +"', '" + data.desc + "','" + data.age  +"');",function(error, rows, feilds){
+
 			if(error){throw error};
 			res.send("200");
 		});
@@ -81,7 +83,7 @@ exports.Film = function(req, res, data){
 
 exports.Screening = function(req, res, data){
 	if(data.operation == "CREATE"){
-		connection.query("INSERT INTO screening (price, date, time, film_id, screen_id, totalSeatsBooked) VALUES(" + data.price +", " + data.date +", " + data.time +", " + data.film +", " + data.screen + "," + data.seats  +");",function(error, rows, feilds){
+		connection.query("INSERT INTO screening (price, date, time, film_id, screen_id, totalSeatsBooked) VALUES('" + data.price +"', '" + data.date +"', '" + data.time +"', '" + data.film +"', '" + data.screen + "','" + data.seats  +"');",function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -97,7 +99,7 @@ exports.Screening = function(req, res, data){
 
 exports.Screens = function(req, res, data){
 	if(data.operation == "CREATE"){
-		connection.query("INSERT INTO screens (capacity, open) VALUES(" + data.capacity +", " + data.open +");",function(error, rows, feilds){
+		connection.query("INSERT INTO screens (capacity, open) VALUES('" + data.capacity +"', '" + data.open +"');",function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -113,7 +115,7 @@ exports.Screens = function(req, res, data){
 
 exports.Staff = function(req, res, data){
 	if(data.operation == "CREATE"){
-		connection.query("INSERT INTO staff (name, email, age, password, phone_no) VALUES(" + data.name +", " + data.email +", "+data.age +", " +data.pass + ", " +data.phone +");",function(error, rows, feilds){
+		connection.query("INSERT INTO staff (name, email, age, password, phone_no) VALUES('" + data.name +"', '" + data.email +"', '"+data.age +"', '" +data.pass + "', '" +data.phone +"');",function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -170,18 +172,33 @@ exports.getStaff = function(req,res,data){
 
 
 exports.Login = function(req,res,data){
-	connection.query("SELECT * FROM staff WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
-		if(error){throw error};
-		if(rows != 0){
-			var login = {"value": "True"};
-			res.send(JSON.stringify(login));
-		}else{
-			var login = {"value": "False"};
-			res.send(JSON.stringify(login));
-		}
-
-	});
-}
+	if(data.tmpEmail =="decade.ie"){
+		connection.query("SELECT * FROM staff WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
+			if(error){throw error};
+			if(rows != 0){
+				var login = {"value": "True", "member":"staff"};
+				res.send(JSON.stringify(login));
+			}else{
+				var login = {"value": "False", "member":"staff"};
+				res.send(JSON.stringify(login));
+			}
+	
+		});
+	}
+	else{
+		connection.query("SELECT * FROM customers WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
+			if(error){throw error};
+			if(rows != 0){
+				var login = {"value": "True", "member":"customer"};
+				res.send(JSON.stringify(login));
+			}else{
+				var login = {"value": "False", "member":"customer"};
+				res.send(JSON.stringify(login));
+			}
+	
+		});
+	}
+}	
 
 exports.Delete = function(req,res,data){
 	connection.query("DELETE FROM "+data.Table +" WHERE id = " + data.Id,function(error, rows, feilds){
