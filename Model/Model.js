@@ -65,13 +65,15 @@ exports.Customer = function(req, res, data){
 
 exports.Film = function(req, res, data){
 	if(data.operation == "CREATE"){
+
 		connection.query("INSERT INTO films (name, director, duration, trailer_url, description, age) VALUES('" + data.name +"', '" + data.director +"', '" + data.duration +"', '" + data.trailer +"', '" + data.desc + "','" + data.age  +"');",function(error, rows, feilds){
+
 			if(error){throw error};
 			res.send("200");
 		});
 	}
 	else{
-		connection.query("UPDATE films SET name =" +data.name  + ",director =" +data.director + ",age =" +data.age + ",duration =" + data.duration + ",trailer_url =" +data.trailer +",description =" +data.desc + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE films SET name =" +data.name  + ",director =" +data.director + ",age =" +data.age + ",duration =" + data.duration + ",trailer_url ='" +data.trailer +"',description =" +data.desc + " WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -147,21 +149,21 @@ exports.getFilms = function(req,res,data){
 	});
 }
 
-exports.getScreenings = function(req,res,data){
+exports.getScreenings= function(req,res,data){
 	connection.query("SELECT * FROM screening WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
 
-exports.getScreens = function(req,res,data){
+exports.getScreens= function(req,res,data){
 	connection.query("SELECT * FROM screens WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
 
-exports.getStaff = function(req,res,data){
+exports.getStaff= function(req,res,data){
 	connection.query("SELECT * FROM staff WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	

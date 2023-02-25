@@ -6,7 +6,7 @@ $("document").ready(function(){
 
     $("#NavBar").addClass("navbar");
 
-      "<a href='Booking.html'>Bookings</a>" +
+      //"<a href='Booking.html'>Bookings</a>" +
 
     $("#NavBar").append("<img src='images/logoback.png' height='90px'>");
 
