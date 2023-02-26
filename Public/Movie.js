@@ -5,7 +5,7 @@ var colour;
     
        
         $.each(data, function(i, value){
-           
+          if(value.released == 1){           
             $("#movies").append(`<div class="images"style=" display:inline-block; padding:0px; margin-top: 20px;  left: 100px;  position: relative;"><a href="http://localhost:3000/Movie-Detail.html?id=${value.id}"><img src='images/${value.id}.jpg'style='width: 230px; height: 300px; margin:0px; display:'></img></a></div>`);
             $("#movies").append(`<div class="name"style=" font-size:25px;left:150px; top:-250px; position: relative; display:inline-block; ">${value.name}</div>`);
             if(value.age == "12A" )
@@ -45,17 +45,11 @@ var colour;
           </svg></div>`);
             }
           $("#movies").append("<hr>");
-        
-          
+          }
 
-
+          else{}
             //$("#movies").append(`<img src='images/${value.id}.jpg'style='width: 200px;'></img>` +"<h2 style='margin: top'>"+ value.name+"</h2>" + " " + value.duration +"h"+ value.age + " " + value.description + `<button class = 'trailer' value = '${value.trailer_url}'>Trailer</button>` +' <br> <hr>');
          
         });
-       
-       
-     
     });
-
-    
 });
