@@ -99,6 +99,11 @@ app.post("/login",function(req,res){
   model.Login(req, res, data);
 })
 
+app.post("/delete",function(req,res){
+  var data = req.body;
+  model.Delete(req, res, data);
+})
+
 var myServer = app.listen(3000, function() {
   console.log("Server listening on port 3000");
 });
