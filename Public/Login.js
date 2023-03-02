@@ -1,15 +1,16 @@
 $("document").ready(function(){
 
 
-  $("#post").on("click", function(){
+  $("#login-button").on("click", function(){
     var tmpEmail = $("#email").val();
+    
     var tmp2 = tmpEmail.substring(tmpEmail.indexOf("@") + 1);
 
     $.ajax({
-      url: "http://localhost:3000/login",
+      url: "/login",
       cache: false,
       dataType: "json",
-      type: "Post",
+      type: "POST",
       data:{
         Email: $("#email").val(),
         Password: $("#password").val(),

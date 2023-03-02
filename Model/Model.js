@@ -172,6 +172,7 @@ exports.getStaff= function(req,res,data){
 
 
 exports.Login = function(req,res,data){
+	console.log(data)
 	if(data.tmpEmail =="decade.ie"){
 		connection.query("SELECT * FROM staff WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
 			if(error){throw error};
