@@ -105,7 +105,6 @@ app.post("/delete",function(req,res){
 })
 
 app.get("/getData/:id?",function(req,res){
-  var data = req.body;
   model.GetAll(req, res, {id : req.params.id});
 })
 
