@@ -213,9 +213,15 @@ exports.Login = function(req,res,data){
 }	
 
 exports.Delete = function(req,res,data){
-	connection.query("DELETE FROM "+data.Table +" WHERE id = " + data.Id,function(error, rows, feilds){
+	connection.query("DELETE FROM "+data.Table +" WHERE id = " + data.ID,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
-	
+
+exports.GetAll = function(req,res,data){
+	connection.query("SELECT * FROM "+data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}

@@ -105,6 +105,17 @@ app.get("/films/today",function(req,res){
 
 
 
+app.post("/delete",function(req,res){
+  var data = req.body;
+  model.Delete(req, res, data);
+})
+
+app.get("/getData/:id?",function(req,res){
+  var data = req.body;
+  model.GetAll(req, res, {id : req.params.id});
+})
+
+
 var myServer = app.listen(3000, function() {
   console.log("Server listening on port 3000");
 });

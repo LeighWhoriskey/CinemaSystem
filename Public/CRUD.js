@@ -125,19 +125,19 @@ $("document").ready(function(){
         }
         else if(operationTbl == "DELETE"){
 
-            $("#form").append("<label for='id'>ID:</label><input id='RDid' name='id'></input>" +
+            $("#form").append("<label for='RDid'>ID:</label><input id='RDid' name='RDid'></input>" +
             "<button id ='POST' type='button'> Delete</button>");
             
             $("#POST").on('click', function(){
                 $.ajax({
-                    url: "http://localhost:3000/Booking",
+                    url: "http://localhost:3000/Delete",
                     cache: false,
                     dataType: "json",
                     type: "Post",
                     data:{
                         operation: operationTbl,
-                        ID: $("RDid").val(),
-                        table: tmpTable
+                        ID: $("#RDid").val(),
+                        Table: tmpTable
                     },
                     sucess: function(res){
                         console.log(res);
