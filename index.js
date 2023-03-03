@@ -99,6 +99,9 @@ app.post("/login",function(req,res){
   var data = req.body;
   model.Login(req, res, data);
 })
+app.get("/films/today",function(req,res){
+  model.getMoviesToday(req,res);
+})
 
 
 
