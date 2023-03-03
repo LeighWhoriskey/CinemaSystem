@@ -172,6 +172,7 @@ exports.getStaff= function(req,res,data){
 
 
 exports.Login = function(req,res,data){
+	console.log(data)
 	if(data.tmpEmail =="decade.ie"){
 		connection.query("SELECT * FROM staff WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
 			if(error){throw error};
@@ -201,7 +202,8 @@ exports.Login = function(req,res,data){
 }	
 
 exports.Delete = function(req,res,data){
-	connection.query("DELETE FROM "+data.Table +" WHERE id = " + data.Id,function(error, rows, feilds){
+	console.log(data);
+	connection.query("DELETE FROM "+data.Table +" WHERE id = " + data.ID,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});

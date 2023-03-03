@@ -71,10 +71,10 @@ $("document").ready(function(){
   var footerLinks = $("<div class='footer-links'></div>");
 
   // Add each footer link to the container
-  var link1 = $("<a href='#'>About Us</a>");
-  var link2 = $("<a href='#'>Contact Us</a>");
-  var link3 = $("<a href='#'>Privacy Policy</a>");
-  var link4 = $("<a href='#'>Terms of Use</a>");
+  var link1 = $("<a href='about.html'>About Us</a>");
+  var link2 = $("<a href='contact.html'>Contact Us</a>");
+  var link3 = $("<a href='privacy.html'>Privacy Policy</a>");
+  var link4 = $("<a href='terms.html'>Terms of Use</a>");
   footerLinks.append(link1, link2, link3, link4);
 
   // Add the footer links container to the footer div
