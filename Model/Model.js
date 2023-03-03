@@ -65,13 +65,15 @@ exports.Customer = function(req, res, data){
 
 exports.Film = function(req, res, data){
 	if(data.operation == "CREATE"){
+
 		connection.query("INSERT INTO films (name, director, duration, trailer_url, description, age) VALUES('" + data.name +"', '" + data.director +"', '" + data.duration +"', '" + data.trailer +"', '" + data.desc + "','" + data.age  +"');",function(error, rows, feilds){
+
 			if(error){throw error};
 			res.send("200");
 		});
 	}
 	else{
-		connection.query("UPDATE films SET name =" +data.name  + ",director =" +data.director + ",age =" +data.age + ",duration =" + data.duration + ",trailer_url =" +data.trailer +",description =" +data.desc + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE films SET name =" +data.name  + ",director =" +data.director + ",age =" +data.age + ",duration =" + data.duration + ",trailer_url ='" +data.trailer +"',description =" +data.desc + " WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -147,21 +149,21 @@ exports.getFilms = function(req,res,data){
 	});
 }
 
-exports.getScreenings = function(req,res,data){
+exports.getScreenings= function(req,res,data){
 	connection.query("SELECT * FROM screening WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
 
-exports.getScreens = function(req,res,data){
+exports.getScreens= function(req,res,data){
 	connection.query("SELECT * FROM screens WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
 
-exports.getStaff = function(req,res,data){
+exports.getStaff= function(req,res,data){
 	connection.query("SELECT * FROM staff WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
@@ -170,23 +172,45 @@ exports.getStaff = function(req,res,data){
 
 
 exports.Login = function(req,res,data){
-	connection.query("SELECT * FROM staff WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
-		if(error){throw error};
-		if(rows != 0){
-			var login = {"value": "True"};
-			res.send(JSON.stringify(login));
-		}else{
-			var login = {"value": "False"};
-			res.send(JSON.stringify(login));
-		}
-
-	});
-}
+	console.log(data)
+	if(data.tmpEmail =="decade.ie"){
+		connection.query("SELECT * FROM staff WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
+			if(error){throw error};
+			if(rows != 0){
+				var login = {"value": "True", "member":"staff"};
+				res.send(JSON.stringify(login));
+			}else{
+				var login = {"value": "False", "member":"staff"};
+				res.send(JSON.stringify(login));
+			}
+	
+		});
+	}
+	else{
+		connection.query("SELECT * FROM customers WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
+			if(error){throw error};
+			if(rows != 0){
+				var login = {"value": "True", "member":"customer"};
+				res.send(JSON.stringify(login));
+			}else{
+				var login = {"value": "False", "member":"customer"};
+				res.send(JSON.stringify(login));
+			}
+	
+		});
+	}
+}	
 
 exports.Delete = function(req,res,data){
-	connection.query("DELETE FROM "+data.Table +" WHERE id = " + data.Id,function(error, rows, feilds){
+	connection.query("DELETE FROM "+data.Table +" WHERE id = " + data.ID,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
-	
+
+exports.GetAll = function(req,res,data){
+	connection.query("SELECT * FROM "+data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
