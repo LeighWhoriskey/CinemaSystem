@@ -22,6 +22,17 @@ exports.getMovies = function(req,res){
 	  
 	});
 }
+exports.getMoviesToday = function(req,res){
+	var d = new Date();
+	var todayDate = d.getFullYear()+ "-" + (d.getMonth()+1) + "-" + d.getDate();
+
+	connection.query(`SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening where films.id = screening.film_id order by Date`, function(err, rows, fields) {
+	  if (err) throw err;
+
+	  res.send(JSON.stringify(rows));
+	  
+	});
+}
 
 exports.getMovieDetails = function(req, res, movie){
 	connection.query("SELECT * FROM films  WHERE films.id ='"+movie.id+"'", function(error, rows, feilds){

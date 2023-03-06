@@ -1,4 +1,8 @@
 $("document").ready(function(){
+<<<<<<< HEAD
+=======
+  var colour;
+>>>>>>> main
 
   $.getJSON("http://localhost:3000/films/today", function(data){
     $.each(data, function(i, value){
@@ -36,4 +40,7 @@ function getAgeColor(age) {
       return 'black';
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
