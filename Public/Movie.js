@@ -18,7 +18,6 @@ $("#movies").append(`<div class="movie-container"><div class="images" ><a href="
                           </div>`);
       }
       });
-
   });
   
 });
