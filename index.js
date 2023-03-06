@@ -113,9 +113,6 @@ app.post("/delete",function(req,res){
 app.get("/getData/:id?",function(req,res){
   model.GetAll(req, res, {id : req.params.id});
 })
-app.get("/films/today",function(req,res){
-  model.getMoviesToday(req,res);
-})
 
 
 var myServer = app.listen(3000, function() {
