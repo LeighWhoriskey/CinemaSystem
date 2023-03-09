@@ -8,7 +8,7 @@ $("document").ready(function(){
 
       //"<a href='Booking.html'>Bookings</a>" +
 
-    $("#NavBar").append("<img src='images/logoback.png' height='90px'>");
+      $("#NavBar").append("<a href = 'Home.html'> <img src='images/logoback.png' height='90px'>");
 
     $("#NavBar").append("<div class='navbar-items'>" +
         "<a href='Home.html'>Home</a>" +
@@ -45,7 +45,7 @@ $("document").ready(function(){
 
       "<a href='Booking.html'>Bookings</a>" +
 
-    $("#NavBar").append("<img src='images/logoback.png' height='90px'>");
+    $("#NavBar").append("<a href = 'Home.html'> <img src='images/logoback.png' height='90px'>");
 
     $("#NavBar").append("<div class='navbar-items'>" +
         "<a href='Home.html'>Home</a>" +
