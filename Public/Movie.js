@@ -1,5 +1,4 @@
 $("document").ready(function(){
-
   $.getJSON("http://localhost:3000/films/today", function(data){
     $.each(data, function(i, value){
       // Check if div with the same id already exists
@@ -19,8 +18,7 @@ $("#movies").append(`<div class="movie-container"><div class="images" ><a href="
       }
       });
   });
-  
-});
+  });
 
 function getAgeColor(age) {
   switch(age) {
@@ -36,4 +34,3 @@ function getAgeColor(age) {
       return 'black';
   }
 }
-
