@@ -89,6 +89,7 @@ app.get("/getScreens/:id?",function(req,res){
   model.getScreens(req,res ,{id : req.params.id});
 })
 
+
 app.get("/getStaff/:id?",function(req,res){
   console.log({id : req.params.id});
   model.getStaff(req,res ,{id : req.params.id});
@@ -98,11 +99,21 @@ app.post("/login",function(req,res){
   var data = req.body;
   model.Login(req, res, data);
 })
+app.get("/films/today",function(req,res){
+  model.getMoviesToday(req,res);
+})
+
+
 
 app.post("/delete",function(req,res){
   var data = req.body;
   model.Delete(req, res, data);
 })
+
+app.get("/getData/:id?",function(req,res){
+  model.GetAll(req, res, {id : req.params.id});
+})
+
 
 var myServer = app.listen(3000, function() {
   console.log("Server listening on port 3000");
