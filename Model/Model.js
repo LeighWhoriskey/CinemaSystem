@@ -150,7 +150,7 @@ exports.getBooking = function(req,res,data){
 }
 
 exports.getBookingCustom = function(req,res,data){
-	connection.query("SELECT b.id, b.screening_id, b.no_of_seats, c.name as'custname', f.name as 'filmname', f.duration FROM booking b, customers c, screening s, films f WHERE b.cust_id = c.id AND s.id = b.screening_id AND s.film_id = f.id  AND b.cust_id =" + data.id ,function(error, rows, feilds){
+	connection.query("SELECT b.id, b.screening_id, b.no_of_seats, c.name as'custname', f.name as 'filmname', f.duration, screens.id as 'ScreenId' FROM booking b, customers c, screening s, films f, screens WHERE b.cust_id = c.id AND s.id = b.screening_id AND s.film_id = f.id AND s.screen_id = screens.id AND b.cust_id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
@@ -169,21 +169,21 @@ exports.getFilms = function(req,res,data){
 	});
 }
 
-exports.getScreenings= function(req,res,data){
+exports.getScreenings = function(req,res,data){
 	connection.query("SELECT * FROM screening WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
 
-exports.getScreens= function(req,res,data){
+exports.getScreens = function(req,res,data){
 	connection.query("SELECT * FROM screens WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
 
-exports.getStaff= function(req,res,data){
+exports.getStaff = function(req,res,data){
 	connection.query("SELECT * FROM staff WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
@@ -211,8 +211,8 @@ exports.Login = function(req,res,data){
 			var id = 0;
 			if(rows != 0){
 
-				for(var i =0; i < rows.length; i++){
-					id = rows[i].id;
+				for(const element of rows){
+					id = element.id;
 				}
 
 				var login = {"value": "True", "member":"customer", "ID": id};

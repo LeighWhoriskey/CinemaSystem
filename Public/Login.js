@@ -17,17 +17,18 @@ $("document").ready(function(){
         tmpEmail: tmp2
       },
       success: function(res){
-        console.log(res);
+        
         if(res.value == "True"){
           
           if(res.member =="staff"){
-            document.cookie  = "StaffLogin = true" ;
-            document.cookie  = "CustomerLogin = false" ;
+            document.cookie  = "StaffLogin = true";
+            document.cookie  = "CustomerLogin = false";
             window.location.replace("/Admin.html");
           }
           else if(res.member =="customer"){
-            document.cookie  = "CustomerLogin = true" ;
-            document.cookie  = "StaffLogin = false" ;
+            document.cookie  = "CustomerLogin = true";
+            document.cookie  = "StaffLogin = false";
+            document.cookie  = "Cust_id =" + res.ID;
             window.location.replace("/Home.html");
           }
         }
