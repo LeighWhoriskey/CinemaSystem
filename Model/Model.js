@@ -1,10 +1,12 @@
 var mysql = require('mysql');
 
+
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema'
+  database : 'cinema',
+  port: 3305
 });
 
 connection.connect(function(err){
@@ -146,6 +148,13 @@ exports.getBooking = function(req,res,data){
 		res.send(JSON.stringify(rows));	
 	});
 }
+
+exports.getBookingCustom = function(req,res,data){
+	connection.query("SELECT b.id, b.screening_id, b.no_of_seats, c.name as'custname', f.name as 'filmname', f.duration FROM booking b, customers c, screening s, films f WHERE b.cust_id = c.id AND s.id = b.screening_id AND s.film_id = f.id  AND b.cust_id =" + data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
 exports.getCustomer = function(req,res,data){
 	connection.query("SELECT * FROM customers WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
@@ -183,7 +192,6 @@ exports.getStaff= function(req,res,data){
 
 
 exports.Login = function(req,res,data){
-	console.log(data)
 	if(data.tmpEmail =="decade.ie"){
 		connection.query("SELECT * FROM staff WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
 			if(error){throw error};
@@ -200,11 +208,17 @@ exports.Login = function(req,res,data){
 	else{
 		connection.query("SELECT * FROM customers WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
 			if(error){throw error};
+			var id = 0;
 			if(rows != 0){
-				var login = {"value": "True", "member":"customer"};
+
+				for(var i =0; i < rows.length; i++){
+					id = rows[i].id;
+				}
+
+				var login = {"value": "True", "member":"customer", "ID": id};
 				res.send(JSON.stringify(login));
 			}else{
-				var login = {"value": "False", "member":"customer"};
+				var login = {"value": "False", "member":"customer", "cust_id": null};
 				res.send(JSON.stringify(login));
 			}
 	
