@@ -1,7 +1,8 @@
 $("document").ready(function(){
 
-    document.cookie  = "StaffLogin = false" ;
-    document.cookie  = "CustomerLogin = false" ;
+    document.cookie  = "StaffLogin = " ;
+    document.cookie  = "CustomerLogin = " ;
+    document.cookie  = "Cust_id =";
 
     window.location.replace("/Home.html");
 });
