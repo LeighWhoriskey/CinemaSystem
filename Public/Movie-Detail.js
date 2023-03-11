@@ -1,12 +1,9 @@
 $("document").ready(function(){
-
   var queryString = window.location.search;
   var urlParams = new URLSearchParams(queryString);
   var filmId = urlParams.get('id');
-  console.log(filmId);
-  $.getJSON(`http://localhost:3000/movie-details/${filmId}/`,function(data){
-    
-       
+
+  $.getJSON(`http://localhost:3000/movie-details/${filmId}/`, function(data){
     $.each(data, function(i, value){
       var age = value.age;
       var ageColor;
@@ -34,10 +31,15 @@ $("document").ready(function(){
       <svg height='60px'> <circle cx="40" cy="27" r="25" stroke="black" fill="${ageColor}"></circle> <text text-anchor="middle" x="40" y="30" fill="white">${age}</text> <text x="200" y="30" fill="black" font-size="20px">${value.duration} hours</text></svg><p style=" width:560px;margin-top:20px; font-size:17px; margin-bottom:30px;">${value.description}</p></div>`);
 
       $("#movies").append(`<div class="video"style="   margin-left:850px; margin-top:-250px;margin-bottom:80px; "><iframe width="500" height="300" src="https://www.youtube.com/embed/${value.trailer_url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`);
-
-                       
     });
-
+    
+    $.getJSON(`http://localhost:3000/movie-details/${filmId}/`, function(data){
+      $.each(data, function(i, screening) {
+        if (screening.film_ID == id) {
+          $("#screenings").append(`<p>Date: ${screening.date}, Time: ${screening.time}</p>`);
+        }
+      });
+    });
   });
-  
 });
+
