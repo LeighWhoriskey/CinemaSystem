@@ -1,7 +1,7 @@
 $("document").ready(function(){
   
   var cookie = document.cookie;
-0
+
   if(cookie.match("StaffLogin=true")){
 
     $("#NavBar").addClass("navbar");
@@ -29,8 +29,8 @@ $("document").ready(function(){
     $("#NavBar").append("<div class='navbar-items'>" +
         "<a href='Home.html'>Home</a>" +
         "<a href='Movie.html'>Now Showing</a>" +
-        "<a href='Booking.html'>Your Bookings</a>" +
-        //"<a href='Logout.html'>Logout</a>" +
+        "<a href='Booking.html'>My Bookings</a>" +
+        "<a href='Account.html'>My Account</a>" +
         "</div>");
 
     //$("#NavBar").append("<a href ='Logout.html'> <img src='images/login.png' height='60px'></a>");
@@ -108,7 +108,6 @@ $("document").ready(function(){
       "border-top": "1px solid #fff",
       "margin": "0"
     });
-
   // Append the footer div to the body of the page
   $("body").append(footerDiv);
 

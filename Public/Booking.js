@@ -6,7 +6,7 @@ $("document").ready(function(){
     var id = tmpid[1].split(";");
     
     id = id[0];
-    console.log(id);
+    //console.log(id);
 
     $.getJSON("/getBookingCustom/" + id, function(data){
 
