@@ -9,16 +9,29 @@ $("document").ready(function(){
       } else {
         // Create new div for movie details
         var screenTime = "Screen "+value.Screen_id+ " " + value.Time;
-        $("#movies").append("<hr style='border: 2px solid black'>");
-$("#movies").append(`<div class="movie-container"><div class="images" ><a href="http://localhost:3000/Movie-Detail.html?id=${value.id}"><img src='images/${value.id}.jpg'style="width:200px; height:300px;"></a></div>
-                      <div class="details" ><h2>${value.name}</h2>
-                      <svg height="100px" width="200px"> <circle cx="30" cy="27" r="25" stroke="black" fill="${getAgeColor(value.age)}"></circle> <text text-anchor="middle" x="30" y="30" fill="white">${value.age}</text> <text x="100" y="30" fill="black" font-size="20px">${value.duration} hours</text></svg></div>
-                      <div class="screens"id="${value.id}" ><div class="time" id="time-${value.id}" style=""><div>${screenTime}</div></div></div>
-                          </div>`);
+        $("#movies").append("<hr style='border: 1.5px solid black'>");
+$("#movies").append(`<div class="movie-container">
+                        <div class="images">
+                          <a href="http://localhost:3000/Movie-Detail.html?id=${value.id}">
+                            <img src='images/${value.id}.jpg' style="width:200px; height:300px;">
+                          </a>
+                        </div>
+                        <div class="details" style="text-align:center;">
+                          <h2 style="margin-top: 0;">${value.name}</h2>
+                          <svg height="100px" width="200px">
+                            <circle cx="30" cy="27" r="25" stroke="black" fill="${getAgeColor(value.age)}"></circle>
+                            <text text-anchor="middle" x="30" y="30" fill="white">${value.age}</text>
+                            <text x="100" y="30" fill="black" font-size="20px">${value.duration} hours</text>
+                          </svg>
+                        </div>
+                        <div class="screens" id="${value.id}">
+                          <div class="time" id="time-${value.id}" style=""><div>${screenTime}</div></div>
+                        </div>
+                      </div>`);
       }
-      });
+    });
   });
-  });
+});
 
 function getAgeColor(age) {
   switch(age) {
