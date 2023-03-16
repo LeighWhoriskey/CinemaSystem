@@ -16,7 +16,7 @@ $("document").ready(function(){
         "<a href='Booking.html'>Bookings</a>" +
         "<a href='Admin.html'>Admin</a>" +
         "<a href='Logout.html'>Logout</a>" +
-        "<a href='CRUD.html'>CRUD</a>" +
+        //"<a href='CRUD.html'>CRUD</a>" +
         "</div>");
 
     $("#NavBar").append("<a href ='Logout.html'> <img src='images/login.png' height='60px'></a>");
