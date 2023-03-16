@@ -204,20 +204,18 @@ body {
     vertical-align: top;
     margin-top: 20px;
   }
-  h1 {
+  .h1 {
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-align: center;
+    margin-top: 50px;
   }
-  p {
+  .p {
     font-size: 18px;
     line-height: 1.5;
   }
 
-  h1 {
-    text-align: center;
-    margin-top: 50px;
-  }
   .contact-form {
     margin: auto;
     width: 50%;
@@ -261,3 +259,37 @@ body {
   .form-submit:active {
     background-color: #0BD3F6;
   }
+
+  .movie-card {
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .movie-card img {
+    width: 300px;
+    height: 500px;
+    object-fit: cover;
+    transition: transform .2s;
+  }
+
+  .movie-card:hover img {
+    transform: scale(1.1);
+  }
+
+  #films {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .film-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  

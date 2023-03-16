@@ -1,10 +1,12 @@
 var mysql = require('mysql');
 
+
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema'
+  database : 'cinema',
+  //port: 3305
 });
 
 connection.connect(function(err){
@@ -146,6 +148,13 @@ exports.getBooking = function(req,res,data){
 		res.send(JSON.stringify(rows));	
 	});
 }
+
+exports.getBookingCustom = function(req,res,data){
+	connection.query("SELECT b.id, b.screening_id, b.no_of_seats, c.name as'custname', f.name as 'filmname', f.duration, screens.id as 'ScreenId' FROM booking b, customers c, screening s, films f, screens WHERE b.cust_id = c.id AND s.id = b.screening_id AND s.film_id = f.id AND s.screen_id = screens.id AND b.cust_id =" + data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
 exports.getCustomer = function(req,res,data){
 	connection.query("SELECT * FROM customers WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
@@ -160,21 +169,21 @@ exports.getFilms = function(req,res,data){
 	});
 }
 
-exports.getScreenings= function(req,res,data){
+exports.getScreenings = function(req,res,data){
 	connection.query("SELECT * FROM screening WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
 
-exports.getScreens= function(req,res,data){
+exports.getScreens = function(req,res,data){
 	connection.query("SELECT * FROM screens WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
 
-exports.getStaff= function(req,res,data){
+exports.getStaff = function(req,res,data){
 	connection.query("SELECT * FROM staff WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
@@ -183,7 +192,6 @@ exports.getStaff= function(req,res,data){
 
 
 exports.Login = function(req,res,data){
-	console.log(data)
 	if(data.tmpEmail =="decade.ie"){
 		connection.query("SELECT * FROM staff WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
 			if(error){throw error};
@@ -200,11 +208,17 @@ exports.Login = function(req,res,data){
 	else{
 		connection.query("SELECT * FROM customers WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
 			if(error){throw error};
+			var id = 0;
 			if(rows != 0){
-				var login = {"value": "True", "member":"customer"};
+
+				for(const element of rows){
+					id = element.id;
+				}
+
+				var login = {"value": "True", "member":"customer", "ID": id};
 				res.send(JSON.stringify(login));
 			}else{
-				var login = {"value": "False", "member":"customer"};
+				var login = {"value": "False", "member":"customer", "cust_id": null};
 				res.send(JSON.stringify(login));
 			}
 	
@@ -223,5 +237,16 @@ exports.GetAll = function(req,res,data){
 	connection.query("SELECT * FROM "+data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
+	});
+}
+exports.getMoviesToday = function(req,res){
+	var d = new Date();
+	var todayDate = d.getFullYear()+ "-" + (d.getMonth()+1) + "-" + d.getDate();
+
+	connection.query(`SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening where films.id = screening.film_id order by Date, Time`, function(err, rows, fields) {
+	  if (err) throw err;
+
+	  res.send(JSON.stringify(rows));
+	  
 	});
 }
