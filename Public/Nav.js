@@ -15,6 +15,7 @@ $("document").ready(function(){
         "<a href='Movie.html'>Now Showing</a>" +
         "<a href='Booking.html'>Bookings</a>" +
         "<a href='Admin.html'>Admin</a>" +
+
         //"<a href='Logout.html'>Logout</a>" +
         "</div>");
 
