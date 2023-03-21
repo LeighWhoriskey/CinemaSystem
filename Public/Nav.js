@@ -1,43 +1,43 @@
 $("document").ready(function(){
   
   var cookie = document.cookie;
-0
+
   if(cookie.match("StaffLogin=true")){
 
     $("#NavBar").addClass("navbar");
 
-      //"<a href='Booking.html'>Bookings</a>" +
+      "<a href='Booking.html'>Bookings</a>" +
 
-    $("#NavBar").append("<img src='images/logoback.png' height='90px'>");
+      $("#NavBar").append("<a href = 'Home.html'> <img src='images/logoback.png' height='90px'>");
 
     $("#NavBar").append("<div class='navbar-items'>" +
         "<a href='Home.html'>Home</a>" +
         "<a href='Movie.html'>Now Showing</a>" +
         "<a href='Booking.html'>Bookings</a>" +
         "<a href='Admin.html'>Admin</a>" +
-        "<a href='Logout.html'>Logout</a>" +
-        "<a href='CRUD.html'>CRUD</a>" +
+
+        //"<a href='Logout.html'>Logout</a>" +
         "</div>");
 
-    $("#NavBar").append("<a href ='Logout.html'> <img src='images/login.png' height='60px'></a>");
-    
+    $("#NavBar").append("<a href ='Logout.html'> <img src='images/logout.png' height='60px'></a>");
+        
   }else if(cookie.match("CustomerLogin=true")){
 
     $("#NavBar").addClass("navbar");
 
-      "<a href='Booking.html'>Bookings</a>" +
-
-    $("#NavBar").append("<img src='images/logoback.png' height='90px'>");
+    $("#NavBar").append("<a href = 'Home.html'> <img src='images/logoback.png' height='90px'>");
 
     $("#NavBar").append("<div class='navbar-items'>" +
         "<a href='Home.html'>Home</a>" +
         "<a href='Movie.html'>Now Showing</a>" +
-        "<a href='Booking.html'>Bookings</a>" +
-        "<a href='Logout.html'>Logout</a>" +
-        "<a href='CRUD.html'>CRUD</a>" +
+        "<a href='Booking.html'>My Bookings</a>" +
+        "<a href='Account.html'>My Account</a>" +
         "</div>");
 
-    $("#NavBar").append("<a href ='Logout.html'> <img src='images/login.png' height='60px'></a>");
+    //$("#NavBar").append("<a href ='Logout.html'> <img src='images/login.png' height='60px'></a>");
+    $("#NavBar").append("<a href ='Logout.html'> <img src='images/logout.png' height='60px'></a>");
+
+
   }
   else{
 
@@ -45,13 +45,12 @@ $("document").ready(function(){
 
       "<a href='Booking.html'>Bookings</a>" +
 
-    $("#NavBar").append("<img src='images/logoback.png' height='90px'>");
+    $("#NavBar").append("<a href = 'Home.html'> <img src='images/logoback.png' height='90px'>");
 
     $("#NavBar").append("<div class='navbar-items'>" +
         "<a href='Home.html'>Home</a>" +
         "<a href='Movie.html'>Now Showing</a>" +
-        "<a href='Login.html'>Login</a>" +
-        "<a href='CRUD.html'>CRUD</a>" +
+        //"<a href='Login.html'>Login</a>" +
         "</div>");
 
             
@@ -110,7 +109,6 @@ $("document").ready(function(){
       "border-top": "1px solid #fff",
       "margin": "0"
     });
-
   // Append the footer div to the body of the page
   $("body").append(footerDiv);
 

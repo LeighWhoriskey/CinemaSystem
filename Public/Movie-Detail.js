@@ -1,12 +1,9 @@
 $("document").ready(function(){
-
   var queryString = window.location.search;
   var urlParams = new URLSearchParams(queryString);
   var filmId = urlParams.get('id');
-  console.log(filmId);
-  $.getJSON(`http://localhost:3000/movie-details/${filmId}/`,function(data){
-    
-       
+
+  $.getJSON(`http://localhost:3000/movie-details/${filmId}/`, function(data){
     $.each(data, function(i, value){
       var age = value.age;
       var ageColor;
@@ -28,15 +25,42 @@ $("document").ready(function(){
           ageColor = "#000000";
       }
 
-      $("#movies").append(`<div class="images"style=" display:inline-block; padding:0px; margin-top: 20px; "><a href="http://localhost:3000/Movie-Detail.html?id=${value.id}"><img src='images/${value.id}.jpg'style='width: 230px; height: 300px; margin:0px; display:'></img></a></div>`);
+      $("#movies").append(`<div class="movie-details" style="display: flex; margin-top: 20px;">
+        <div class="movie-poster">
+          <a href="http://localhost:3000/Movie-Detail.html?id=${value.id}">
+            <img src='images/${value.id}.jpg' style='width: 230px; height: 300px; margin:0px; display:'></img>
+          </a>
+        </div>
+        <div class="movie-info" style="margin-left: 50px;">
+          <h2 style="margin-top: 0;">${value.name}</h2>
+          <div class="age-rating" style="display: flex; align-items: center; margin-bottom: 10px;">
+            <svg height='60px' style="margin-right: 10px;">
+              <circle cx="40" cy="27" r="25" stroke="black" fill="${ageColor}"></circle>
+              <text text-anchor="middle" x="40" y="30" fill="white">${age}</text>
+            </svg>
+          </div>
+          <p style="font-size: 20px; margin: 0;">${value.duration} hours</p>
 
-      $("#movies").append(`<div class="details"style="width: 400px; height:150px;display:inline-block; margin-left:50px;"><h2>${value.name}</h3> 
-      <svg height='60px'> <circle cx="40" cy="27" r="25" stroke="black" fill="${ageColor}"></circle> <text text-anchor="middle" x="40" y="30" fill="white">${age}</text> <text x="200" y="30" fill="black" font-size="20px">${value.duration} hours</text></svg><p style=" width:560px;margin-top:20px; font-size:17px; margin-bottom:30px;">${value.description}</p></div>`);
+          <p style="width: 560px; margin-top: 20px; font-size: 17px; margin-bottom: 30px;">${value.description}</p>
+        </div>
+        <div class="movie-trailer" style="margin-left: auto;">
+          <iframe width="500" height="300" src="https://www.youtube.com/embed/${value.trailer_url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>`);
 
+<<<<<<< HEAD
       $("#movies").append(`<div class="video"style="   margin-left:850px; margin-top:-250px;margin-bottom:80px; "><iframe width="500" height="300" src="https://www.youtube.com/embed/${value.trailer_url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`);
                        
+=======
+>>>>>>> main
     });
-
+    
+    $.getJSON(`http://localhost:3000/movie-details/${filmId}/`, function(data){
+      $.each(data, function(i, screening) {
+        if (screening.film_ID == id) {
+          $("#screenings").append(`<p>Date: ${screening.date}, Time: ${screening.time}</p>`);
+        }
+      });
+    });
   });
-  
-});
+  });

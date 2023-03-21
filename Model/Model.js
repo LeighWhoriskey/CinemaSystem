@@ -1,10 +1,12 @@
 var mysql = require('mysql');
 
+
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema'
+  database : 'cinema',
+  //port: 3305
 });
 
 connection.connect(function(err){
@@ -50,7 +52,7 @@ exports.Booking = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE booking SET screening_id =" +data.ScreenID  + ",no_of_seats =" +data.Seats +" WHERE ID =" + data.BookingID,function(error, rows, feilds){
+		connection.query("UPDATE booking SET screening_id =" +data.ScreenID  + ",no_of_seats =" +data.Seats +",cust_id =" +data.CustID +" WHERE ID =" + data.BookingID,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -66,7 +68,7 @@ exports.Customer = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE customers SET name =" +data.name  + ",email =" +data.email + ",age =" +data.age + ",password =" + data.password + ",phone_no =" +data.phone_no + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE customers SET name ='" +data.name  + "',email ='" +data.email + "',age ='" +data.age + "',password ='" + data.password + "',phone_no ='" +data.phone_no + "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -84,7 +86,7 @@ exports.Film = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE films SET name =" +data.name  + ",director =" +data.director + ",age =" +data.age + ",duration =" + data.duration + ",trailer_url ='" +data.trailer +"',description =" +data.desc + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE films SET name ='" +data.name  + "',director ='" +data.director + "',age ='" +data.age + "',duration ='" + data.duration + "',trailer_url ='" +data.trailer +"',description ='" +data.desc + "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -100,7 +102,7 @@ exports.Screening = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE screening SET price =" +data.price  + ",date =" +data.date + ",time =" +data.time + ",film_id =" + data.film + ",screen_id =" +data.screen +",totalSeatsBooked =" +data.seats + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE screening SET price ='" +data.price  + "',date ='" +data.date + "',time ='" +data.time + "',film_id ='" + data.film + "',screen_id ='" +data.screen +"',totalSeatsBooked ='" +data.seats + "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -116,7 +118,7 @@ exports.Screens = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE screens SET capacity =" +data.capacity  + ",open =" +data.open+ " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE screens SET capacity ='" +data.capacity  + "',open ='" +data.open+ "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -132,7 +134,7 @@ exports.Staff = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE staff SET name =" +data.name  + ",email =" +data.email +  ", age= "+data.age +", password="+data.pass +", phone_no =" +data.phone + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE staff SET name ='" +data.name  + "',email ='" +data.email +  "', age= '"+data.age +"', password='"+data.password +"', phone_no ='" +data.phone + "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -142,6 +144,13 @@ exports.Staff = function(req, res, data){
 
 exports.getBooking = function(req,res,data){
 	connection.query("SELECT * FROM booking WHERE id =" + data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
+
+exports.getBookingCustom = function(req,res,data){
+	connection.query("SELECT b.id, b.screening_id, b.no_of_seats, c.name as'custname', f.name as 'filmname', f.duration, screens.id as 'ScreenId' FROM booking b, customers c, screening s, films f, screens WHERE b.cust_id = c.id AND s.id = b.screening_id AND s.film_id = f.id AND s.screen_id = screens.id AND b.cust_id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
@@ -160,21 +169,21 @@ exports.getFilms = function(req,res,data){
 	});
 }
 
-exports.getScreenings= function(req,res,data){
+exports.getScreenings = function(req,res,data){
 	connection.query("SELECT * FROM screening WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
 
-exports.getScreens= function(req,res,data){
+exports.getScreens = function(req,res,data){
 	connection.query("SELECT * FROM screens WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
 }
 
-exports.getStaff= function(req,res,data){
+exports.getStaff = function(req,res,data){
 	connection.query("SELECT * FROM staff WHERE id =" + data.id ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
@@ -183,7 +192,6 @@ exports.getStaff= function(req,res,data){
 
 
 exports.Login = function(req,res,data){
-	console.log(data)
 	if(data.tmpEmail =="decade.ie"){
 		connection.query("SELECT * FROM staff WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
 			if(error){throw error};
@@ -200,11 +208,17 @@ exports.Login = function(req,res,data){
 	else{
 		connection.query("SELECT * FROM customers WHERE email = '" + data.Email +"' AND password = '" + data.Password+"'",function(error, rows, feilds){
 			if(error){throw error};
+			var id = 0;
 			if(rows != 0){
-				var login = {"value": "True", "member":"customer"};
+
+				for(const element of rows){
+					id = element.id;
+				}
+
+				var login = {"value": "True", "member":"customer", "ID": id};
 				res.send(JSON.stringify(login));
 			}else{
-				var login = {"value": "False", "member":"customer"};
+				var login = {"value": "False", "member":"customer", "cust_id": null};
 				res.send(JSON.stringify(login));
 			}
 	

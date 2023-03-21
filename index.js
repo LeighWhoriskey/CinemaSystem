@@ -65,33 +65,31 @@ app.post("/Screening",function(req,res){
 })
 
 app.get("/getBooking/:id?",function(req,res){
-  console.log({id : req.params.id});
   model.getBooking(req,res ,{id : req.params.id});
 })
 
+app.get("/getBookingCustom/:id?",function(req,res){
+  model.getBookingCustom(req,res ,{id : req.params.id});
+})
+
 app.get("/getCustomers/:id?",function(req,res){
-  console.log({id : req.params.id});
   model.getCustomer(req,res ,{id : req.params.id});
 })
 
 app.get("/getFilms/:id?",function(req,res){
-  console.log({id : req.params.id});
   model.getFilms(req,res ,{id : req.params.id});
 })
 
 app.get("/getScreenings/:id?",function(req,res){
-  console.log({id : req.params.id});
   model.getScreenings(req,res ,{id : req.params.id});
 })
 
 app.get("/getScreens/:id?",function(req,res){
-  console.log({id : req.params.id});
   model.getScreens(req,res ,{id : req.params.id});
 })
 
 
 app.get("/getStaff/:id?",function(req,res){
-  console.log({id : req.params.id});
   model.getStaff(req,res ,{id : req.params.id});
 })
 
@@ -99,6 +97,7 @@ app.post("/login",function(req,res){
   var data = req.body;
   model.Login(req, res, data);
 })
+
 app.get("/films/today",function(req,res){
   model.getMoviesToday(req,res);
 })
