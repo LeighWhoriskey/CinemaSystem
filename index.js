@@ -128,6 +128,7 @@ model.GetAll(req, res, {id : req.params.id});
 })
 
 
+
 var myServer = app.listen(3000, function() {
   console.log("Server listening on port 3000");
 });
