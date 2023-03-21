@@ -1,5 +1,21 @@
 
 $("document").ready(function(){
+  var d = new Date();
+  var todayDate = new Date(d.getFullYear(), d.getMonth(), d.getDate()); // create a Date object for today's date
+  $.getJSON("http://localhost:3000/films/today", function(data){
+    $.each(data, function(i, value){
+      var filmDate = new Date(value.date); // create a Date object for the film's date
+      if (filmDate >= todayDate) { // compare the dates
+        $('#filmsDropDown').append($('<option></option>')
+          .attr({value: value.date})
+          .text(value.date)
+        );
+        console.log(value.date);
+      }
+    });
+
+
+  });
 
 
   $.getJSON("http://localhost:3000/films/today", function(data){
