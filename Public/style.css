@@ -539,6 +539,11 @@ body {
     width: 95%;
     text-align: center;
   }
+  #filmsDropDown {
+    margin: 0 auto;
+   width: 200px;
+  }
+  
   
   #movies {
     width: 100%;
