@@ -117,6 +117,9 @@ model.Login(req, res, data);
 app.get("/films/today",function(req,res){
 model.getMoviesToday(req,res);
 })
+app.get("/getFilmsDate/:date?", function(req, res) {
+  model.getFilmsDate(req, res, { date: req.params.date });
+});
 
 app.post("/delete",function(req,res){
 var data = req.body;
