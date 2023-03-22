@@ -44,6 +44,14 @@ exports.getMovieDetails = function(req, res, movie){
 }
 
 
+exports.CheckBookedTickets = function(req, res, tickets){
+	connection.query("SELECT screening.totalSeatsBooked, screens.capacity FROM screening, screens  WHERE screens.id = screening.screen_id AND screening.film_id ='"+tickets.FilmId+"' AND screening.id='"+ tickets.ScreeningId+"' AND screens.id='"+tickets.ScreenId+"'", function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));
+	});
+}
+
+
 exports.Booking = function(req, res, data){
 	if(data.operation == "CREATE"){
 		connection.query("INSERT INTO booking (screening_id, no_of_seats,cust_id) VALUES(" + data.ScreenID +", " + data.Seats +", " + data.Customer+");",function(error, rows, feilds){
@@ -169,8 +177,16 @@ exports.getFilms = function(req,res,data){
 	});
 }
 
+
 exports.getScreenings = function(req,res,data){
 	connection.query("SELECT * FROM screening WHERE id =" + data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
+
+exports.GetFilmTimes = function(req,res,data){
+	connection.query("SELECT date, time FROM screening WHERE film_id =" + data.FilmId ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});

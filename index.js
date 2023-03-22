@@ -80,10 +80,6 @@ app.get("/getFilms/:id?",function(req,res){
   model.getFilms(req,res ,{id : req.params.id});
 })
 
-app.get("/getScreenings/:id?",function(req,res){
-  model.getScreenings(req,res ,{id : req.params.id});
-})
-
 app.get("/getScreens/:id?",function(req,res){
   model.getScreens(req,res ,{id : req.params.id});
 })
@@ -102,11 +98,21 @@ app.get("/films/today",function(req,res){
   model.getMoviesToday(req,res);
 })
 
+app.post("/getFilmTimes", function(req, res){
+
+  var data = req.body;
+  model.GetFilmTimes(req,res, data)
+});
 
 
 app.post("/delete",function(req,res){
   var data = req.body;
   model.Delete(req, res, data);
+})
+
+app.post("/ticketsBooked",function(req,res){
+  var data = req.body;
+  model.GetFilmTimes(req, res, data);
 })
 
 app.get("/getData/:id?",function(req,res){
