@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
   user     : 'root',
   password : '',
   database : 'cinema',
-  port: 3305
+  //port: 3305
 });
 
 connection.connect(function(err){
@@ -60,7 +60,7 @@ exports.Booking = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE booking SET screening_id =" +data.ScreenID  + ",no_of_seats =" +data.Seats +" WHERE ID =" + data.BookingID,function(error, rows, feilds){
+		connection.query("UPDATE booking SET screening_id =" +data.ScreenID  + ",no_of_seats =" +data.Seats +",cust_id =" +data.CustID +" WHERE ID =" + data.BookingID,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -76,7 +76,7 @@ exports.Customer = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE customers SET name =" +data.name  + ",email =" +data.email + ",age =" +data.age + ",password =" + data.password + ",phone_no =" +data.phone_no + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE customers SET name ='" +data.name  + "',email ='" +data.email + "',age ='" +data.age + "',password ='" + data.password + "',phone_no ='" +data.phone_no + "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -94,7 +94,7 @@ exports.Film = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE films SET name =" +data.name  + ",director =" +data.director + ",age =" +data.age + ",duration =" + data.duration + ",trailer_url ='" +data.trailer +"',description =" +data.desc + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE films SET name ='" +data.name  + "',director ='" +data.director + "',age ='" +data.age + "',duration ='" + data.duration + "',trailer_url ='" +data.trailer +"',description ='" +data.desc + "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -110,7 +110,7 @@ exports.Screening = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE screening SET price =" +data.price  + ",date =" +data.date + ",time =" +data.time + ",film_id =" + data.film + ",screen_id =" +data.screen +",totalSeatsBooked =" +data.seats + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE screening SET price ='" +data.price  + "',date ='" +data.date + "',time ='" +data.time + "',film_id ='" + data.film + "',screen_id ='" +data.screen +"',totalSeatsBooked ='" +data.seats + "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -126,7 +126,7 @@ exports.Screens = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE screens SET capacity =" +data.capacity  + ",open =" +data.open+ " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE screens SET capacity ='" +data.capacity  + "',open ='" +data.open+ "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -142,7 +142,7 @@ exports.Staff = function(req, res, data){
 		});
 	}
 	else{
-		connection.query("UPDATE staff SET name =" +data.name  + ",email =" +data.email +  ", age= "+data.age +", password="+data.pass +", phone_no =" +data.phone + " WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE staff SET name ='" +data.name  + "',email ='" +data.email +  "', age= '"+data.age +"', password='"+data.password +"', phone_no ='" +data.phone + "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -255,3 +255,25 @@ exports.GetAll = function(req,res,data){
 		res.send(JSON.stringify(rows));	
 	});
 }
+exports.getMoviesToday = function(req,res){
+	
+	connection.query(`SELECT DISTINCT date FROM screening order by date, Time`, function(err, rows, fields) {
+	  if (err) throw err;
+
+	  res.send(JSON.stringify(rows));
+	  
+	});
+
+}
+exports.getFilmsDate = function(req, res, data) {
+	console.log("data:", data);
+	connection.query(
+	  `SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening WHERE films.id = screening.film_id AND Date = '${data.date}' ORDER BY Date, Time`,
+	  function(error, rows, fields) {
+		if (error) {
+		  throw error;
+		}
+		res.send(JSON.stringify(rows));
+	  }
+	);
+  }

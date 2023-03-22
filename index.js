@@ -2,6 +2,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var cors = require("cors");
 var path = require("path");
+var multer = require("multer"); // Require multer for handling file uploads
+var fs = require("fs"); // Require fs to write uploaded files to the server
 
 var model = require('./model/model.js');
 const { response } = require("express");
@@ -15,88 +17,109 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
+// Set up multer for handling file uploads
+var upload = multer({ dest: "public/images/profile" });
 
 app.get("/", function(req,res){
-  res.sendFile(path.join(__dirname + '/public/Home.html'));
+res.sendFile(path.join(__dirname + '/public/Home.html'));
 });
 
 app.get("/movies", function(req,res){
-  model.getMovies(req,res);
+model.getMovies(req,res);
 });
 
 app.get("/movie-details/:id?",function(req,res){
-  model.getMovieDetails(req,res ,{id : req.params.id});
+model.getMovieDetails(req,res ,{id : req.params.id});
 })
 
 app.post("/Booking",function(req,res){
 
-  var data = req.body;
-  model.Booking(req, res, data);
+var data = req.body;
+model.Booking(req, res, data);
 })
 
-app.post("/Customer",function(req,res){
+app.post("/Customer", function(req, res) {
+// Upload the profile picture to the server and update the customer information
+upload.single("profilePicture")(req, res, function(err) {
+if (err) {
+console.log(err);
+return res.status(500).json({ message: "Error uploading file" });
+}
 
-  var data = req.body;
-  model.Customer(req, res, data);
-})
+var data = req.body;
+var profilePicturePath = null;
+
+if (req.file) {
+  profilePicturePath = req.file.path;
+}
+
+model.Customer(req, res, data, profilePicturePath);
+});
+});
 
 app.post("/Film",function(req,res){
 
-  var data = req.body;
-  model.Film(req, res, data);
+var data = req.body;
+model.Film(req, res, data);
 })
 
 app.post("/Staff",function(req,res){
 
-  var data = req.body;
-  model.Staff(req, res, data);
+var data = req.body;
+model.Staff(req, res, data);
 })
 
 app.post("/Screens",function(req,res){
 
-  var data = req.body;
-  model.Screens(req, res, data);
+var data = req.body;
+model.Screens(req, res, data);
 })
 
 app.post("/Screening",function(req,res){
 
-  var data = req.body;
-  model.Screening(req, res, data);
+var data = req.body;
+model.Screening(req, res, data);
 })
 
 app.get("/getBooking/:id?",function(req,res){
-  model.getBooking(req,res ,{id : req.params.id});
+model.getBooking(req,res ,{id : req.params.id});
 })
 
 app.get("/getBookingCustom/:id?",function(req,res){
-  model.getBookingCustom(req,res ,{id : req.params.id});
+model.getBookingCustom(req,res ,{id : req.params.id});
 })
 
-app.get("/getCustomers/:id?",function(req,res){
-  model.getCustomer(req,res ,{id : req.params.id});
+app.get("/getCustomer/:id?",function(req,res){
+model.getCustomer(req,res ,{id : req.params.id});
 })
 
 app.get("/getFilms/:id?",function(req,res){
-  model.getFilms(req,res ,{id : req.params.id});
+model.getFilms(req,res ,{id : req.params.id});
 })
+
+
+app.get("/getScreenings/:id?",function(req,res){
+model.getScreenings(req,res ,{id : req.params.id});
+})
+
 
 app.get("/getScreens/:id?",function(req,res){
-  model.getScreens(req,res ,{id : req.params.id});
+model.getScreens(req,res ,{id : req.params.id});
 })
 
-
 app.get("/getStaff/:id?",function(req,res){
-  model.getStaff(req,res ,{id : req.params.id});
+model.getStaff(req,res ,{id : req.params.id});
 })
 
 app.post("/login",function(req,res){
-  var data = req.body;
-  model.Login(req, res, data);
+var data = req.body;
+model.Login(req, res, data);
 })
 
 app.get("/films/today",function(req,res){
-  model.getMoviesToday(req,res);
+model.getMoviesToday(req,res);
 })
+
 
 app.post("/getFilmTimes", function(req, res){
 
@@ -105,9 +128,14 @@ app.post("/getFilmTimes", function(req, res){
 });
 
 
+app.get("/getFilmsDate/:date?", function(req, res) {
+  model.getFilmsDate(req, res, { date: req.params.date });
+});
+
+
 app.post("/delete",function(req,res){
-  var data = req.body;
-  model.Delete(req, res, data);
+var data = req.body;
+model.Delete(req, res, data);
 })
 
 app.post("/ticketsBooked",function(req,res){
@@ -116,8 +144,9 @@ app.post("/ticketsBooked",function(req,res){
 })
 
 app.get("/getData/:id?",function(req,res){
-  model.GetAll(req, res, {id : req.params.id});
+model.GetAll(req, res, {id : req.params.id});
 })
+
 
 
 var myServer = app.listen(3000, function() {

@@ -6,10 +6,11 @@ $("document").ready(function(){
     var id = tmpid[1].split(";");
     
     id = id[0];
+    //console.log(id);
 
     $.getJSON("/getBookingCustom/" + id, function(data){
 
-        $("#thead").append("<th>Name</th><th>Screen Number</th><th>Film Name</th><th>Duration</th><th>Seats Booked</th>");
+        $("#thead").append("<th>Name</th><th>Screen Number</th><th>Film Name</th><th>Duration</th><th>Seats Booked</th><th></th>");
         
         $.each(data,function(i, value){
 
