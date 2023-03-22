@@ -59,7 +59,6 @@ $("document").ready(function(){
           <iframe width="500" height="300" src="https://www.youtube.com/embed/${value.trailer_url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>`);
-
     });
     
     $.getJSON(`http://localhost:3000/movie-details/${filmId}/`, function(data){

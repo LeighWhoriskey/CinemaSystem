@@ -240,13 +240,24 @@ exports.GetAll = function(req,res,data){
 	});
 }
 exports.getMoviesToday = function(req,res){
-	var d = new Date();
-	var todayDate = d.getFullYear()+ "-" + (d.getMonth()+1) + "-" + d.getDate();
-
-	connection.query(`SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening where films.id = screening.film_id order by Date, Time`, function(err, rows, fields) {
+	
+	connection.query(`SELECT DISTINCT date FROM screening order by date, Time`, function(err, rows, fields) {
 	  if (err) throw err;
 
 	  res.send(JSON.stringify(rows));
 	  
 	});
+
 }
+exports.getFilmsDate = function(req, res, data) {
+	console.log("data:", data);
+	connection.query(
+	  `SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening WHERE films.id = screening.film_id AND Date = '${data.date}' ORDER BY Date, Time`,
+	  function(error, rows, fields) {
+		if (error) {
+		  throw error;
+		}
+		res.send(JSON.stringify(rows));
+	  }
+	);
+  }
