@@ -4,205 +4,175 @@ create DATABASE cinema;
 
 use cinema;
 
-create table Films (
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(50),
-	director VARCHAR(50),
-	duration VARCHAR(50),
-	trailer_url VARCHAR(1000),
-	age VARCHAR(3),
-	description VARCHAR(1000),
-	released TINYINT(1),
-	PRIMARY KEY (id)
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Inception', 'Christopher Nolan', '2:28', 'YoHD9XEInc0','A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.', '12A','1');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Avatar: The Way of the Water', 'James Cameron', '3:13', 'd9MyW72ELq0',"Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.",'PG','1');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('The Fabelmans', 'Steven Spielberg', '2:31', 'D1G2iLSzOe8',"Growing up in post-World War II era Arizona, young Sammy Fabelman aspires to become a filmmaker as he reaches adolescence, but soon discovers a shattering family secret and explores how the power of films can help him see the truth.",'18','1');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Puss in Boots: The Last Wish', 'Joel Crawford', '1:42', 'RqrXhwS33yc',"When Puss in Boots discovers that his passion for adventure has taken its toll and he has burned through eight of his nine lives, he launches an epic journey to restore them by finding the mythical Last Wish.",'U','1');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Babylon', 'Damien Chazelle', '3:09', '5muQK7CuFtY',"A tale of outsized ambition and outrageous excess, it traces the rise and fall of multiple characters during an era of unbridled decadence and depravity in early Hollywood.",'18','1');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Life is a Jungle', 'Robert D. Hanna', '1:41', 'rwyUzHEG_XY',"When Pip, a pampered and snobbish puppy, gets separated from his owners on an African safari, he is forced to adapt a new way of life in the jungle where he learns that caviar and manicures can never bring the same happiness as friendship.",'U','1');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Guardians of the Galaxy Vol. 3', 'James Gunn', '2:22', 'u3V5KDHRQvk',"Still reeling from the loss of Gamora, Peter Quill rallies his team to defend the universe and one of their own - a mission that could mean the end of the Guardians if not successful.",'12A','0');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Ant-Man and The Wasp: Quantumania', 'Peyton Reed', '2:05', 'ZlNFpri-Y40',"Scott Lang and Hope Van Dyne, along with Hank Pym and Janet Van Dyne, explore the Quantum Realm, where they interact with strange creatures and embark on an adventure that goes beyond the limits of what they thought was possible.",'12A','1');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Spider-Man Across the Spiderverse', 'Joaqium Dos Santos', '1:54', 'cqGjhVJWtEg',"Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.",'U','0');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Shazam! Fury of the Gods', 'David F. Sandberg', '1:40', 'h7ldMwIjlk0&t',"Four years after gaining the ability to transform into an adult superhero by shouting Shazam!, teenage Billy Baston and his adopted super-family face the wrath of the daughters of Atlas. Shazam! Fury Of The Gods stars returning cast members Zachary Levi as Shazam; Asher Angel as Billy Batson; Jack Dylan Grazer as Freddy Freeman, with the rest of the original cast reprising their roles as Billy's family and their respective super-selves, and sees Rachel Zegler, Lucy Liu, and Helen Mirren join the cast.",'12A','0');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Creed III', 'Michael B. Jordan', '1:57', 'AHmCH7iB_IM',"When a childhood friend and former boxing prodigy, Damian (Jonathan Majors), resurfaces after serving a long sentence in prison, he is eager to prove that he deserves his shot in the ring. The face off between former friends is more than just a fight.",'15A','0');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Magic Mike Last Dance', 'Steven Soderbergh', '1:52', 'oLoyU3xYwbs',"A 1950s housewife Magic Mike's Last Dance with her husband in a utopian experimental community begins to worry that his glamorous company could be hiding disturbing secrets. If you're a fan of the comics, you won't want to miss this one!",'12A','1');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('Cocaine Bear', 'Elizabeth Banks', '1:35', 'DuWEEKeJLMI',"Cocaine Bear is a 2023 American dark comedy action film directed and co-produced by Elizabeth Banks and written by Jimmy Warden. It is loosely inspired by the true story of the Cocaine Bear, an American black bear that ingested a duffel bag full of cocaine in 1985.",'18','1');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('John Wick 4', 'Chad Stahelski', '2:49', 'qEVUtrk8_B4',"John Wick uncovers a path to defeating the High Table, but before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into new foes.",'18','0');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('An Cailin Ciúin', 'Colm Bairéad', '1:36', 'LGWyqty2m-A',"The Quiet Girl is a 2022 Irish coming-of-age drama film written and directed by Colm Bairéad. The dialogue is mostly in Irish.",'U','1');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('The Super Mario Bros. Movie', 'Aaron Horvath', '1:32', 'TnGl01FkMMo',"The main hero of the Mushroom Kingdom. Mario is always bright and cheerful and instantly recognizable with his blue overalls, red cap, and trademark moustache. He's a trusted friend of Princess Peach, and he and his brother Luigi are known across the land for their acts of bravery.",'U','0');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('The Whale', 'Darren Aronofsky', '1:57', 'nWiQodhMvz4',"Charlie is an Idaho-based English teacher who never leaves his apartment and spends his time hosting online writing courses for college students via video conference, but keeps his webcam switched off; at almost 600 lb, he is ashamed of being morbidly obese and is afraid to show the students his appearance.",'12A','0');
-insert into Films (name, director, duration, trailer_url, description, age, released) values ('A Man Called Otto', 'Marc Forster', '2:06', 'eFYUX9l-m5I',"When a lively young family moves in next door, grumpy widower Otto Anderson meets his match in a quick-witted, pregnant woman named Marisol, leading to an unlikely friendship that turns his world upside down.",'12A','0');
+CREATE TABLE `booking` (
+  `id` int(11) NOT NULL,
+  `screening_id` int(11) DEFAULT NULL,
+  `no_of_seats` int(11) DEFAULT NULL,
+  `cust_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-create table Screens (
-	id INT NOT NULL AUTO_INCREMENT,
-	capacity INT,
-	open VARCHAR(50),
-	PRIMARY KEY(id)
-);
+INSERT INTO `booking` (`id`, `screening_id`, `no_of_seats`, `cust_id`) VALUES
+(2, 6, 0, 1),
+(3, 6, 0, 1),
+(4, 6, 0, 1),
+(6, 13, 100, 102);
 
-insert into screens (capacity, open) values (82, false);
-insert into screens (capacity, open) values (121, true);
-insert into screens (capacity, open) values (132, false);
-insert into screens (capacity, open) values (60, true);
-insert into screens (capacity, open) values (112, false);
-insert into screens (capacity, open) values (146, true);
-insert into screens (capacity, open) values (56, true);
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `phone_no` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-create table Customers (
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(50),
-	email VARCHAR(50),
-	age INT,
-	password VARCHAR(50),
-	phone_no VARCHAR(50),
-	PRIMARY KEY(id)
-);
+INSERT INTO `customers` (`id`, `name`, `email`, `password`, `phone_no`) VALUES
+(103, 'John Doe', 'john@gmail.com', 'john', '0871234567');
 
-insert into Customers (name, email, age, password, phone_no) values ('Rurik Johanning', 'rjohanning0@cornell.edu', 82, 'LxCMjHJ', '7865655219');
-insert into Customers (name, email, age, password, phone_no) values ('Lothaire Ick', 'lick1@sina.com.cn', 35, 'RFk9dVykTCtc', '6164556444');
-insert into Customers (name, email, age, password, phone_no) values ('Eleen Lammertz', 'elammertz2@cmu.edu', 35, 'VrFGDTMbr6', '1916720148');
-insert into Customers (name, email, age, password, phone_no) values ('Kim Allonby', 'kallonby3@nbcnews.com', 9, 'WOyHSTyhZj3', '1532278598');
-insert into Customers (name, email, age, password, phone_no) values ('Tommie Pullen', 'tpullen4@epa.gov', 80, '8ddyJJh', '3216789676');
-insert into Customers (name, email, age, password, phone_no) values ('Ludovika Spittall', 'lspittall5@examiner.com', 24, 'nCHDPjQg', '1193544521');
-insert into Customers (name, email, age, password, phone_no) values ('Gaye Kincla', 'gkincla6@constantcontact.com', 29, 'Avrm0E', '8376757184');
-insert into Customers (name, email, age, password, phone_no) values ('Merle Olland', 'molland7@salon.com', 84, 't9JfT8GYKoeK', '3733907022');
-insert into Customers (name, email, age, password, phone_no) values ('Bastien Arsmith', 'barsmith8@businessweek.com', 8, 'SjnCBynDiQ', '4651217753');
-insert into Customers (name, email, age, password, phone_no) values ('Porter Prium', 'pprium9@oracle.com', 16, '43pCXlhNBW4m', '9275672773');
-insert into Customers (name, email, age, password, phone_no) values ('Corrinne Farrier', 'cfarriera@canalblog.com', 51, 'vl5IIy', '8306490529');
-insert into Customers (name, email, age, password, phone_no) values ('Jackquelin Fike', 'jfikeb@posterous.com', 27, 'zUDiADZuDlt', '4647483046');
-insert into Customers (name, email, age, password, phone_no) values ('Hamel Timcke', 'htimckec@soundcloud.com', 16, 'eAzBiOCRtJb', '7713520044');
-insert into Customers (name, email, age, password, phone_no) values ('Giacinta Disdel', 'gdisdeld@soundcloud.com', 98, 'jAfyN1', '2029979742');
-insert into Customers (name, email, age, password, phone_no) values ('Kinsley Thyng', 'kthynge@rakuten.co.jp', 7, 'c7N1TTrQE', '7716477918');
-insert into Customers (name, email, age, password, phone_no) values ('Wilmette Zamora', 'wzamoraf@canalblog.com', 92, '3F1MHeaj', '7094684477');
-insert into Customers (name, email, age, password, phone_no) values ('Jen Ortes', 'jortesg@istockphoto.com', 34, 'Wn0QmHZS', '5402886127');
-insert into Customers (name, email, age, password, phone_no) values ('Tulley Silby', 'tsilbyh@gov.uk', 83, '92DRwHT', '1834878382');
-insert into Customers (name, email, age, password, phone_no) values ('Foss McGeoch', 'fmcgeochi@github.com', 87, 'YGwdrjiWu', '3669120511');
-insert into Customers (name, email, age, password, phone_no) values ('Perri Noen', 'pnoenj@bizjournals.com', 76, 'hXEM9q', '6476024040');
-insert into Customers (name, email, age, password, phone_no) values ('Idell Rearie', 'ireariek@nsw.gov.au', 84, 'UpHe8357w', '7558738959');
-insert into Customers (name, email, age, password, phone_no) values ('Lisette Handyside', 'lhandysidel@clickbank.net', 35, 'r47miejQgcVI', '6972400040');
-insert into Customers (name, email, age, password, phone_no) values ('Miof mela Wort', 'mmelam@icio.us', 17, 'Jy87GKi5nW', '3412542570');
-insert into Customers (name, email, age, password, phone_no) values ('Kacy Kingsman', 'kkingsmann@vistaprint.com', 99, '8jfMkaJO', '9367836078');
-insert into Customers (name, email, age, password, phone_no) values ('Rosie Gamage', 'rgamageo@mapquest.com', 7, 'okm6M2MN', '9352339772');
-insert into Customers (name, email, age, password, phone_no) values ('Janel Carvill', 'jcarvillp@hostgator.com', 52, 'OCgZcn3dwLv', '8505028637');
-insert into Customers (name, email, age, password, phone_no) values ('Dom Scamp', 'dscampq@smugmug.com', 88, 'SCz785lHLcG', '8425123083');
-insert into Customers (name, email, age, password, phone_no) values ('Atlanta Bloxsome', 'abloxsomer@answers.com', 83, 'VLZqfS', '1591771055');
-insert into Customers (name, email, age, password, phone_no) values ('Morten Wrotchford', 'mwrotchfords@edublogs.org', 72, 'YtpcYcne9S', '2525112771');
-insert into Customers (name, email, age, password, phone_no) values ('Nikolaus Vanlint', 'nvanlintt@slate.com', 94, 'Orboli8FE', '2296062496');
-insert into Customers (name, email, age, password, phone_no) values ('Vance Danne', 'vdanneu@lulu.com', 59, 'Te65gYUh', '6906459316');
-insert into Customers (name, email, age, password, phone_no) values ('Elmo Matis', 'ematisv@elegantthemes.com', 40, 'ATVClc9', '5644243491');
-insert into Customers (name, email, age, password, phone_no) values ('Isak Lowsely', 'ilowselyw@fotki.com', 13, 'PeBCY6j9Lm', '9694196572');
-insert into Customers (name, email, age, password, phone_no) values ('Sheba Elrick', 'selrickx@ovh.net', 80, 'TmN4GkdHmaA', '3823577891');
-insert into Customers (name, email, age, password, phone_no) values ('Loretta McCabe', 'lmccabey@live.com', 35, 'oYLyAkEyL8', '7241993250');
-insert into Customers (name, email, age, password, phone_no) values ('Nevile Flatte', 'nflattez@instagram.com', 63, 'nChPLN', '7364990167');
-insert into Customers (name, email, age, password, phone_no) values ('Lotta Bettleson', 'lbettleson10@miibeian.gov.cn', 11, 'ggy8DXI', '7256118704');
-insert into Customers (name, email, age, password, phone_no) values ('Jobie Watman', 'jwatman11@buzzfeed.com', 33, '7FCgNZsC', '7834297328');
-insert into Customers (name, email, age, password, phone_no) values ('Olenolin Benettelli', 'obenettelli12@ted.com', 66, 'wMUJz9VLO', '5849535160');
-insert into Customers (name, email, age, password, phone_no) values ('Tate McAnulty', 'tmcanulty13@engadget.com', 24, 'fTboDl', '5173498854');
-insert into Customers (name, email, age, password, phone_no) values ('Thedrick Tatterton', 'ttatterton14@stanford.edu', 45, 'ov4MGcE4', '2378755432');
-insert into Customers (name, email, age, password, phone_no) values ('Eleanora Brundle', 'ebrundle15@webeden.co.uk', 85, 'OGlipkP6', '6675246502');
-insert into Customers (name, email, age, password, phone_no) values ('Jdavie Siveter', 'jsiveter16@google.com.au', 29, 'h8xsab6q09n', '7052915715');
-insert into Customers (name, email, age, password, phone_no) values ('Renie Claus', 'rclaus17@people.com.cn', 55, 'Zq4ns0', '5698221377');
-insert into Customers (name, email, age, password, phone_no) values ('Annalise Bovis', 'abovis18@yellowpages.com', 68, 'YAkEP6TWj', '2927084717');
-insert into Customers (name, email, age, password, phone_no) values ('Joycelin McGregor', 'jmcgregor19@pen.io', 81, 'K5C41LuV31J', '3308247126');
-insert into Customers (name, email, age, password, phone_no) values ('Matelda Lamlin', 'mlamlin1a@irs.gov', 10, 'DE4G8In6', '3334294250');
-insert into Customers (name, email, age, password, phone_no) values ('Gibbie Littlefield', 'glittlefield1b@twitpic.com', 59, 'UUuWw2Nk8wM', '9916276347');
-insert into Customers (name, email, age, password, phone_no) values ('My Advani', 'madvani1c@moonfruit.com', 79, 'J9bHjnpbB', '9823076570');
-insert into Customers (name, email, age, password, phone_no) values ('Bartholemy Paskins', 'bpaskins1d@google.fr', 54, 'dZbEJZMPruhi', '2143950751');
-insert into Customers (name, email, age, password, phone_no) values ('Merola Buckie', 'mbuckie1e@nih.gov', 75, '1u25p0tqW', '8474648516');
-insert into Customers (name, email, age, password, phone_no) values ('Janeta Corsham', 'jcorsham1f@wunderground.com', 55, '7H6Yva5F', '9601960766');
-insert into Customers (name, email, age, password, phone_no) values ('Fair Coyne', 'fcoyne1g@yale.edu', 44, 'k9RuSccFCC', '2482642598');
-insert into Customers (name, email, age, password, phone_no) values ('Wilone Emberson', 'wemberson1h@bing.com', 12, 'gx8frm12', '4012101033');
-insert into Customers (name, email, age, password, phone_no) values ('Pansie Grewes', 'pgrewes1i@shutterfly.com', 78, 'ZHbMkuQC', '2937994753');
-insert into Customers (name, email, age, password, phone_no) values ('Chlo Primarolo', 'cprimarolo1j@g.co', 27, 'TFIHB8k', '8735455534');
-insert into Customers (name, email, age, password, phone_no) values ('Monique Pawlett', 'mpawlett1k@eventbrite.com', 42, 'eiYuUlP0Q', '4649186908');
-insert into Customers (name, email, age, password, phone_no) values ('Hagen Carnie', 'hcarnie1l@sun.com', 87, 'QsVVeUag9p', '3727592354');
-insert into Customers (name, email, age, password, phone_no) values ('Wyatan Pilsworth', 'wpilsworth1m@bluehost.com', 63, 'PdAsuh', '7766585240');
-insert into Customers (name, email, age, password, phone_no) values ('Jenine Deakins', 'jdeakins1n@dailymotion.com', 96, '3ohsJa7uzHP', '2681714863');
-insert into Customers (name, email, age, password, phone_no) values ('Ardyce Ettridge', 'aettridge1o@booking.com', 51, 'O3Lk3p0HOkSc', '3243516971');
-insert into Customers (name, email, age, password, phone_no) values ('Isidoro Munday', 'imunday1p@cnn.com', 78, 'cvLKrDgyr1XA', '4762381622');
-insert into Customers (name, email, age, password, phone_no) values ('Mattie Fison', 'mfison1q@purevolume.com', 49, 'mJHQbcOVSd2K', '4246231474');
-insert into Customers (name, email, age, password, phone_no) values ('Lonee Borwick', 'lborwick1r@nytimes.com', 95, 'BH3g2BhKX', '2801412944');
-insert into Customers (name, email, age, password, phone_no) values ('Lissa Flye', 'lflye1s@epa.gov', 68, 'BWmsfGbtQ9', '3235885116');
-insert into Customers (name, email, age, password, phone_no) values ('Meyer Graber', 'mgraber1t@storify.com', 73, 'Mc2etj', '4249619823');
-insert into Customers (name, email, age, password, phone_no) values ('Bobby January', 'bjanuary1u@imdb.com', 19, 'Cc9j58P', '1985231949');
-insert into Customers (name, email, age, password, phone_no) values ('Antonin Colson', 'acolson1v@sina.com.cn', 34, 'sFskDv8MWn', '4579754339');
-insert into Customers (name, email, age, password, phone_no) values ('Homer Boyen', 'hboyen1w@tripadvisor.com', 92, 'EMFuyLhLJeg', '9494836602');
-insert into Customers (name, email, age, password, phone_no) values ('Darrelle Sykes', 'dsykes1x@barnesandnoble.com', 79, '01QbU4r5eONo', '6563744366');
-insert into Customers (name, email, age, password, phone_no) values ('Marsiella Mogenot', 'mmogenot1y@storify.com', 38, 'bi4g6r6Ak', '3236849348');
-insert into Customers (name, email, age, password, phone_no) values ('Petronilla Marchello', 'pmarchello1z@topsy.com', 91, 'hCr9moJym2H2', '9343193628');
-insert into Customers (name, email, age, password, phone_no) values ('Jonas Proschke', 'jproschke20@reuters.com', 75, 'hSo3L1lLUp', '4897631566');
-insert into Customers (name, email, age, password, phone_no) values ('Phillipp McGriele', 'pmcgriele21@npr.org', 88, 'pCrCjV2GJH', '5703579698');
-insert into Customers (name, email, age, password, phone_no) values ('Aundrea Snodden', 'asnodden22@unicef.org', 55, 'GvMyt5l', '1785157175');
-insert into Customers (name, email, age, password, phone_no) values ('Nora Impett', 'nimpett23@auda.org.au', 46, '6QtzuVdqjBf', '8268664341');
-insert into Customers (name, email, age, password, phone_no) values ('Delmar MacGorrie', 'dmacgorrie24@acquirethisname.com', 31, 'a7HDIoJ06IL', '9647287239');
-insert into Customers (name, email, age, password, phone_no) values ('Gwendolin Chapman', 'gchapman25@goo.ne.jp', 27, 't82Ye0kc', '4615552273');
-insert into Customers (name, email, age, password, phone_no) values ('Rik Garrat', 'rgarrat26@sourceforge.net', 95, 'dKnkISZ1o', '2612005207');
-insert into Customers (name, email, age, password, phone_no) values ('Lily Duer', 'lduer27@arstechnica.com', 7, '5FGPrdizEfo', '2289718200');
-insert into Customers (name, email, age, password, phone_no) values ('Joyce Sinderson', 'jsinderson28@shinystat.com', 84, 'jrsoN6FNvu', '5744545470');
-insert into Customers (name, email, age, password, phone_no) values ('Gael Hobble', 'ghobble29@i2i.jp', 73, 'fByDQU', '8479333796');
-insert into Customers (name, email, age, password, phone_no) values ('Tate Glencrash', 'tglencrash2a@cdbaby.com', 65, 'G2jYqI1', '3316206378');
-insert into Customers (name, email, age, password, phone_no) values ('Phillis Pulford', 'ppulford2b@microsoft.com', 93, 'cV5fxP', '1134247926');
-insert into Customers (name, email, age, password, phone_no) values ('Benedick Paolicchi', 'bpaolicchi2c@addthis.com', 89, 'iFSlVYsSxR', '1157912018');
-insert into Customers (name, email, age, password, phone_no) values ('Seth Whitters', 'swhitters2d@slashdot.org', 57, '7gyTeuj', '4091096593');
-insert into Customers (name, email, age, password, phone_no) values ('Margo Gotcliffe', 'mgotcliffe2e@archive.org', 34, 'd4f7R2C', '8315198389');
-insert into Customers (name, email, age, password, phone_no) values ('Shawn Larway', 'slarway2f@youku.com', 79, 'e4v3FHJi', '3884663256');
-insert into Customers (name, email, age, password, phone_no) values ('Rodina Nore', 'rnore2g@google.pl', 74, 'bMyHQUOJ', '2532945102');
-insert into Customers (name, email, age, password, phone_no) values ('Eimile Rishman', 'erishman2h@blog.com', 53, 'iXTg3mH', '4958374573');
-insert into Customers (name, email, age, password, phone_no) values ('Carri Van Oort', 'cvan2i@elpais.com', 35, 'ivGD6IKAgPP', '3963551408');
-insert into Customers (name, email, age, password, phone_no) values ('Stephie Sketchley', 'ssketchley2j@google.de', 13, 'zK0LbadW1C', '5135038799');
-insert into Customers (name, email, age, password, phone_no) values ('Torrey Worsell', 'tworsell2k@nytimes.com', 21, 'UZ22wf3lO0j', '7459255111');
-insert into Customers (name, email, age, password, phone_no) values ('Sayres Gouldthorpe', 'sgouldthorpe2l@ebay.co.uk', 91, 'EQGzAoo', '7174387875');
-insert into Customers (name, email, age, password, phone_no) values ('Raoul Roughan', 'rroughan2m@ehow.com', 36, 'pYSvfKCNYxr', '8868600918');
-insert into Customers (name, email, age, password, phone_no) values ('Liuka Vile', 'lvile2n@oaic.gov.au', 8, 'CwmeW50mJc', '3747286176');
-insert into Customers (name, email, age, password, phone_no) values ('Sayres Ahrend', 'sahrend2o@shinystat.com', 97, 'Sdz9X0aZDRWn', '5913000891');
-insert into Customers (name, email, age, password, phone_no) values ('Jesus Heers', 'jheers2p@admin.ch', 85, 'TnBUZ1ixY23n', '6147560921');
-insert into Customers (name, email, age, password, phone_no) values ('Esteban Scotchford', 'escotchford2q@bigcartel.com', 58, 'vMfcdMWzIb6r', '4744813751');
-insert into Customers (name, email, age, password, phone_no) values ('Amble Shere', 'ashere2r@lulu.com', 67, 'OzeEyaETvl8T', '7399892030');
+CREATE TABLE `films` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `director` varchar(50) DEFAULT NULL,
+  `duration` varchar(50) DEFAULT NULL,
+  `trailer_url` varchar(1000) DEFAULT NULL,
+  `age` varchar(3) DEFAULT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `released` tinyint(1) DEFAULT NULL,
+  `oscar` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-create table Booking (
-	id INT NOT NULL AUTO_INCREMENT,
-	screening_id INT,
-	no_of_seats INT,
-	cust_id INT,
-	PRIMARY KEY(id)
+INSERT INTO `films` (`id`, `name`, `director`, `duration`, `trailer_url`, `age`, `description`, `released`, `oscar`) VALUES
+(1, 'Inception', 'Christopher Nolan', '2:28', 'YoHD9XEInc0', '12A', 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.', 2, NULL),
+(2, 'Avatar: The Way of the Water', 'James Cameron', '3:13', 'd9MyW72ELq0', 'PG', 'Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na\'vi race to protect their home.', 1, 'picture , (W)'),
+(3, 'The Fabelmans', 'Steven Spielberg', '2:31', 'D1G2iLSzOe8', '18', 'Growing up in post-World War II era Arizona, young Sammy Fabelman aspires to become a filmmaker as he reaches adolescence, but soon discovers a shattering family secret and explores how the power of films can help him see the truth.', 1, 'picture , actor , director'),
+(4, 'Puss in Boots: The Last Wish', 'Joel Crawford', '1:42', 'RqrXhwS33yc', 'U', 'When Puss in Boots discovers that his passion for adventure has taken its toll and he has burned through eight of his nine lives, he launches an epic journey to restore them by finding the mythical Last Wish.', 1, 'animated'),
+(5, 'Babylon', 'Damien Chazelle', '3:09', '5muQK7CuFtY', '18', 'A tale of outsized ambition and outrageous excess, it traces the rise and fall of multiple characters during an era of unbridled decadence and depravity in early Hollywood.', 1, NULL),
+(6, 'Life is a Jungle', 'Robert D. Hanna', '1:41', 'rwyUzHEG_XY', 'U', 'When Pip, a pampered and snobbish puppy, gets separated from his owners on an African safari, he is forced to adapt a new way of life in the jungle where he learns that caviar and manicures can never bring the same happiness as friendship.', 2, NULL),
+(7, 'Guardians of the Galaxy Vol. 3', 'James Gunn', '2:22', 'u3V5KDHRQvk', '12A', 'Still reeling from the loss of Gamora, Peter Quill rallies his team to defend the universe and one of their own - a mission that could mean the end of the Guardians if not successful.', 0, NULL),
+(8, 'Ant-Man and The Wasp: Quantumania', 'Peyton Reed', '2:05', 'ZlNFpri-Y40', '12A', 'Scott Lang and Hope Van Dyne, along with Hank Pym and Janet Van Dyne, explore the Quantum Realm, where they interact with strange creatures and embark on an adventure that goes beyond the limits of what they thought was possible.', 1, NULL),
+(9, 'Spider-Man Across the Spiderverse', 'Joaqium Dos Santos', '1:54', 'cqGjhVJWtEg', 'U', 'Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.', 0, NULL),
+(10, 'Shazam! Fury of the Gods', 'David F. Sandberg', '1:40', 'h7ldMwIjlk0&t', '12A', 'Four years after gaining the ability to transform into an adult superhero by shouting Shazam!, teenage Billy Baston and his adopted super-family face the wrath of the daughters of Atlas. Shazam! Fury Of The Gods stars returning cast members Zachary Levi as Shazam; Asher Angel as Billy Batson; Jack Dylan Grazer as Freddy Freeman, with the rest of the original cast reprising their roles as Billy\'s family and their respective super-selves, and sees Rachel Zegler, Lucy Liu, and Helen Mirren join the cast.', 0, NULL),
+(11, 'Creed III', 'Michael B. Jordan', '1:57', 'AHmCH7iB_IM', '12A', 'When a childhood friend and former boxing prodigy, Damian (Jonathan Majors), resurfaces after serving a long sentence in prison, he is eager to prove that he deserves his shot in the ring. The face off between former friends is more than just a fight.', 0, NULL),
+(12, 'Magic Mike Last Dance', 'Steven Soderbergh', '1:52', 'oLoyU3xYwbs', '12A', 'A 1950s housewife Magic Mike\'s Last Dance with her husband in a utopian experimental community begins to worry that his glamorous company could be hiding disturbing secrets. If you\'re a fan of the comics, you won\'t want to miss this one!', 2, NULL),
+(13, 'Cocaine Bear', 'Elizabeth Banks', '1:35', 'DuWEEKeJLMI', '18', 'Cocaine Bear is a 2023 American dark comedy action film directed and co-produced by Elizabeth Banks and written by Jimmy Warden. It is loosely inspired by the true story of the Cocaine Bear, an American black bear that ingested a duffel bag full of cocaine in 1985.', 1, NULL),
+(14, 'John Wick 4', 'Chad Stahelski', '2:49', 'qEVUtrk8_B4', '18', 'John Wick uncovers a path to defeating the High Table, but before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into new foes.', 0, NULL),
+(15, 'An Cailin Ciúin', 'Colm Bairéad', '1:36', 'LGWyqty2m-A', 'U', 'The Quiet Girl is a 2022 Irish coming-of-age drama film written and directed by Colm Bairéad. The dialogue is mostly in Irish.', 1, NULL),
+(16, 'The Super Mario Bros. Movie', 'Aaron Horvath', '1:32', 'TnGl01FkMMo', 'U', 'The main hero of the Mushroom Kingdom. Mario is always bright and cheerful and instantly recognizable with his blue overalls, red cap, and trademark moustache. He\'s a trusted friend of Princess Peach, and he and his brother Luigi are known across the land for their acts of bravery.', 0, NULL),
+(17, 'The Whale', 'Darren Aronofsky', '1:57', 'nWiQodhMvz4', '12A', 'Charlie is an Idaho-based English teacher who never leaves his apartment and spends his time hosting online writing courses for college students via video conference, but keeps his webcam switched off; at almost 600 lb, he is ashamed of being morbidly obese and is afraid to show the students his appearance.', 1, 'actor , (W)'),
+(18, 'A Man Called Otto', 'Marc Forster', '2:06', 'eFYUX9l-m5I', '12A', 'When a lively young family moves in next door, grumpy widower Otto Anderson meets his match in a quick-witted, pregnant woman named Marisol, leading to an unlikely friendship that turns his world upside down.', 1, NULL),
+(19, 'Knock at the Cabin', 'M. Night Shaymalan', '1:40', '0wiBHEACNHs', '18', 'A young girl named Wen and her two fathers go on vacation to a remote cabin in a forest. They have fun swimming, and while her fathers are relaxing on the deck, Wen collects and and classifies insects. Suddenly, she notices a strange man walking through the woods towards the cabin. The man, named Leonard, introduces himself to Wen and is soon joined by three others. Wen and her fathers barricade themselves inside the house, but the four armed strangers break in. Leonard tells them they\'re there to prevent the apocalypse and to do that, they have to ask the family to make a terrible decision. With limited access to the outside world, the family must decide what they believe before all is lost.', 1, NULL),
+(20, 'The Banshees of Inisherin', 'Martin Mc Donagh', '1:53', 'uRu3zLOJN2c', '18', 'On a remote island off the coast of Ireland, Pádraic is devastated when his buddy Colm suddenly puts an end to their lifelong friendship. With help from his sister and a troubled young islander, Pádraic sets out to repair the damaged relationship by any means necessary. However, as Colm\'s resolve only strengthens, he soon delivers an ultimatum that leads to shocking consequences.', 1, 'picture ,  actor , director'),
+(21, 'Interstellar', 'Christopher Nolan', '2:49', '2LqzF5WauAw', 'U', 'When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.', 2, NULL),
+(22, 'Birdman or (The Unexpected Virtue of Ignorance)', 'Alejandro González Iñárritu', '2:01', 'uJfLoE6hanc', '12A', 'Riggan Thomson is a faded actor famous for playing a superhero named Birdman in a film trilogy from 1989 to 1992. He is tormented by the mocking and critical internal voice of Birdman and frequently visualizes himself performing feats of levitation and telekinesis.', 2, NULL),
+(23, 'Everything Everywhere All At Once', 'Daniel Kwan', '2:20', 'wxN1T1uxQ2g', '12A', 'A Chinese immigrant gets unwillingly embroiled in an epic adventure where she must connect different versions of herself in the parallel universe to stop someone who intends to harm the multiverse.', 1, 'picture , actor , director , (W)'),
+(24, 'Licorice Pizza', 'Paul Thomas Anderson', '2:13', 'ofnXPwUPENo', '12A', 'Licorice Pizza is the story of Alana Kane and Gary Valentine growing up, running around and falling in love in the San Fernando Valley, 1973. Written and directed by Paul Thomas Anderson, the film tracks the treacherous navigation of first love.', 1, NULL),
+(25, 'Oppenheimer', 'Christopher Nolan', '2:30', 'bK6ldnjE3Y0&t=1s', '12A', 'The film follows the life of theoretical physicist J. Robert Oppenheimer, the director of the Los Alamos Laboratory during the Manhattan Project, and his contributions that led to the creation of the atomic bomb.', 0, NULL),
+(26, 'Dune: Chapter 2', 'Denis Villenueve', '3:15', '7WdkPwJTnQk', '18', 'The film will explore the continuing journey of Paul Atreides who is united with Chani and the Fremen. He seeks revenge against the conspirators who destroyed his family.', 0, NULL),
+(27, 'Pulp Fiction', 'Quentin Tarantino', '2:34', 's7EdQ4FqbhY', '18', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 1, NULL),
+(35, 'All Quiet On The Western Front', 'Edward Berger', '2:23', 'hf8EYbVxtCY', '18', 'An antiwar novel set during World War I, it relies on Remarque\'s personal experience in the war to depict the era\'s broader disillusionment. The book is an account of Paul Baumer\'s experiences in battle and his short career as a soldier, and it is primarily concerned with the effect of war on young men.', 1, 'picture , cinematography , (W)'),
+(36, 'Elvis', 'Baz Luhrmann', '2:39', 'wBDLRvjHVOY', '12A', 'Elvis is a 2022 biographical drama film directed by Baz Luhrmann from a screenplay he co-wrote with Sam Bromell, Craig Pearce, and Jeremy Doner. It chronicles the life of the American rock and roll singer and actor Elvis Presley under the management of Colonel Tom Parker.', 1, 'picture , actor , cinematography'),
+(37, 'TÁR', 'Todd Field', '2:38', 'Na6gA1RehsU', '12A', 'Played with fierce and seamless commitment by Cate Blanchett, Lydia Tár is one of the wonders of the classical realm. She is a virtuoso pianist, an earnest ethnomusicologist, and a purposeful popularizer—she is apparently a member of the EGOT club, which isn’t a common achievement for a classical person. And as a protean conductor about to conclude recording a cycle of Mahler symphonies, Lydia needs to get away from noise to do the work to which she almost stridently commits herself.', 1, 'picture , actor , cinematography , director'),
+(38, 'Top Gun: Maverick', 'Tony Scott', '2:11', 'qSqVVswa420', '12A', 'After thirty years, Maverick is still pushing the envelope as a top naval aviator, but must confront ghosts of his past when he leads TOP GUN\'s elite graduates on a mission that demands the ultimate sacrifice from those chosen to fly it.', 1, 'picture'),
+(39, 'Triangle of Sadness', 'Ruben Östlund', '2:20', 'VDvfFIZQIuQ', '12A', 'Celebrity model couple, Carl (Harris Dickinson) and Yaya (Charlbi Dean), are invited on a luxury cruise for the uber-rich, helmed by an unhinged boat captain (Woody Harrelson). What first appeared instagrammable ends catastrophically, leaving the survivors stranded on a desert island and fighting for survival.', 1, 'picture , director'),
+(40, 'Women Talking', 'Sarah Polley', '1:44', 'pD0mFhMqDCE', '12A', 'Do nothing, stay and fight, or leave. In 2010, the women of an isolated religious community grapple with reconciling a brutal reality with their faith.', 1, 'picture'),
+(41, 'Causeway', 'Lila Neugebauer', '1:32', 'VojBOTd6Euo', '12A', 'Lynsey, a U.S. soldier, experiences a traumatic brain injury after an IED explosion during her tour in Afghanistan which forces her to return home in New Orleans. She struggles to return to her daily life with her mother as she waits for her wish to return for redeployment.', 1, 'actor '),
+(42, 'Aftersun', 'Charlotte Wells', '1:36', 'vXKcWRu8K_U', '12A', 'At a fading vacation resort, 11-year-old Sophie treasures rare time together with her loving and idealistic father, Calum (Paul Mescal). As a world of adolescence creeps into view, beyond her eye Calum struggles under the weight of life outside of fatherhood. Twenty years later, Sophie\'s tender recollections of their last holiday become a powerful and heartrending portrait of their relationship, as she tries to reconcile the father she knew with the man she didn\'t, in Charlotte Wells\' superb and searingly emotional debut film.', 1, 'actor'),
+(43, 'Living', 'Oliver Hermanus', '1:42', 't2L8CP31-14', 'PG', 'LIVING is the story of an ordinary man, reduced by years of oppressive office routine to a shadow existence, who at the eleventh hour makes a supreme effort to turn his dull life into something wonderful.', 1, 'actor'),
+(44, 'Blonde', 'Andrew Dominik', '2:46', 'aIsFywuZPoQ', '18', 'In the 1940s, Norma Jeane becomes a pin-up model under the stage name \"Marilyn Monroe\", featuring on magazine covers and calendars. While trying to break into the acting world, she is raped by film studio president Mr. Z.', 1, 'actor'),
+(45, 'To Leslie', 'Michael Morris', '1:59', 'D_k63vvm3mU', '18', 'To Leslie is a 2022 American independent drama film directed by Michael Morris (in his feature directorial debut), from a screenplay by Ryan Binaco. The film stars Andrea Riseborough as Leslie Rowland, a single mother and alcoholic who squanders all the prize money she received after winning the lottery.', 1, 'actor'),
+(46, 'Guillermo Del Toro\'s Pinocchio', 'Guillermo Del Toro', '1:54', 'Od2NW1sfRdA', 'U', 'A father\'s wish magically brings a wooden boy to life in Italy, giving him a chance to care for the child.', 1, 'animated, (W)'),
+(47, 'Marcel The Shell With Shoes On', 'Dean Fleischer Camp', '1:29', 'k98Afd7Nf3Y', 'U', 'The film follows Marcel, a shell who lives with his grandmother, Connie, after posting a short film online bringing Marcel millions of passionate fans and a new hope of reuniting with his long-lost family.', 1, 'animated'),
+(48, 'The Sea Beast', 'Chris Williams', '1:59', 'P-E-IGQCsPo', 'U', 'When a young girl stows away on the ship of a legendary sea monster hunter, they launch an epic journey into uncharted waters - and make history to boot.', 1, 'animated'),
+(49, 'Turning Red', 'Domee Shi', '1:30', 'XdKzUbAiswE', 'U', 'It\'s 2002 Toronto. Meilin is a 13 year-old Chinese-Canadian girl on the verge of adulthood. Her family cares for their temple honorable their ancestor who turned into a red panda to defend her family. One morning, she wakes up to find herself transformed into a red panda.', 1, 'animated'),
+(50, 'Black Panther: Wakanda Forever', 'Ryan Coogler', '2:41', 'RlOB3UALvrQ', 'U', 'T\'Challa, king of Wakanda, is dying from an unspecified terminal illness which his sister Shuri believes can be cured by the \"heart-shaped herb\". Shuri attempts to synthetically recreate the herb after it was destroyed by Erik Killmonger, but fails to do so before T\'Challa dies.', 1, 'actor'),
+(51, 'Bardo, False Chronicle of a Handful of Truths', 'Alejandro González Iñárritu', '2:54', 'lCQimQfDuTs', '12A', 'The film stars Daniel Giménez Cacho alongside Griselda Siciliani, and follows a journalist/documentarian who returns to his native country of Mexico and begins having an existential crisis in the form of dreamlike visions. The title refers to the Buddhist concept bardo, a liminal state between death and rebirth.', 1, 'cinematography'),
+(52, 'Empire of Light', 'Sam Mendes', '1:59', 'HdMPTgYi-0w', 'U', 'Hilary (Olivia Colman) is a cinema manager struggling with her mental health, and Stephen (Micheal Ward) is a new employee longing to escape the provincial town where he faces daily adversity. Together they find a sense of belonging and experience the healing power of music, cinema, and community.', 1, 'cinematography');
 
-);
+CREATE TABLE `screening` (
+  `id` int(11) NOT NULL,
+  `price` varchar(50) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `time` varchar(50) DEFAULT NULL,
+  `film_id` int(11) DEFAULT NULL,
+  `screen_id` int(11) DEFAULT NULL,
+  `totalSeatsBooked` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-insert into Booking (screening_id, no_of_seats, cust_id) values (45, 15,1);
+INSERT INTO `screening` (`id`, `price`, `date`, `time`, `film_id`, `screen_id`, `totalSeatsBooked`) VALUES
+(1, '€44,32', '2023-03-11', '15:00', 1, 1, 20),
+(2, '€18,11', '0000-00-00', '15:00', 53, 1, 20),
+(3, '€28,61', '0000-00-00', '15:00', 53, 1, 20),
+(4, '€6,25', '0000-00-00', '15:00', 53, 1, 20),
+(5, '€72,05', '2023-03-13', '15:00', 13, 1, 20),
+(6, '€5.67', '2023-03-11', '18:00', 2, 1, 1),
+(7, '€7', '2023-11-03', '16:00', 1, 1, 2);
 
-create table Staff (
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(50),
-	email VARCHAR(50),
-	age INT,
-	password VARCHAR(50),
-	phone_no VARCHAR(50),
-	PRIMARY KEY(id)
-);
+CREATE TABLE `screens` (
+  `id` int(11) NOT NULL,
+  `capacity` int(11) DEFAULT NULL,
+  `open` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-insert into Staff (name, email, age, password, phone_no) values ('Neely Kettlestring', 'nkettlestring0@europa.eu', 23, '4sdBOo3O', '3146162205');
-insert into Staff (name, email, age, password, phone_no) values ('Eleanora Lammiman', 'elammiman1@devhub.com', 12, '2gvCLq66oX', '1509714908');
-insert into Staff (name, email, age, password, phone_no) values ('Cornie Burges', 'cburges2@tiny.cc', 41, 'rfs8a2', '2149780222');
-insert into Staff (name, email, age, password, phone_no) values ('Bee Playle', 'bplayle3@is.gd', 69, 'H130hKds', '8988844024');
-insert into Staff (name, email, age, password, phone_no) values ('Ari Siggs', 'asiggs4@acquirethisname.com', 45, '5JmkLhiBGjw', '5674631432');
+INSERT INTO `screens` (`id`, `capacity`, `open`) VALUES
+(1, 85, '1'),
+(2, 85, '1'),
+(3, 85, '1'),
+(4, 120, '1'),
+(5, 120, '1'),
+(6, 120, '1'),
+(7, 150, '1');
 
-create table Screening (
-	id INT NOT NULL AUTO_INCREMENT,
-	price VARCHAR(50),
-	date DATE,
-	time VARCHAR(50),
-	film_id INT,
-	screen_id INT,
-	totalSeatsBooked INT,
-	PRIMARY KEY(id)
-);
+CREATE TABLE `staff` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `phone_no` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-#need to fix the date value it doesnt work maybe change to varchar
+INSERT INTO `staff` (`id`, `name`, `email`, `password`, `phone_no`) VALUES
+(7, 'Jack Mac Intyre', 'jack@decade.ie', 'jack1234', '0874594597'),
+(8, 'Killian Dolan', 'killian@decade.ie', 'killian1234', '0871597543'),
+(9, 'Leigh Whoriskey', 'leigh@decade.ie', 'leigh1234', '0874911568'),
+(10, 'Caoimhe Gallagher', 'caoimhe@decade.ie', 'caoimhe1234', '0874812697');
 
-insert into Screening (price, date ,time, film_id, screen_id, totalSeatsBooked) values ('€44,32', '12/03/2023','15:00', 53, 1, 20);
-insert into Screening (price, date, time, film_id, screen_id, totalSeatsBooked) values ('€18,11', '22/09/2023','15:00', 53, 1, 20);
-insert into Screening (price, date, time, film_id, screen_id, totalSeatsBooked) values ('€28,61', '23/07/2023','15:00', 53, 1, 20);
-insert into Screening (price, date, time, film_id, screen_id, totalSeatsBooked) values ('€6,25', '07/02/2024','15:00', 53, 1, 20);
-insert into Screening (price, date, time, film_id, screen_id, totalSeatsBooked) values ('€72,05', '06/12/2023','15:00', 53, 1, 20);
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `films`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `screening`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `screens`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `booking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+
+ALTER TABLE `films`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+ALTER TABLE `screening`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+ALTER TABLE `screens`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+ALTER TABLE `staff`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+COMMIT;
+
