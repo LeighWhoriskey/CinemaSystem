@@ -9,6 +9,26 @@ $("document").ready(function(){
     return;
   }
 
+
+  $.ajax({
+    url: "/ticketsBooked",
+    cache: false,
+    dataType: "json",
+    type: "POST",
+    data:{
+      FilmId: filmId
+    },
+    success: function(res){
+        
+        $.each(res,function(value){
+          console.log(value.date);
+          console.log(value.time);
+        })
+        $("#movie-times").append("<p>")
+    }
+  });
+});
+
   $.getJSON(`http://localhost:3000/movie-details/${filmId}/`, function(data){
     if (!data) {
       console.error(`No movie details found for ID ${filmId}`);
@@ -75,3 +95,4 @@ $("document").ready(function(){
     });
   });
 });
+
