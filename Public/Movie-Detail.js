@@ -82,20 +82,8 @@ $("document").ready(function(){
         </div>
       </div>`);
     });
-    
-    $.getJSON(`http://localhost:3000/movie-details/${filmId}/`, function(data){
-      if (!data) {
-        console.error(`No movie details found for ID ${filmId}`);
-        return;
-      }
-
-      $.each(data, function(i, screening) {
-        if (screening.film_ID == id) {
-          $("#screenings").append(`<p>Date: ${screening.date}, Time: ${screening.time}</p>`);
-        }
-      });
-    });
   });
+   
 
 
 
