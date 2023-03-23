@@ -10,7 +10,8 @@ $("document").ready(function(){
     var filmId = params.get("filmNumber");//get film id when you click into the booking 
     var screeningId = params.get("Screening");//need to grab it
     var screenId = params.get("Screen");
-    var dateTime = params.get("dateTime"); 
+    var date = params.get("Date");
+    var time = params.get("Time"); 
     var ScreenCapacity = 0;
     var BookedTickets = 0;
 
@@ -32,9 +33,11 @@ $("document").ready(function(){
           ScreenId: screenId
         },
         success: function(res){
-            console.log(res);
-            BookedTickets = res[0].totalSeatsBooked;
-            ScreenCapacity = res[0].capacity;
+            $.each(res,function(i,value){
+                console.log(res);
+                BookedTickets = value.totalSeatsBooked;
+                ScreenCapacity = value.capacity;
+            });
         }
     });
 
@@ -47,7 +50,7 @@ $("document").ready(function(){
         });
     });
 
-    for(var i =0; i <10; i++){
+    for(var i = 0; i <10; i++){
         $("#adult").append("<option value = "+ i +">"+ i +"</option>");
         $("#child").append("<option value = "+ i +">"+ i +"</option>");
     }
@@ -64,7 +67,6 @@ $("document").ready(function(){
 
             window.location.href ="BookingPayment.html?adult="+adultTicket+"&child="+ childTicket +"&ScreenNum=" 
                 + screenId +"&Screening=" + screeningId + "&film=" +filmId +"&custId="+ custID +"&dateTime=" + dateTime;
-
         }
         else{
 

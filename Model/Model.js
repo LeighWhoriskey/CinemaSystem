@@ -5,8 +5,8 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema'
-  //port: 3305
+  database : 'cinema',
+  port: 3305
 });
 
 connection.connect(function(err){
@@ -70,7 +70,7 @@ exports.Booking = function(req, res, data){
 
 exports.Customer = function(req, res, data){
 	if(data.operation == "CREATE"){
-		connection.query("INSERT INTO customers (name, email, age, password, phone_no) VALUES('" + data.name +"', '" + data.email +"', '" + data.age +"', '" + data.password +"', '" + data.phone_no +"');",function(error, rows, feilds){
+		connection.query("INSERT INTO customers (name, email, password, phone_no) VALUES('" + data.name +"', '" + data.email +"', '" + data.password +"', '" + data.phone_no +"');",function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
@@ -188,7 +188,7 @@ exports.getScreenings = function(req,res,data){
 }
 
 exports.GetFilmTimes = function(req,res,data){
-	connection.query("SELECT date, time FROM screening WHERE film_id =" + data.FilmId ,function(error, rows, feilds){
+	connection.query("SELECT date, time, id, screen_id FROM screening WHERE film_id =" + data.FilmId ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});

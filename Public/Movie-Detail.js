@@ -2,6 +2,9 @@ $("document").ready(function(){
   var queryString = window.location.search;
   var urlParams = new URLSearchParams(queryString);
   var filmId = urlParams.get('id');
+  var screening = 0;
+  var screenId = 0;
+  
   
   if (!filmId) {
     console.error("No film ID provided in URL");
@@ -9,25 +12,6 @@ $("document").ready(function(){
     return;
   }
 
-
-  $.ajax({
-    url: "/ticketsBooked",
-    cache: false,
-    dataType: "json",
-    type: "POST",
-    data:{
-      FilmId: filmId
-    },
-    success: function(res){
-        
-        $.each(res,function(value){
-          console.log(value.date);
-          console.log(value.time);
-        })
-        $("#movie-times").append("<p>")
-    }
-  });
-});
 
   $.getJSON(`http://localhost:3000/movie-details/${filmId}/`, function(data){
     if (!data) {
@@ -65,6 +49,7 @@ $("document").ready(function(){
         </div>
         <div class="movie-info" style="margin-left: 50px;">
           <h2 style="margin-top: 0;">${value.name}</h2>
+          <h4 style="color: #808080; margin-top: 5px; margin-bottom: 10px;">Directed by ${value.director}</h4>
           <div class="age-rating" style="display: flex; align-items: center; margin-bottom: 10px;">
             <svg height='60px' width ='100%' style="margin-right: 10px;">
               <circle cx="275" cy="27" r="25" stroke="black" fill="${ageColor}"></circle>
@@ -88,11 +73,37 @@ $("document").ready(function(){
       }
 
       $.each(data, function(i, screening) {
-        if (screening.film_ID == id) {
+        if (screening.film_ID == filmId) {
           $("#screenings").append(`<p>Date: ${screening.date}, Time: ${screening.time}</p>`);
         }
       });
     });
+  });
+
+  $.ajax({
+    url: "/ticketsBooked",
+    cache: false,
+    dataType: "json",
+    type: "POST",
+    data:{
+      FilmId: filmId
+    },
+    success: function(res){
+      console.log(res);
+        
+        $.each(res,function(i,value){
+          $("#movie-times").append("<p id='time"+i+"'> "+ value.date +" " +  value.time +"</p>");
+
+          $("#time"+i).on("click",function(){
+            alert("You pressed " + value.time );
+
+            window.location.href ="BookingPayment.html?filmNumber="+filmId+"&Screening="+ value.id +"&Screen=" 
+                + value.screen_id +"&Date=" + value.date + "&Time=" + value.time
+          });
+
+        });
+        
+    }
   });
 });
 

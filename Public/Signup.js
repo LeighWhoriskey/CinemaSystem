@@ -2,7 +2,6 @@ $("document").ready(function(){
 
     $("#post").on("click", function(){
         console.log( $("#name").val()); 
-        console.log( $("#age").val()); 
         console.log( $("#phone_no").val()); 
         console.log( $("#email").val()); 
         console.log( $("#password").val()); 
@@ -15,7 +14,6 @@ $("document").ready(function(){
           data:{
             operation: "CREATE",
             name: $("#name").val(),
-            age: $("#age").val(),
             phone_no: $("#phone").val(),
             email: $("#email").val(),
             password: $("#password").val()
