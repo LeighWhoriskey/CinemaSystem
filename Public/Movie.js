@@ -1,13 +1,11 @@
 
 $("document").ready(function(){
+  var today;
   var d = new Date();
   var todayDate = new Date(d.getFullYear(), d.getMonth(), d.getDate()); // create a Date object for today's date
   $.getJSON("http://localhost:3000/films/today", function(data){
     $.each(data, function(i, value){
       var filmDate = new Date(value.date); 
-      if(filmDate == todayDate){
-        var today= filmDate;
-       }
       if (filmDate >= todayDate) { // compare the dates
         var optionText = filmDate.toLocaleDateString();
         $('#filmsDropDown').append($('<option></option>')
@@ -16,9 +14,12 @@ $("document").ready(function(){
         );
         console.log(value.date);
       }
-  
+      if(filmDate == todayDate){
+        today = filmDate;
+      }
+      
     });
-  
+ 
 
 
   });
