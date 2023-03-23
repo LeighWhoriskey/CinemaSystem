@@ -44,6 +44,14 @@ exports.getMovieDetails = function(req, res, movie){
 }
 
 
+exports.CheckBookedTickets = function(req, res, tickets){
+	connection.query("SELECT screening.totalSeatsBooked, screens.capacity FROM screening, screens  WHERE screens.id = screening.screen_id AND screening.film_id ='"+tickets.FilmId+"' AND screening.id='"+ tickets.ScreeningId+"' AND screens.id='"+tickets.ScreenId+"'", function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));
+	});
+}
+
+
 exports.Booking = function(req, res, data){
 	if(data.operation == "CREATE"){
 		connection.query("INSERT INTO booking (screening_id, no_of_seats,cust_id) VALUES(" + data.ScreenID +", " + data.Seats +", " + data.Customer+");",function(error, rows, feilds){
@@ -169,8 +177,16 @@ exports.getFilms = function(req,res,data){
 	});
 }
 
+
 exports.getScreenings = function(req,res,data){
 	connection.query("SELECT * FROM screening WHERE id =" + data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
+
+exports.GetFilmTimes = function(req,res,data){
+	connection.query("SELECT date, time FROM screening WHERE film_id =" + data.FilmId ,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
 	});
@@ -241,13 +257,24 @@ exports.GetAll = function(req,res,data){
 	});
 }
 exports.getMoviesToday = function(req,res){
-	var d = new Date();
-	var todayDate = d.getFullYear()+ "-" + (d.getMonth()+1) + "-" + d.getDate();
-
-	connection.query(`SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening where films.id = screening.film_id order by Date, Time`, function(err, rows, fields) {
+	
+	connection.query(`SELECT DISTINCT date FROM screening order by date, Time`, function(err, rows, fields) {
 	  if (err) throw err;
 
 	  res.send(JSON.stringify(rows));
 	  
 	});
+
 }
+exports.getFilmsDate = function(req, res, data) {
+	console.log("data:", data);
+	connection.query(
+	  `SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening WHERE films.id = screening.film_id AND Date = '${data.date}' ORDER BY Date, Time`,
+	  function(error, rows, fields) {
+		if (error) {
+		  throw error;
+		}
+		res.send(JSON.stringify(rows));
+	  }
+	);
+  }
