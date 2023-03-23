@@ -4,7 +4,7 @@ $("document").ready(function(){
   
   if(cookie.match("StaffLogin=true")){
   $("#NavBar").addClass("navbar");
-  $("#NavBar").append("<a href = 'Home.html'> <img src='images/logoback.png' height='90px'>");
+  $("#NavBar").append("<a href = 'Home.html'> <img src='images/logo2.png' height='90px'>");
   $("#NavBar").append("<div class='navbar-items'>" +
   "<a href='Home.html'>Home</a>" +
   "<a href='Movie.html'>Now Showing</a>" +
@@ -20,12 +20,12 @@ $("document").ready(function(){
   "</div>" +
   "<a href='Admin.html'>Admin</a>" +
   "</div>");
-  $("#NavBar").append("<a href ='Logout.html'> <img src='images/out.png' height='45px'></a>");
+  $("#NavBar").append("<a href ='Logout.html'> <img src='images/out2.png' height='45px'></a>");
    
   }else if(cookie.match("CustomerLogin=true")){
 
     $("#NavBar").addClass("navbar");
-    $("#NavBar").append("<a href = 'Home.html'> <img src='images/logoback.png' height='90px'>");
+    $("#NavBar").append("<a href = 'Home.html'> <img src='images/logo2.png' height='90px'>");
     $("#NavBar").append("<div class='navbar-items'>" +
     "<a href='Home.html'>Home</a>" +
     "<a href='Movie.html'>Now Showing</a>" +
@@ -43,12 +43,12 @@ $("document").ready(function(){
     "<a href='Account.html'>My Account</a>" +
 
     "</div>");
-    $("#NavBar").append("<a href ='Logout.html'> <img src='images/out.png' height='45px'></a>");
+    $("#NavBar").append("<a href ='Logout.html'> <img src='images/out2.png' height='45px'></a>");
   }
   else{
 
     $("#NavBar").addClass("navbar");
-    $("#NavBar").append("<a href = 'Home.html'> <img src='images/logoback.png' height='90px'>");
+    $("#NavBar").append("<a href = 'Home.html'> <img src='images/logo2.png' height='90px'>");
     $("#NavBar").append("<div class='navbar-items'>" +
     "<a href='Home.html'>Home</a>" +
     "<a href='Movie.html'>Now Showing</a>" +
@@ -63,7 +63,7 @@ $("document").ready(function(){
     "</div>" +
     "</div>" +
     "</div>");
-    $("#NavBar").append("<a href ='login.html'> <img src='images/in.png' height='45px'></a>");
+    $("#NavBar").append("<a href ='login.html'> <img src='images/in2.png' height='45px'></a>");
 
   }
 
@@ -94,7 +94,7 @@ $("document").ready(function(){
 
 
   footerDiv.css({
-      "background": "linear-gradient(180deg, #0BD3F6 0%, #AF69FF 100%)",
+      "background": "#222",
       "color": "#fff",
       "font-size": "14px",
       "text-align": "center",

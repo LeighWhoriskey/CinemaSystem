@@ -65,6 +65,7 @@ $("document").ready(function(){
         </div>
         <div class="movie-info" style="margin-left: 50px;">
           <h2 style="margin-top: 0;">${value.name}</h2>
+          <h4 style="color: #808080; margin-top: 5px; margin-bottom: 10px;">Directed by ${value.director}</h4>
           <div class="age-rating" style="display: flex; align-items: center; margin-bottom: 10px;">
             <svg height='60px' width ='100%' style="margin-right: 10px;">
               <circle cx="275" cy="27" r="25" stroke="black" fill="${ageColor}"></circle>
