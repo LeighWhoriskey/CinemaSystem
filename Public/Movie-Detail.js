@@ -2,6 +2,7 @@ $("document").ready(function(){
   var queryString = window.location.search;
   var urlParams = new URLSearchParams(queryString);
   var filmId = urlParams.get('id');
+  console.log(filmId);
   
   if (!filmId) {
     console.error("No film ID provided in URL");
@@ -94,5 +95,6 @@ $("document").ready(function(){
       });
     });
   });
-});
+
+
 
