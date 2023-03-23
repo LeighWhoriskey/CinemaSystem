@@ -4,7 +4,10 @@ $("document").ready(function(){
   var todayDate = new Date(d.getFullYear(), d.getMonth(), d.getDate()); // create a Date object for today's date
   $.getJSON("http://localhost:3000/films/today", function(data){
     $.each(data, function(i, value){
-      var filmDate = new Date(value.date); // create a Date object for the film's date
+      var filmDate = new Date(value.date); 
+      if(filmDate == todayDate){
+        var today= filmDate;
+       }
       if (filmDate >= todayDate) { // compare the dates
         var optionText = filmDate.toLocaleDateString();
         $('#filmsDropDown').append($('<option></option>')
@@ -13,17 +16,17 @@ $("document").ready(function(){
         );
         console.log(value.date);
       }
+  
     });
   
 
 
   });
 
+
   $("#filmsDropDown").change(function(){
     $("#movies").empty();
     var date = $("#filmsDropDown").val();
-    
-    
       $.getJSON(`http://localhost:3000/getFilmsDate/${date}`, function(data){
     $.each(data, function(i, value) {
 
@@ -44,10 +47,7 @@ $("#movies").append(`<div class="movie-container"><div class="images" ><a href="
                       <div class="screens"id="${value.id}" ><div class="time" id="time-${value.id}" style=""><div>${screenTime}</div></div></div>
                           </div>`);
       }
-      }).fail(function(jqXHR, textStatus, errorThrown) {
-        console.error("Error while fetching movies:", errorThrown);
-        alert("Error while fetching movies:", errorThrown);
-  })
+    });
   });
 });
 });
