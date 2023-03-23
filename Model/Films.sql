@@ -98,7 +98,7 @@ INSERT INTO `films` (`name`, `director`, `duration`, `trailer_url`, `age`, `desc
 CREATE TABLE `screening` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `price` varchar(50) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` varchar(100) DEFAULT NULL,
   `time` varchar(50) DEFAULT NULL,
   `film_id` int(11) DEFAULT NULL,
   `screen_id` int(11) DEFAULT NULL,

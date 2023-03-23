@@ -236,7 +236,7 @@ body {
  /* Dropdown */
 
 
-.dropbtn {
+ .dropbtn {
   border: none;
   cursor: pointer;
   background-color: inherit;
@@ -248,11 +248,12 @@ body {
 .dropdown {
   position: relative;
   display: inline-block;
+  z-index: 5;
 }
 .dropdown-content {
   display: none;
   position: absolute;
-  z-index: 1;
+  z-index: 6;
   top: 100%;
   min-width: 160px;
   padding: 8px 0;
@@ -275,6 +276,7 @@ body {
   background-color: #555;
   color: white;
 }
+
 
 
  /* Booking */
