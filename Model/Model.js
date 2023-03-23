@@ -87,7 +87,7 @@ exports.Customer = function(req, res, data){
 exports.Film = function(req, res, data){
 	if(data.operation == "CREATE"){
 
-		connection.query("INSERT INTO films (name, director, duration, trailer_url, description, age) VALUES('" + data.name +"', '" + data.director +"', '" + data.duration +"', '" + data.trailer +"', '" + data.desc + "','" + data.age  +"');",function(error, rows, feilds){
+		connection.query("INSERT INTO films (name, director, duration, trailer_url, description, age, released) VALUES('" + data.name +"', '" + data.director +"', '" + data.duration +"', '" + data.trailer +"', '" + data.desc + "','" + data.age  +"',  '" + data.released + "');",function(error, rows, feilds){
 
 			if(error){throw error};
 			res.send("200");
@@ -135,14 +135,16 @@ exports.Screens = function(req, res, data){
 }
 
 exports.Staff = function(req, res, data){
+	
+	console.log(data);
 	if(data.operation == "CREATE"){
-		connection.query("INSERT INTO staff (name, email, age, password, phone_no) VALUES('" + data.name +"', '" + data.email +"', '"+data.age +"', '" +data.pass + "', '" +data.phone +"');",function(error, rows, feilds){
+		connection.query("INSERT INTO staff (name, email, password, phone_no) VALUES('" + data.name +"', '" + data.email +"', '" +data.pass + "', '" +data.phone +"');",function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});
 	}
 	else{
-		connection.query("UPDATE staff SET name ='" +data.name  + "',email ='" +data.email +  "', age= '"+data.age +"', password='"+data.password +"', phone_no ='" +data.phone + "' WHERE ID =" + data.id ,function(error, rows, feilds){
+		connection.query("UPDATE staff SET name ='" +data.name  + "',email ='" +data.email + ", password='"+data.password +"', phone_no ='" +data.phone_no + "' WHERE ID =" + data.id ,function(error, rows, feilds){
 			if(error){throw error};
 			res.send("200");
 		});

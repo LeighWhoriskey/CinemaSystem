@@ -17,6 +17,7 @@ $("document").ready(function(){
         tmpEmail: tmp2
       },
       success: function(res){
+        console.log(res);
         
         if(res.value == "True"){
           
