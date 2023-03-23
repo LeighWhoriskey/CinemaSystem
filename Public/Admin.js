@@ -19,8 +19,8 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 operation: "UPDATE",
-                                BookingID : i + 1,
-                                CustID :$("#cust_id" + i).val(),
+                                BookingID : value.id,
+                                CustID : value.cust_id,
                                 Seats: $("#no_of_seats" + i).val(),
                                 ScreenID: $("#screening_id" + i).val(),
                             },success: function(res){
@@ -38,7 +38,7 @@ $("document").ready(function(){
                         type: "POST",
                         data:{
                             Table: "booking",
-                            ID : i + 1
+                            ID : value.id
                         },success: function(res){
                             alert("Booking has been deleted");
 
@@ -70,7 +70,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 operation: "UPDATE",
-                                id : i + 1,
+                                id :value.id,
                                 name :$("#name" + i).val(),
                                 email: $("#email" + i).val(),
                                 age: $("#age" + i).val(),
@@ -92,7 +92,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 Table: "customers",
-                                ID : i + 1,
+                                ID : value.id
                             },success: function(res){
                                 alert($("#name" + i).val() + " has been deleted. Please refresh to see changes");
 
@@ -121,7 +121,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 operation: "UPDATE",
-                                id : i + 1,
+                                id : value.id,
                                 name :$("#name" + i).val(),
                                 director: $("#director" + i).val(),
                                 duration: $("#duration" + i).val(),
@@ -145,7 +145,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 Table: "films",
-                                ID : i + 1,
+                                ID : value.id,
                             },success: function(res){
                                 alert($("#name" + i).val() + " has been deleted. Please refresh to see changes");
 
@@ -174,7 +174,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 operation: "UPDATE",
-                                id : i + 1,
+                                id : value.duration,
                                 price :$("#price" + i).val(),
                                 date: $("#date" + i).val(),
                                 time: $("#time" + i).val(),
@@ -197,7 +197,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 Table: "screening",
-                                ID : i + 1,
+                                ID : value.id,
                             },success: function(res){
                                 alert($("#name" + i).val() + " has been deleted. Please refresh to see changes");
 
@@ -227,7 +227,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 operation: "UPDATE",
-                                id : i + 1,
+                                id : value.id,
                                 capacity :$("#capacity" + i).val(),
                                 open: $("#open" + i).val(),  
                                 },success: function(res){
@@ -246,7 +246,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 Table: "screens",
-                                ID : i + 1,
+                                ID : value.id,
                             },success: function(res){
                                 alert("Screen " +$("#name" + i).val() + " has been deleted. Please refresh to see changes");
 
@@ -276,7 +276,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 operation: "UPDATE",
-                                id : i + 1,
+                                id : value.id,
                                 name :$("#name" + i).val(),
                                 email: $("#email" + i).val(),  
                                 age: $("#age" + i).val(),
@@ -298,7 +298,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 Table: "staff",
-                                ID : i + 1,
+                                ID : value.id,
                             },success: function(res){
                                 alert("Screen " +$("#name" + i).val() + " has been deleted. Please refresh to see changes");
 

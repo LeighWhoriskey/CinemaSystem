@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema',
+  database : 'cinema'
   //port: 3305
 });
 
@@ -227,6 +227,7 @@ exports.Login = function(req,res,data){
 }	
 
 exports.Delete = function(req,res,data){
+	console.log(data);
 	connection.query("DELETE FROM "+data.Table +" WHERE id = " + data.ID,function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	
