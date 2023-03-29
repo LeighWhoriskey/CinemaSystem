@@ -7,7 +7,7 @@ $("document").ready(function(){
     var tmp2 = tmpEmail.substring(tmpEmail.indexOf("@") + 1);
 
     $.ajax({
-      url: "/login",
+      url: "http://localhost:3000/login",
       cache: false,
       dataType: "json",
       type: "POST",
@@ -24,13 +24,13 @@ $("document").ready(function(){
           if(res.member =="staff"){
             document.cookie  = "StaffLogin = true";
             document.cookie  = "CustomerLogin = false";
-            window.location.replace("/Admin.html");
+            window.location.replace("http://localhost/CinemaSystem/Public/Admin.html");
           }
           else if(res.member =="customer"){
             document.cookie  = "CustomerLogin = true";
             document.cookie  = "StaffLogin = false";
             document.cookie  = "Cust_id =" + res.ID;
-            window.location.replace("/Home.html");
+            window.location.replace("http://localhost/CinemaSystem/Public/home.html");
           }
         }
         else{
