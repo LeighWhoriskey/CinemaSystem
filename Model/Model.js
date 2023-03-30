@@ -5,8 +5,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema',
-  port: 3305
+  database : 'cinema'
 });
 
 connection.connect(function(err){
@@ -280,3 +279,23 @@ exports.getFilmsDate = function(req, res, data) {
 	  }
 	);
   }
+
+  exports.updateCustomer = function(req, res) {
+	console.log("data:", req.body);
+	var data = req.body;
+	var name = data.name;
+	var phone_no = data.phone;
+	var email = data.email;
+	var password = data.password;
+  
+	connection.query(`UPDATE customers SET name = '${name}', phone_no = '${phone_no}', email = '${email}', password = '${password}' WHERE id = ${data.id}`, function(err, result) {
+	  if (err) {
+		console.error(err);
+		res.status(500).send("Error updating customer");
+	  } else {
+		var test = {"Added": "True"}
+		res.send(JSON.stringify(test));
+	  }
+	});
+  }
+  
