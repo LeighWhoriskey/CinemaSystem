@@ -81,7 +81,7 @@ $("document").ready(function(){
   });
 
   $.ajax({
-    url: "/ticketsBooked",
+    url: "/getFilmTimes",
     cache: false,
     dataType: "json",
     type: "POST",
@@ -95,9 +95,8 @@ $("document").ready(function(){
           $("#movie-times").append("<p id='time"+i+"'> "+ value.date +" " +  value.time +"</p>");
 
           $("#time"+i).on("click",function(){
-            alert("You pressed " + value.time );
 
-            window.location.href ="BookingPayment.html?filmNumber="+filmId+"&Screening="+ value.id +"&Screen=" 
+            window.location.href ="MakeBooking.html?&filmID="+filmId+"&Screening="+ value.id +"&Screen=" 
                 + value.screen_id +"&Date=" + value.date + "&Time=" + value.time
           });
 
