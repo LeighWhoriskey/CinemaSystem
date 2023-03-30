@@ -153,6 +153,13 @@ app.post("/makeBooking",function(req,res){
 })
 
 
+app.post("/updateCustomer",function(req,res){
+  var data = req.body;
+  console.log(data);
+  model.updateCustomer(req, res, data);
+})
+
+
 
 var myServer = app.listen(3000, function() {
   console.log("Server listening on port 3000");

@@ -94,12 +94,16 @@ $("document").ready(function(){
 
 
   footerDiv.css({
-      "background": "#222",
-      "color": "#fff",
-      "font-size": "14px",
-      "text-align": "center",
-      "padding": "30px 0"
-    });
+    "background": "#222",
+    "left": "0",
+    "width": "100%",
+    "color": "#fff",
+    "font-size": "14px",
+    "text-align": "center",
+    "padding": "30px 0",
+    "position": "absolute",
+
+  });
    
     footerLinks.css({
       "display": "flex",
@@ -120,7 +124,7 @@ $("document").ready(function(){
       "margin": "0"
     });
 
-  $("body").append(footerDiv);
+  $("footer").append(footerDiv);
 
   // Get the dropdown button and content
 var dropdownBtn = document.querySelector(".dropbtn");

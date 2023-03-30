@@ -440,10 +440,66 @@ exports.makeBooking = function(req,res,data){
 				throw error;
 			}
 		}
-	)
-	var success = {"value": "Success"};
-	res.send(JSON.stringify(success));
 
+	}
+  var success = {"value": "Success"};
+	res.send(JSON.stringify(success));
+}	
+
+exports.Delete = function(req,res,data){
+	console.log(data);
+	connection.query("DELETE FROM "+data.Table +" WHERE id = " + data.ID,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
+
+exports.GetAll = function(req,res,data){
+	connection.query("SELECT * FROM "+data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
+exports.getMoviesToday = function(req,res){
 	
+	connection.query(`SELECT DISTINCT date FROM screening order by date, Time`, function(err, rows, fields) {
+	  if (err) throw err;
+
+	  res.send(JSON.stringify(rows));
+	  
+	});
 
 }
+exports.getFilmsDate = function(req, res, data) {
+	console.log("data:", data);
+	connection.query(
+	  `SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening WHERE films.id = screening.film_id AND Date = '${data.date}' ORDER BY Date, Time`,
+	  function(error, rows, fields) {
+		if (error) {
+		  throw error;
+		}
+		res.send(JSON.stringify(rows));
+	  }
+	);
+  }
+
+  exports.updateCustomer = function(req, res) {
+	console.log("data:", req.body);
+	var data = req.body;
+	var name = data.name;
+	var phone_no = data.phone;
+	var email = data.email;
+	var password = data.password;
+  
+	connection.query(`UPDATE customers SET name = '${name}', phone_no = '${phone_no}', email = '${email}', password = '${password}' WHERE id = ${data.id}`, function(err, result) {
+	  if (err) {
+		console.error(err);
+		res.status(500).send("Error updating customer");
+	  } else {
+		var test = {"Added": "True"}
+		res.send(JSON.stringify(test));
+	  }
+	});
+}
+  
+

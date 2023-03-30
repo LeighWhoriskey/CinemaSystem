@@ -283,48 +283,54 @@ body {
 
 
 
-#booking-table {
+ #booking-table {
   border-collapse: collapse;
-  width: 100%;
+  width: calc(100% - 40px);
+  margin: 20px;
   font-family: Arial, sans-serif;
   color: #444;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-#booking-table th, .booking-table td {
+  }
+  
+  #booking-table th, #booking-table td {
   padding: 4px;
   text-align: center;
   border-bottom: 2px solid #ddd;
-}
-
-#booking-table th {
-  background-color: #f2f2f2;
+  color: white;
+  }
+  
+  #booking-table th {
+  background-color: #2d2d2d;
   font-size: 20px;
   font-weight: bold;
   text-transform: uppercase;
   color: #444;
   font-family: 'Open Sans', sans-serif;
-}
-
-#booking-table tr:nth-child(even) {
-  background-color: #94efff;
-}
-
-#booking-table tr:nth-child(odd) {
-  background-color: #d5b1ff;
-}
-
-#booking-table input {
+  }
+  
+  #booking-table tr:nth-child(even) {
+  background-color: #2d2d2d;
+  color: white;
+  text-align: center;
+  
+  }
+  
+  #booking-table tr:nth-child(odd) {
+  background-color: #222222;
+  color: white;
+  text-align: center;
+  
+  }
+  
+  #booking-table input {
   width: 100%;
   box-sizing: border-box;
   padding: 6px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
-}
-
-#booking-table button {
+  }
+  
+  #booking-table button {
   background-color: #ffffff;
   border: none;
   color: rgb(0, 0, 0);
@@ -337,28 +343,59 @@ body {
   cursor: pointer;
   border-radius: 25px;
   transition: background-color 0.3s ease;
-}
-
-#booking-table button:hover {
+  }
+  
+  #booking-table button:hover {
   background-color: #9b9b9b;
-}
-
-#booking-table select {
+  }
+  
+  #booking-table select {
   padding: 6px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 16px;
   margin-top: 20px;
-}
+  }
+  
+  #booking-table td:not(:has(input)) {
+  color: #fff;
+  text-align: center;
+  }
+  
+  #booking-table th, #booking-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+  text-align: center;
+  }
+  
+  #booking-table th {
+  background-color: #f2f2f2;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: none;
+  color: #444;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  }
+  
+  #booking-table tr:nth-child(even) {
+  background-color: #383838;
+  }
+  
+  #booking-table tr:nth-child(odd) {
+  background-color: #444444;
+  }
 
 
  /* Customer */
 
 
-#customer-info {
+ #customer-info {
   width: 80%;
-  margin: 0 auto;
+  margin: 20px auto;
   font-size: 20px;
   font-family: Arial, sans-serif;
   color: #444;
@@ -371,13 +408,14 @@ body {
   text-transform: uppercase;
 }
 
-#customer-info input[type="text"], 
+#customer-info input[type="text"],
 #customer-info input[type="email"],
 #customer-info input[type="password"],
-#customer-info input[type="file"] {
+#customer-info input[type="phone_no"] {
   width: 100%;
   box-sizing: border-box;
-  padding: 6px 10px;
+  padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
@@ -385,9 +423,9 @@ body {
 }
 
 #customer-info input[type="submit"].submit-btn {
-  background-color: #2d2d2f;
-  border: none;
-  color: #fff;
+  background-color: #ffffff;
+  border: black;
+  color: #000000;
   padding: 12px 24px;
   text-align: center;
   text-decoration: none;
@@ -400,8 +438,26 @@ body {
 }
 
 #customer-info input[type="submit"].submit-btn:hover {
-  background-color: #2980b9;
+  background-color: #454f56;
 }
+
+.toggle-password {
+  position: relative;
+}
+
+.toggle-password .toggle-password-icon {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-55%);
+  right: 10px;
+  cursor: pointer;
+}
+
+.toggle-password .toggle-password-icon i {
+  font-size: 18px;
+  color: black;
+}
+
 
 
 /* Admin */
@@ -613,6 +669,12 @@ align-items: center;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+
+  .login-card {
+    padding: .5rem;
+    border-radius: 5px;
+
+  }
   
   h1 {
     font-size: 2rem;
@@ -631,7 +693,10 @@ align-items: center;
   }
   
   input[type="email"],
-  input[type="password"] {
+  input[type="password"]
+  input[type="phone_no"] 
+  input[type="name"] 
+      {
     width: 100%;
     padding: 0.5rem;
     border: none;
@@ -669,17 +734,68 @@ align-items: center;
     color: white;
   }
 
-#email, #password, #age, #name, #phone {
-  width: 100%;
-  box-sizing: border-box;
-  height: 27px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  font-size: 16px;
+
+#customer-info{
+  color: white;
+
 }
 
-#email:focus, #password:focus, #age:focus, #name:focus, #phone:focus {
-  border-color: #7c8497;
-  box-shadow: 0px 0px 5px 0px #b8babe;
+#customer-btn
+{
+  color: white;
+  background-color: black;
+}
+
+#submit-btn
+{
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-content: center;
+}
+
+#filmsDropDown {
+  padding: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="email"].login-email,
+input[type="password"].login-password
+{
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+}
+
+.signup-card {
+  padding: .5rem;
+  border-radius: 5px;
+
+}
+
+input[type="email"].singup-email,
+input[type="password"].signup-password,
+input[type="phone"].signup-phone,
+input[type="name"].signup-name
+
+{
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
 }

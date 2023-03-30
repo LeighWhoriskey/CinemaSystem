@@ -42,62 +42,61 @@ $("document").ready(function(){
     
 
 
-    if($("#crud").val() =="booking"){
+    if ($("#crud").val() == "booking") {
         $("#thead").empty();
         $("#tbody").empty();
-
-
-        $.getJSON("/getData/"+ $("#crud").val(),function(data){
-            $("#thead").append("<th>Customer ID</th><th>Screening Number</th><th>Number of Seats</th><th> </th<th> </th><th> </th>");
-            $.each(data,function(i, value){
-
-                $("#tbody").append("<tr><td><input id='cust_id" + i + "' value ='" +  value.cust_id + "'></input> </td><td><input id='screening_id" + i + "' value =' " +  value.no_of_seats + "'></input> </td><td> <input id='no_of_seats" + i + "' value =' " +  value.no_of_seats + "'></input> "+"</td><td><button id='update"+i + "' type='button'>Update</button></td><td><button id='delete"+i + "' type='button'>Delete</button></td></tr>");
-                
-                $("#update"+i).on('click',function(){
-                        $.ajax({
-                        url: "/Booking",
-                        cache: false,
-                        dataType: "json",
-                        type: "POST",
-                        data:{
-                            operation: "UPDATE",
-                            BookingID : value.id,
-                            CustID : value.cust_id,
-                            Seats: $("#no_of_seats" + i).val(),
-                            ScreenID: $("#screening_id" + i).val(),
-                        },success: function(res){
-                            alert("Booking has been Updated");
-
-                        }
-                    });
-                });
-
-                $("#delete"+i).on('click',function(){
-                    $.ajax({
-                    url: "/delete",
-                    cache: false,
-                    dataType: "json",
-                    type: "POST",
-                    data:{
-                        Table: "booking",
-                        ID : value.id
-                    },success: function(res){
-                        alert("Booking has been deleted");
-
-                    }
-                });
+      
+        $.getJSON("/getData/" + $("#crud").val(), function (data) {
+          $("#thead").append("<th>Customer ID</th><th>Screening Number</th><th>Number of Seats</th><th></th><th></th>");
+          $.each(data, function (i, value) {
+            $("#tbody").append("<tr><td><input id='cust_id" + i + "' value ='" + value.cust_id + "'></input> </td><td><input id='screening_id" + i + "' value ='" + value.no_of_seats + "'></input> </td><td> <input id='no_of_seats" + i + "' value ='" + value.no_of_seats + "'></input> " + "</td><td><button id='update" + i + "' type='button'>Update</button></td><td><button id='delete" + i + "' type='button'>Delete</button></td></tr>");
+      
+            $("#update" + i).on('click', function () {
+              $.ajax({
+                url: "/Booking",
+                cache: false,
+                dataType: "json",
+                type: "POST",
+                data: {
+                  operation: "UPDATE",
+                  BookingID: value.id,
+                  CustID: value.cust_id,
+                  Seats: $("#no_of_seats" + i).val(),
+                  ScreenID: $("#screening_id" + i).val(),
+                }, success: function (res) {
+                  alert("Booking has been Updated");
+      
+                }
+              });
             });
-                
+      
+            $("#delete" + i).on('click', function () {
+              $.ajax({
+                url: "/delete",
+                cache: false,
+                dataType: "json",
+                type: "POST",
+                data: {
+                  Table: "booking",
+                  ID: value.id
+                }, success: function (res) {
+                  alert("Booking has been deleted");
+      
+                }
+              });
             });
-
+      
+          });
+      
         });
+      
 
     }else if($("#crud").val() =="customers"){
         $("#thead").empty();
         $("#tbody").empty();
 
         $.getJSON("/getData/"+ $("#crud").val(),function(data){
-            $("#thead").append("<th>Name</th><th>Email</th><th>Password</th><th>Phone Number</th><th></th><th></th>");
+            $("#thead").append("<th>Name</th><th>Email</th><th>Password</th><th>Phone Number</th><th></th><th></th><th></th>");
             $.each(data,function(i, value){
 
                 $("#tbody").append("<tr><td><input id='name" + i + "' value =' " +  value.name + "'></input> </td><td><input id='email" + i + "' value =' " +  value.email + "'></input> </td><td> <input id='age" + i + "' value =' " +  value.age + "'></input> </td><td> <input id='password" + i + "' value =' " +  value.password + "'></input> </td><td> <input id='phone_no" + i + "' value =' " +  value.phone_no + "'></input> </td><td><button id='update"+i + "' type='button'>Update</button></td><td><button id='delete"+i + "' type='button'>Delete</button></td></tr>");
@@ -151,7 +150,7 @@ $("document").ready(function(){
         //create new film to add to website
         $("#thead").append("<th>Film Name</th><th>Director</th><th>Duration</th><th>Trailer Url</th><th>Age Rating</th><th>Description</th><th>Released</th><th>Oscars</th><th></th><th></th>");
         
-        $("#tbody").append("<tr><td> <input id='NewFilm'> </input> </td><td> <input id='NewDirector'> </input> </td><td> <input id='NewDuration'> </input> </td><td> <input id='NewTrailer_url'> </input> </td><td> <input id='NewRating'> </input></td><td> <textarea id='NewDescription'> </textarea> </td><td><input id='NewReleased'></input> </td><td> <input id='NewOscar'> </td><td><button id='create' type='button'>Create Film</button></td></tr>");
+        $("#tbody").append("<tr><td> <input id='NewFilm'> </input> </td><td> <input id='NewDirector'> </input> </td><td> <input id='NewDuration'> </input> </td><td> <input id='NewTrailer_url'> </input> </td><td> <input id='NewRating'> </input></td><td> <textarea id='NewDescription'> </textarea> </td><td><input id='NewReleased'></input> </td> <td><input id='NewOscar'> </input></td></td> <td><button id='create' type='button'>Create Film</button></td></tr>");
         $("#create").on('click',function(){
             $.ajax({
                 url: "/Film",
@@ -168,6 +167,7 @@ $("document").ready(function(){
                     desc: $("#NewDescription").val(),
                     oscar: $("#NewOscar").val(),
                     released: $("#NewReleased").val(),
+                    oscar: $("NewOscar").val(),
                 },success: function(res){
                     alert($("#NewFilm").val() +" has been Successfully Created.");
 
@@ -234,7 +234,7 @@ $("document").ready(function(){
 
         //create screening on website
         $("#thead").append("<th>Screening Number</th><th>Price</th><th>Date</th><th>Time</th><th>Film Name</th><th>Screen Number</th><th>Total Seats Booked</th><th></th><th></th>");
-        $("#tbody").append("<tr><td></td><td> <input id='NewPrice'></input> </td><td> <input id='NewDate'></input> </td><td> <input id='NewTime'></input> </td><td> <input id='NewFilm_id'></input> </td><td> <input id='NewScreen_id'></input></td><td> <input id='NewTotalSeatsBooked'></input> </td><td><button id='create' type='button'>Create Screening</button></td></tr>");
+        $("#tbody").append("<tr><td><td> <input id='NewPrice'></input> </td><td> <input id='NewDate'></input> </td><td> <input id='NewTime'></input> </td><td> <input id='NewFilm_id'></input> </td><td> <input id='NewScreen_id'></input></td><td> <input id='NewTotalSeatsBooked'></input> </td><td><button id='create' type='button'>Create Screening</button></td><td></td></tr>");
         $("#create").on('click',function(){
             $.ajax({
                 url: "/Screening",
@@ -295,7 +295,7 @@ $("document").ready(function(){
                             Table: "screening",
                             ID : value.id,
                         },success: function(res){
-                            alert($("#name" + i).val() + " has been deleted. Please refresh to see changes");
+                            alert("Screening has been deleted. Please refresh to see changes");
 
                         }
                     });
@@ -393,7 +393,7 @@ $("document").ready(function(){
 
         $.getJSON("/getData/"+ $("#crud").val(),function(data){
             $.each(data,function(i, value){
-                $("#tbody").append("<tr><td> <input id='name" + i + "' value =' " +  value.name + "'></input> </td><td> <input id='email" + i + "' value =' " +  value.email + "'></input> </td><td> <input id='password" + i + "' value =' " +  value.password + "'></input> </td><td> <input id='phone_no" + i + "' value =' " +  value.phone_no + "'></input> </td><td><button id='update' type='button'>Update</button></td><td><button id='delete' type='button'>Delete</button></td></tr>");
+                $("#tbody").append("<tr><td> <input id='name" + i + "' value =' " +  value.name + "'></input> </td><td> <input id='email" + i + "' value =' " +  value.email + "'></input> </td><td> <input id='password" + i + "' value =' " +  value.password + "'></input> </td><td> <input id='phone_no" + i + "' value =' " +  value.phone_no + "'></input> </td><td><button id='update' type='button'>Update</button></td><td><button id='delete' type='button'>Delete</button></td><td></td><td></td></tr>");
                 //update staff
                 $("#update"+i).on('click',function(){
                     $.ajax({
