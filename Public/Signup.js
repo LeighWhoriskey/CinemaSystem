@@ -1,6 +1,6 @@
 $("document").ready(function(){
 
-    $("#post").on("click", function(){
+    $("#signup-button").on("click", function(){
         console.log( $("#name").val()); 
         console.log( $("#phone_no").val()); 
         console.log( $("#email").val()); 
