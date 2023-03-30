@@ -17,7 +17,7 @@ $("document").ready(function(){
     var totalPrice = parseInt(aPrice) + parseInt(cPrice);
 
 
-    console.log(custId)
+    console.log(screeningId)
 
 
     $("#payment").append("<p id='totalPrice'>Tickets: " + totalTickets +" Total €"+ totalPrice +"</p>");

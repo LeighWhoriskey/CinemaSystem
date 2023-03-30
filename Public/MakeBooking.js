@@ -12,13 +12,24 @@ $("document").ready(function(){
     var ScreenCapacity = 0;
     var BookedTickets = 0;
     var filmId = params.get("filmID");
+    var custID =0;
 
 
     console.log(screeningId)
     var cookie = document.cookie;
-
-    var tmpid = cookie.split("Cust_id=");
-    var custID = tmpid[1].split(";");
+    if(cookie.includes("Cust_id")){
+        var tmpid = cookie.split("Cust_id=");
+        custID = tmpid[1].split(";");
+        if(custID[0] == 0 || custID[0] == null){
+            custID = 0;   
+        }
+        else{
+            custID = custID[0];
+        }
+    }else{
+        console.log("moo")
+    }
+    
 
     
     var aTicketPrice = 0;
@@ -26,12 +37,7 @@ $("document").ready(function(){
 
 
     //you book without being a customer
-    if(custID[0] == 0 || custID[0] == null){
-        custID = 0;   
-    }
-    else{
-        custID = custID[0];
-    }
+    
     
 
 
