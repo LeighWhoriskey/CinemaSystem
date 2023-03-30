@@ -140,11 +140,16 @@ model.Delete(req, res, data);
 
 app.post("/ticketsBooked",function(req,res){
   var data = req.body;
-  model.GetFilmTimes(req, res, data);
+  model.CheckBookedTickets(req, res, data);
 })
 
 app.get("/getData/:id?",function(req,res){
 model.GetAll(req, res, {id : req.params.id});
+})
+
+app.post("/makeBooking",function(req,res){
+  var data = req.body;
+  model.makeBooking(req, res, data);
 })
 
 

@@ -391,32 +391,59 @@ var connection = mysql.createConnection({
 		connection.query(`SELECT DISTINCT date FROM screening order by date, Time`, function(err, rows, fields) {
 		if (err) throw err;
 
-		res.send(JSON.stringify(rows));
-		
-		});
+
+exports.Delete = function(req,res,data){
+	console.log(data);
+	connection.query("DELETE FROM "+data.Table +" WHERE id = " + data.ID,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
+
+exports.GetAll = function(req,res,data){
+	connection.query("SELECT * FROM "+data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	
+	});
+}
+exports.getMoviesToday = function(req,res){
+	
+	connection.query("SELECT DISTINCT date FROM screening order by date, Time", function(err, rows, fields) {
+	  if (err) throw err;
+
+	  res.send(JSON.stringify(rows));
+	  
+	});
+
+}
+exports.getFilmsDate = function(req, res, data) {
+	connection.query("SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening WHERE films.id = screening.film_id AND Date = '${data.date}' ORDER BY Date, Time",
+	  function(error, rows, fields) {
+		if (error) {
+		  throw error;
 		}
-		catch(err)
-		{
-			console.log(err);
+		res.send(JSON.stringify(rows));
+	  }
+	);
+}
+
+exports.makeBooking = function(req,res,data){
+	connection.query("INSERT INTO booking(screening_id,no_of_seats,cust_id) VALUES('"+data.ScreenId +"','"+data.Seats +"','"+data.CustID+"')",function(error, rows, fields) {
+			if (error) {
+				throw error;
+			}
+		}
+	)
+
+	connection.query("UPDATE screening SET totalSeatsBooked="+data.totalSeats +" WHERE id="+data.screeningId,function(error, rows, fields) {
+			if (error) {
+				throw error;
+			}
 		}
 
 	}
-	exports.getFilmsDate = function(req, res, data) {
-		try{
-		connection.query(
-		`SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening WHERE films.id = screening.film_id AND Date = '${data.date}' ORDER BY Date, Time`,
-		function(error, rows, fields) {
-			if (error) {
-			throw error;
-			}
-			res.send(JSON.stringify(rows));
-		});
-		}
-		catch(err)
-		{
-			console.log(err);
-		}
-	}
+  var success = {"value": "Success"};
+	res.send(JSON.stringify(success));
 }	
 
 exports.Delete = function(req,res,data){
@@ -473,5 +500,6 @@ exports.getFilmsDate = function(req, res, data) {
 		res.send(JSON.stringify(test));
 	  }
 	});
-  }
+}
   
+
