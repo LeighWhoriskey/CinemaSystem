@@ -2,25 +2,38 @@ $("document").ready(function(){
 
 
     var url = window.location.href;
-    var params = URLSearchParams(url);
+    var params = new URLSearchParams(url);
 
-
-    console.log(url);
-
-    var filmId = params.get("filmNumber");//get film id when you click into the booking 
-    var screeningId = params.get("Screening");//need to grab it
+    //get film id when you click into the booking 
+    var screeningId = params.get("Screening");
     var screenId = params.get("Screen");
-    var date = params.get("Date");
+    var dateIn = params.get("Date");
     var time = params.get("Time"); 
     var ScreenCapacity = 0;
     var BookedTickets = 0;
+    var filmId = params.get("filmID");
 
+
+    console.log(screeningId)
     var cookie = document.cookie;
 
     var tmpid = cookie.split("Cust_id=");
     var custID = tmpid[1].split(";");
+
     
-    custID = id[0];
+    var aTicketPrice = 0;
+    var cTicketPrice = 0;
+
+
+    //you book without being a customer
+    if(custID[0] == 0 || custID[0] == null){
+        custID = 0;   
+    }
+    else{
+        custID = custID[0];
+    }
+    
+
 
     $.ajax({
         url: "/ticketsBooked",
@@ -34,19 +47,42 @@ $("document").ready(function(){
         },
         success: function(res){
             $.each(res,function(i,value){
-                console.log(res);
                 BookedTickets = value.totalSeatsBooked;
                 ScreenCapacity = value.capacity;
             });
         }
     });
 
+    //need to remove all € from database price from screening
+
+    $.getJSON("/getScreenings/"+ screeningId, function(data){
+        $.each(data,function(i,value){
+            console.log(data)
+            if(value.date == dateIn && value.time == time){
+                if(value.time >= 18)
+                {
+                    aTicketPrice = value.price + 2.30;
+                }else{
+                    aTicketPrice = value.price;
+                }
+                cTicketPrice = value.price -1.50;
+            }
+            //add small picture of film, the screen number, the time, show how many seats are able to be booked 
+        });
+        console.log(cTicketPrice)
+        console.log(aTicketPrice)
+        $("#childLabel").append("Adult ticket @ €"+aTicketPrice);
+        $("#adultLabel").append("Child ticket @ €"+cTicketPrice);
+    });
+
     
 
     $.getJSON("/movie-details/"+ filmId, function(data){
-        $.each(data,function(value,i){
+        $.each(data,function(i,value){
+            console.log(data)
             //add small picture of film, the screen number, the time, show how many seats are able to be booked 
-            $("#filmDiv").append("<p>"+ i.name+"</p>");
+            $("#filmDiv").append("<div id='image'><img src='images/"+value.id+".jpg'></div> <p id='filmName'>"+ value.name
+                +"</p><p id='dateTime'>" + dateIn + " @ " + time +"</p><p id='screen'> Showing in Screen "+ screenId +"</p><p id='runTime'>RunTime: " +value.duration);
         });
     });
 
@@ -62,16 +98,34 @@ $("document").ready(function(){
 
         var childTicket = $("#child").val();
         var adultTicket = $("#adult").val();
+     
+
+        if(childTicket == 0 && adultTicket == 0){
+            $("#error").empty().append("<p style='color:red'>Please a ticket</p>");
+        }else{
+            if((parseInt(childTicket) + parseInt(adultTicket)) < (parseInt( ScreenCapacity) - parseInt( BookedTickets))){
+                var seat = parseInt(childTicket) + parseInt(adultTicket)+ parseInt(BookedTickets);
+                if(custID != 0){
+                    window.location.href ="BookingPayment.html?&adult="+adultTicket+"&child="+ childTicket +"&ScreenNum=" 
+                    + screenId +"&Screening=" + screeningId + "&film=" +filmId +"&custId="+ custID +"&date=" + dateIn +"&time=" + time 
+                    +"&adultPrice="+aTicketPrice+"&childPrice="+cTicketPrice +"&totalseats=" + parseInt(seat);
+            
+                }
+                else{
+                    window.location.href ="BookingPayment.html?&adult="+adultTicket+"&child="+ childTicket +"&ScreenNum=" 
+                    + screenId +"&Screening=" + screeningId + "&film=" +filmId +"&custId="+ custID +"&date=" + dateIn +"&time=" + time
+                    +"&adultPrice="+aTicketPrice+"&childPrice="+cTicketPrice +"&totalseats="+ parseInt(seat);
+                }
+            }
+            else{
+    
+                $("#error").empty().append("<p style='color:red'>Cannot Book this many seats please lower ticket count and try again</p>");
+            }
+            
+        }
+
         
-        if((childTicket + adultTicket) < (ScreenCapacity - BookedTickets)){
-
-            window.location.href ="BookingPayment.html?adult="+adultTicket+"&child="+ childTicket +"&ScreenNum=" 
-                + screenId +"&Screening=" + screeningId + "&film=" +filmId +"&custId="+ custID +"&dateTime=" + dateTime;
-        }
-        else{
-
-            $("#error").empty().append("<p style='color:red'>Cannot Book this many seats please lower ticket count and try again</p>");
-        }
+        
 
     });
 

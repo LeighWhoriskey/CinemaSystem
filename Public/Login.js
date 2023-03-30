@@ -34,7 +34,7 @@ $("document").ready(function(){
           }
         }
         else{
-          $("#text").append("<p style='color:red'> Invalid Email or Password</p>");
+          $("#text").empty().append("<p style='color:red'> Invalid Email or Password</p>");
         }
       }
     });
