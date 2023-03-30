@@ -35,7 +35,6 @@ $("document").ready(function(){
             +"<option value='films'>Films</option><option value='screening'>Screening</option><option value='screens'>Screens</option><option value='staff'>Staff</option>");
         }
     }else{
-        console.log("selected is not a cookie yet");
         $("#crud").append("<option value='booking' selected>Booking</option><option value='customers'>Customers</option>"
         +"<option value='films'>Films</option><option value='screening'>Screening</option><option value='screens'>Screens</option><option value='staff'>Staff</option>");
     }
@@ -149,7 +148,7 @@ $("document").ready(function(){
         $("#tbody").empty();
 
         //create new film to add to website
-        $("#thead").append("<th>Film Name</th><th>Director</th><th>Duration</th><th>Trailer Url</th><th>Age</th><th>Description</th><th>Released</th><th>Oscars</th><th></th><th></th>");
+        $("#thead").append("<th>Film Name</th><th>Director</th><th>Duration</th><th>Trailer Url</th><th>Age Rating</th><th>Description</th><th>Released</th><th>Oscars</th><th></th><th></th>");
         
         $("#tbody").append("<tr><td> <input id='NewFilm'> </input> </td><td> <input id='NewDirector'> </input> </td><td> <input id='NewDuration'> </input> </td><td> <input id='NewTrailer_url'> </input> </td><td> <input id='NewRating'> </input></td><td> <textarea id='NewDescription'> </textarea> </td><td><input id='NewReleased'></input> </td> <td><input id='NewOscar'> </input></td></td> <td><button id='create' type='button'>Create Film</button></td></tr>");
         $("#create").on('click',function(){
@@ -166,6 +165,7 @@ $("document").ready(function(){
                     trailer: $("#Newtrailer_url").val(),
                     age: $("#NewRating").val(),
                     desc: $("#NewDescription").val(),
+                    oscar: $("#NewOscar").val(),
                     released: $("#NewReleased").val(),
                     oscar: $("NewOscar").val(),
                 },success: function(res){
@@ -177,7 +177,7 @@ $("document").ready(function(){
         $.getJSON("/getData/"+ $("#crud").val(),function(data){
             $.each(data,function(i, value){
 
-                $("#tbody").append("<tr><td> <input id='name" + i + "' value =' " +  value.name + "'></input> </td><td> <input id='director" + i + "' value =' " +  value.director + "'></input> </td><td> <input id='duration" + i + "' value =' " +  value.duration + "'></input> </td><td> <input id='trailer_url" + i + "' value =' " +  value.trailer_url + "'></input> </td><td> <input id='age" + i + "' value =' " +  value.age + "'></input></td><td> <textarea id='description" + i + "' placeholder =' " +  value.description + "'></textarea> </td><td><input id='released" + i + "' value =' " +  value.released + "'></input> </td><td><button id='update"+i + "' type='button'>Update</button></td><td><button id='delete"+i + "' type='button'>Delete</button></td></tr>");
+                $("#tbody").append("<tr><td> <input id='name" + i + "' value =' " +  value.name + "'></input> </td><td> <input id='director" + i + "' value =' " +  value.director + "'></input> </td><td> <input id='duration" + i + "' value =' " +  value.duration + "'></input> </td><td> <input id='trailer_url" + i + "' value =' " +  value.trailer_url + "'></input> </td><td> <input id='age" + i + "' value =' " +  value.age + "'></input></td><td> <textarea id='description" + i + "' placeholder =' " +  value.description + "'></textarea> </td><td><input id='released" + i + "' value =' " +  value.released + "'></input> </td><td> <input id='oscar" + i + "' value =' " +  value.oscar + "'></input> </td><td><button id='update"+i + "' type='button'>Update</button></td><td><button id='delete"+i + "' type='button'>Delete</button></td></tr>");
                
                 //film update
                 $("#update"+i).on('click',function(){
@@ -195,6 +195,7 @@ $("document").ready(function(){
                             trailer_url: $("#trailer_url" + i).val(),
                             age: $("#age" + i).val(),
                             description: $("#description" + i).val(),
+                            oscar: $("#oscar" + i).val(),
                             released: $("#released" + i).val(),
                         },success: function(res){
                             alert($("#name" + i).val() +" has been Successfully Updated.");
