@@ -20,6 +20,7 @@ $("document").ready(function(){
           },
           success: function(res){
             console.log(res);
+
             if(Object.keys(res).length === 0){
               $.ajax({
                 url: "/getCustomerbyName",
@@ -44,8 +45,11 @@ $("document").ready(function(){
                   }                  
                 }
               }); 
+
             }
           }
         });
+
     });
 });
+
