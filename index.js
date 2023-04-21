@@ -98,6 +98,11 @@ app.get("/getCustomer/:id?",function(req,res){
 model.getCustomer(req,res ,{id : req.params.id});
 })
 
+app.post("/getCustomerbyName",function(req,res){
+  var data = req.body;
+  model.getCusomerbyName(req, res, data);
+});
+
 app.get("/getFilms/:id?",function(req,res){
 model.getFilms(req,res ,{id : req.params.id});
 })
