@@ -71,14 +71,14 @@ $("document").ready(function(){
                 }else{
                     aTicketPrice = value.price;
                 }
-                cTicketPrice = value.price -1.50;
+                cTicketPrice =  (parseFloat(value.price) - parseFloat(1.50)).toFixed(2);
             }
             //add small picture of film, the screen number, the time, show how many seats are able to be booked 
         });
         console.log(cTicketPrice)
         console.log(aTicketPrice)
-        $("#childLabel").append("Adult ticket @ €"+aTicketPrice);
-        $("#adultLabel").append("Child ticket @ €"+cTicketPrice);
+        $("#adultLabel").append("Adult ticket @ €"+aTicketPrice);
+        $("#childLabel").append("Child ticket @ €"+cTicketPrice);
     });
 
     
@@ -118,7 +118,7 @@ $("document").ready(function(){
             
                 }
                 else{
-                    window.location.href ="BookingPayment.html?&adult="+adultTicket+"&child="+ childTicket +"&ScreenNum=" 
+                    window.location.href ="Email.html?&adult="+adultTicket+"&child="+ childTicket +"&ScreenNum=" 
                     + screenId +"&Screening=" + screeningId + "&film=" +filmId +"&custId="+ custID +"&date=" + dateIn +"&time=" + time
                     +"&adultPrice="+aTicketPrice+"&childPrice="+cTicketPrice +"&totalseats="+ parseInt(seat);
                 }
