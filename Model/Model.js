@@ -5,7 +5,8 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema'
+  database : 'cinema',
+  port:3305
 });
 
 connection.connect(function(err){
@@ -105,14 +106,18 @@ exports.Customer = function(req, res, data){
 	try{
 	if(data.operation == "CREATE"){
 		connection.query("INSERT INTO customers (name, email, password, phone_no) VALUES('" + data.name +"', '" + data.email +"', '" + data.password +"', '" + data.phone_no +"');",function(error, rows, feilds){
-			if(error){throw error};
-			res.send("200");
+			if(error){throw error}else{
+				res.send("200");
+			}
+			
 		});
 	}
 	else{
 		connection.query("UPDATE customers SET name ='" +data.name  + "',email ='" +data.email + "',age ='" +data.age + "',password ='" + data.password + "',phone_no ='" +data.phone_no + "' WHERE ID =" + data.id ,function(error, rows, feilds){
-			if(error){throw error};
-			res.send("200");
+			if(error){throw error}else{
+				res.send("200");
+			}
+			
 		});
 
 	}
@@ -473,7 +478,6 @@ exports.getMoviesToday = function(req,res){
 }
 
 exports.getFilmsDate = function(req, res, data) {
-	console.log("data:", data);
 	connection.query(
 	  `SELECT films.*, screening.date as 'Date', screening.time as 'Time',screening.screen_id as 'Screen_id' FROM films, screening WHERE films.id = screening.film_id AND Date = '${data.date}' ORDER BY Date, Time`,
 	  function(error, rows, fields) {
@@ -502,4 +506,31 @@ exports.updateCustomer = function(req, res) {
 		res.send(JSON.stringify(test));
 	  }
 	});
+}
+
+
+exports.checkOverBooking = function(req,res,data){
+
+	connection.query("SELECT * FROM booking WHERE screening_id ='"+data.screeningId +
+		"' AND no_of_seats = '" +data.seats +"' AND cust_id ='"+ data.cust_id+"'",
+		function(error, rows, fields) {
+		  if (error) {
+			throw error;
+		  }
+		  res.send(JSON.stringify(rows));
+		}
+	);
+}
+
+exports.checkOverScreening = function(req,res,data){
+
+	connection.query("SELECT * FROM screening WHERE price ='"+data.Price +"' AND date='"+
+		data.Date+"' AND time='"+data.Time+"' AND film_id ='"+data.Film +"' AND screen_id='"+data.Screen +"'",
+		function(error, rows, fields) {
+		  if (error) {
+			throw error;
+		  }
+		  res.send(JSON.stringify(rows));
+		}
+	);
 }
