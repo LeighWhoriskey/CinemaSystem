@@ -799,3 +799,59 @@ input[type="name"].signup-name
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   font-size: 1.2rem;
 }
+
+#movie-times {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.movie-times {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  position: relative;
+  z-index: 999;
+
+}
+
+.movie-times:hover {
+  background-color: #6a6464;
+  cursor: pointer;
+}
+
+.movie-times:active {
+  transform: scale(0.95);
+}
+
+.movie-times h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.movie-times p {
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.movie-times:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  z-index: 999;
+}

@@ -88,7 +88,7 @@ $("document").ready(function(){
             console.log(data)
             //add small picture of film, the screen number, the time, show how many seats are able to be booked 
             $("#filmDiv").append("<div id='image'><img src='images/"+value.id+".jpg'></div> <p id='filmName'>"+ value.name
-                +"</p><p id='dateTime'>" + dateIn + " @ " + time +"</p><p id='screen'> Showing in Screen "+ screenId +"</p><p id='runTime'>RunTime: " +value.duration);
+                +"</p><p id='dateTime'>" + dateIn + " @ " + time +"</p><p id='screen'> Showing in Screen "+ screenId +"</p><p id='runTime'>Duration: " +value.duration);
         });
     });
 
@@ -107,7 +107,7 @@ $("document").ready(function(){
      
 
         if(childTicket == 0 && adultTicket == 0){
-            $("#error").empty().append("<p style='color:red'>Please a ticket</p>");
+            $("#error").empty().append("<p style='color:red'>Please select ticket(s)</p>");
         }else{
             if((parseInt(childTicket) + parseInt(adultTicket)) < (parseInt( ScreenCapacity) - parseInt( BookedTickets))){
                 var seat = parseInt(childTicket) + parseInt(adultTicket)+ parseInt(BookedTickets);
@@ -125,7 +125,7 @@ $("document").ready(function(){
             }
             else{
     
-                $("#error").empty().append("<p style='color:red'>Cannot Book this many seats please lower ticket count and try again</p>");
+                $("#error").empty().append("<p style='color:red'>Cannot book this many seats, please select a lower ticket amount and try again</p>");
             }
             
         }
