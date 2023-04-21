@@ -33,7 +33,6 @@ model.getMovieDetails(req,res ,{id : req.params.id});
 })
 
 app.post("/Booking",function(req,res){
-
 var data = req.body;
 model.Booking(req, res, data);
 })
@@ -89,6 +88,12 @@ app.get("/getBookingCustom/:id?",function(req,res){
 model.getBookingCustom(req,res ,{id : req.params.id});
 })
 
+app.post("/checkForOverBooking",function(req,res){
+  var data = req.body;
+  model.checkOverBooking(req, res, data);
+});
+
+
 app.get("/getCustomer/:id?",function(req,res){
 model.getCustomer(req,res ,{id : req.params.id});
 })
@@ -102,6 +107,10 @@ app.get("/getScreenings/:id?",function(req,res){
 model.getScreenings(req,res ,{id : req.params.id});
 })
 
+app.post("/checkForOverScreening",function(req,res){
+  var data = req.body;
+  model.checkOverScreening(req, res, data);
+});
 
 app.get("/getScreens/:id?",function(req,res){
 model.getScreens(req,res ,{id : req.params.id});
@@ -140,11 +149,23 @@ model.Delete(req, res, data);
 
 app.post("/ticketsBooked",function(req,res){
   var data = req.body;
-  model.GetFilmTimes(req, res, data);
+  model.CheckBookedTickets(req, res, data);
 })
 
 app.get("/getData/:id?",function(req,res){
 model.GetAll(req, res, {id : req.params.id});
+})
+
+app.post("/makeBooking",function(req,res){
+  var data = req.body;
+  model.makeBooking(req, res, data);
+})
+
+
+app.post("/updateCustomer",function(req,res){
+  var data = req.body;
+  console.log(data);
+  model.updateCustomer(req, res, data);
 })
 
 

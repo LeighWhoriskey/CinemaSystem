@@ -6,11 +6,34 @@
         <script src="jquery-3.6.1.min.js"></script>
         <script src="BookingPayment.js" type="text/javascript"></script>
         <script src="Nav.js"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
         <header id="NavBar">
 
         </header>
     </head>
     <body>
+        <div id="payment">
+
+        </div>
+        <div id="cardDetails">
+            <label for="cardName">CardHolder Name:</label>
+            <input name="cardName" id="cardName" placeholder="" required>
+
+            <label for="cardNumber">Card Number:</label>
+            <input name="cardNumber" id="cardNumber" required>
+
+            <label for="month">Card Number:</label>
+            <select name="month" id="month"></select>
+
+            <label for="year">Card Number:</label>
+            <select name="year" id="year"></select>
+
+            <label for="cvv">CVV:</label>
+            <input name="cvv" id="cvv" required>
+
+            <button id="paymentButton" type="button">Pay</button>
+        </div>
+        <div id="error"></div>
     </body>
     <footer id="footer">
 

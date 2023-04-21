@@ -98,7 +98,7 @@ INSERT INTO `films` (`name`, `director`, `duration`, `trailer_url`, `age`, `desc
 CREATE TABLE `screening` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `price` varchar(50) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` varchar(100) DEFAULT NULL,
   `time` varchar(50) DEFAULT NULL,
   `film_id` int(11) DEFAULT NULL,
   `screen_id` int(11) DEFAULT NULL,
@@ -108,13 +108,13 @@ CREATE TABLE `screening` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `screening` (`price`, `date`, `time`, `film_id`, `screen_id`, `totalSeatsBooked`) VALUES
-('€44,32', '2023-03-11', '15:00', 1, 1, 20),
-('€18,11', '0000-00-00', '15:00', 53, 1, 20),
-('€28,61', '0000-00-00', '15:00', 53, 1, 20),
-('€6,25', '0000-00-00', '15:00', 53, 1, 20),
-('€72,05', '2023-03-13', '15:00', 13, 1, 20),
-('€5.67', '2023-03-11', '18:00', 2, 1, 1),
-('€7', '2023-11-03', '16:00', 1, 1, 2);
+('44.32', '2023-03-11', '15:00', 1, 1, 20),
+('18.11', '0000-00-00', '15:00', 53, 1, 20),
+('28.61', '0000-00-00', '15:00', 53, 1, 20),
+('6.25', '0000-00-00', '15:00', 53, 1, 20),
+('72.05', '2023-03-13', '15:00', 13, 1, 20),
+('5.67', '2023-03-11', '18:00', 2, 1, 1),
+('7', '2023-11-03', '16:00', 1, 1, 2);
 
 CREATE TABLE `screens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

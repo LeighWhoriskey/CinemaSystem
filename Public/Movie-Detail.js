@@ -2,7 +2,7 @@ $("document").ready(function(){
   var queryString = window.location.search;
   var urlParams = new URLSearchParams(queryString);
   var filmId = urlParams.get('id');
-  console.log(filmId);
+  
   
   if (!filmId) {
     console.error("No film ID provided in URL");
@@ -10,25 +10,6 @@ $("document").ready(function(){
     return;
   }
 
-
-  $.ajax({
-    url: "/ticketsBooked",
-    cache: false,
-    dataType: "json",
-    type: "POST",
-    data:{
-      FilmId: filmId
-    },
-    success: function(res){
-        
-        $.each(res,function(value){
-          console.log(value.date);
-          console.log(value.time);
-        })
-        $("#movie-times").append("<p>")
-    }
-  });
-});
 
   $.getJSON(`http://localhost:3000/movie-details/${filmId}/`, function(data){
     if (!data) {
@@ -73,7 +54,7 @@ $("document").ready(function(){
               <text text-anchor="middle" x="275" y="33" fill="white">${age}</text>
             </svg>
           </div>
-          <p style="font-size: 20px; margin: 0;">${value.duration} hours</p>
+          <p style="font-size: 20px; margin: 0;  font-color: white;>${value.duration} hours</p>
 
           <p style="width: 560px; margin-top: 20px; font-size: 17px; margin-bottom: 30px;">${value.description}</p>
         </div>
@@ -82,8 +63,21 @@ $("document").ready(function(){
         </div>
       </div>`);
     });
+    
+    $.getJSON(`http://localhost:3000/movie-details/${filmId}/`, function(data){
+      if (!data) {
+        console.error(`No movie details found for ID ${filmId}`);
+        return;
+      }
+
+      $.each(data, function(i, screening) {
+        if (screening.film_ID == id) {
+          $("#screenings").append(`<p>Date: ${screening.date}, Time: ${screening.time}</p>`);
+        }
+      });
+    });
   });
-   
+});
 
 
 
