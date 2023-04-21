@@ -47,13 +47,13 @@ $("document").ready(function(){
             <img src='images/${value.id}.jpg' style='width: 230px; height: 300px; margin:0px; display:'></img>
           </a>
         </div>
-        <div class="movie-info" style="margin-left: 50px;">
+        <div class="movie-info" style="margin-left: 10px;">
           <h2 style="margin-top: 0;">${value.name}</h2>
           <h4 style="color: #808080; margin-top: 5px; margin-bottom: 10px;">Directed by ${value.director}</h4>
           <div class="age-rating" style="display: flex; align-items: center; margin-bottom: 10px;">
             <svg height='60px' width ='100%' style="margin-right: 10px;">
-              <circle cx="275" cy="27" r="25" stroke="black" fill="${ageColor}"></circle>
-              <text text-anchor="middle" x="275" y="33" fill="white">${age}</text>
+              <circle cx="350" cy="27" r="25" stroke="black" fill="${ageColor}"></circle>
+              <text text-anchor="middle" x="350" y="33" fill="white">${age}</text>
             </svg>
           </div>
           <p style="font-size: 20px; margin: 0;  font-color: white;>${value.duration} hours</p>
@@ -74,35 +74,51 @@ $("document").ready(function(){
 
       $.each(data, function(i, screening) {
         if (screening.film_ID == filmId) {
-          $("#screenings").append(`<p>Date: ${screening.date}, Time: ${screening.time}</p>`);
+            const date = new Date(screening.date);
+            const day = date.getDate();
+            const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date);
+            let formattedDate = day + getOrdinalSuffix(day) + " " + month;
+    
+        
         }
-      });
     });
-  });
-
-  $.ajax({
-    url: "/getFilmTimes",
-    cache: false,
-    dataType: "json",
-    type: "POST",
-    data:{
-      FilmId: filmId
-    },
-    success: function(res){
-      console.log(res);
-        
-        $.each(res,function(i,value){
-          $("#movie-times").append("<p id='time"+i+"'> "+ value.date +" " +  value.time +"</p>");
-
-          $("#time"+i).on("click",function(){
-
-            window.location.href ="MakeBooking.html?&filmID="+filmId+"&Screening="+ value.id +"&Screen=" 
-                + value.screen_id +"&Date=" + value.date + "&Time=" + value.time
-          });
-
-        });
-        
-    }
-  });
-});
-
+    
+    $.ajax({
+        url: "/getFilmTimes",
+        cache: false,
+        dataType: "json",
+        type: "POST",
+        data:{
+            FilmId: filmId
+        },
+        success: function(res){
+            console.log(res);
+    
+            $.each(res,function(i,value){
+                const date = new Date(value.date);
+                const day = date.getDate();
+                const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date);
+                let formattedDate = day + getOrdinalSuffix(day) + " " + month;
+    
+                function getOrdinalSuffix(day) {
+                    switch (day % 10) {
+                        case 1:
+                            return day % 100 !== 11 ? "st" : "th";
+                        case 2:
+                            return day % 100 !== 12 ? "nd" : "th";
+                        case 3:
+                            return day % 100 !== 13 ? "rd" : "th";
+                        default:
+                            return "th";
+                    }
+                }           
+                $("#movie-times").append(`<p class="movie-times" id='time${i}'> ${formattedDate} ${value.time}</p>`);
+    
+                $("#time"+i).on("click",function(){
+                    window.location.href ="MakeBooking.html?&filmID="+filmId+"&Screening="+ value.id +"&Screen=" 
+                    + value.screen_id +"&Date=" + value.date + "&Time=" + value.time
+                });
+            });  
+        }
+    });
+  });});});    

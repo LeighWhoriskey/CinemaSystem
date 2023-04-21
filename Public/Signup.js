@@ -20,9 +20,9 @@ $("document").ready(function(){
           },
           success: function(res){
             console.log(res);
-                window.location.replace("/Home.html");
+                window.location.replace("/login.html");
             }
         });
       });
   });
-});
+

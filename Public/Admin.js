@@ -507,7 +507,7 @@ $("document").ready(function(){
                 $("#thead").append("<th>Name</th><th>Email</th><th>Password</th><th>Phone Number</th><th></th><th></th>");
                 $.each(data,function(i, value){
 
-                    $("#tbody").append("<tr><td><input id='name" + i + "' value =' " +  value.name + "'></input> </td><td><input id='email" + i + "' value =' " +  value.email + "'></input> </td><td> <input id='age" + i + "' value =' " +  value.age + "'></input> </td><td> <input id='password" + i + "' value =' " +  value.password + "'></input> </td><td> <input id='phone_no" + i + "' value =' " +  value.phone_no + "'></input> </td><td><button id='update"+i + "' type='button'>Update</button></td><td><button id='delete"+i + "' type='button'>Delete</button></td></tr>");
+                    $("#tbody").append("<tr><td><input id='name" + i + "' value =' " +  value.name + "'></input> </td><td><input id='email" + i + "' value =' " +  value.email + "'></input> </td><td> <input id='password" + i + "' value =' " +  value.password + "'></input> </td><td> <input id='phone_no" + i + "' value =' " +  value.phone_no + "'></input> </td><td><button id='update"+i + "' type='button'>Update</button></td><td><button id='delete"+i + "' type='button'>Delete</button></td></tr>");
                     
                     //customer update
                     $("#update"+i).on('click',function(){
@@ -639,7 +639,7 @@ $("document").ready(function(){
 
             //create screening on website
             $("#thead").append("<th>Screening Number</th><th>Price</th><th>Date</th><th>Time</th><th>Film Name</th><th>Screen Number</th><th>Total Seats Booked</th><th></th><th></th>");
-            $("#tbody").append("<tr><td> <input id='NewPrice'></input> </td><td> <input id='NewDate'></input> </td><td> <input id='NewTime'></input> </td><td> <input id='NewFilm_id'></input> </td><td> <input id='NewScreen_id'></input></td><td> <input id='NewTotalSeatsBooked'></input> </td><td><button id='create' type='button'>Create Screening</button></td></tr>");
+            $("#tbody").append("<tr><td></td><td> <input id='NewPrice'></input> </td><td> <input id='NewDate'></input> </td><td> <input id='NewTime'></input> </td><td> <input id='NewFilm_id'></input> </td><td> <input id='NewScreen_id'></input></td><td> <input id='NewTotalSeatsBooked'></input> </td><td><button id='create' type='button'>Create Screening</button></td></tr>");
             $("#create").on('click',function(){
                 $.ajax({
                     url: "/Screening",

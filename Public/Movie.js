@@ -1,5 +1,6 @@
-
 $("document").ready(function(){
+
+  var movieCard = $("<div class='movie-card'></div>");
 
   var today = new Date();
   var dd = today.getDate();
@@ -35,7 +36,7 @@ else{
 
       var screenTime = "Screen "+value.Screen_id+ " " + value.Time;
 
-      $("#movies").append("<hr style='border: 2px solid black'>");
+      $("#movies").append("<br><hr style='border: 1px solid black'>");
       $("#movies").append(`<div class="movie-container"><div class="images" ><a href="http://localhost:3000/Movie-Detail.html?id=${value.id}"><img src='images/${value.id}.jpg'style="width:200px; height:300px;"></a></div>
                     <div class="details" ><h2>${value.name}</h2>
                     <svg height="100px" width="200px"> <circle cx="30" cy="27" r="25" stroke="black" fill="${getAgeColor(value.age)}"></circle> <text text-anchor="middle" x="30" y="30" fill="white">${value.age}</text> <text x="100" y="30" fill="white" font-size="20px">${value.duration} hours</text></svg></div>
@@ -75,7 +76,7 @@ else{
   
       var screenTime = "Screen "+value.Screen_id+ " " + value.Time;
   
-      $("#movies").append("<hr style='border: 2px solid black'>");
+      $("#movies").append("<br><hr style='border: 1px solid black'>");
       $("#movies").append(`<div class="movie-container"><div class="images" ><a href="http://localhost:3000/Movie-Detail.html?id=${value.id}"><img src='images/${value.id}.jpg'style="width:200px; height:300px;"></a></div>
                     <div class="details" ><h2>${value.name}</h2>
                     <svg height="100px" width="200px"> <circle cx="30" cy="27" r="25" stroke="black" fill="${getAgeColor(value.age)}"></circle> <text text-anchor="middle" x="30" y="30" fill="white">${value.age}</text> <text x="100" y="30" fill="white" font-size="20px">${value.duration} hours</text></svg></div>
