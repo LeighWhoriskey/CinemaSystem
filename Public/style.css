@@ -855,3 +855,107 @@ input[type="name"].signup-name
   border-radius: 5px;
   z-index: 999;
 }
+#Name,
+#Phone,
+#EmailAddress {
+  width: 40%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 10px auto;
+
+}
+#error {
+color: red;
+}
+
+#submit,
+#signUp {
+  display: inline-block;
+  background-color: #ffffff;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 40px;
+ 
+ 
+
+}
+#payment{
+  font-weight: bold;
+  margin-bottom: 3px;
+  font-size: 20px;
+}
+#paymentContainer {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ccc;
+  max-width: 500px; /* set maximum width */
+}
+
+#cardDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+label[for=cardName],
+label[for=cardNumber],
+label[for=month],
+label[for=year],
+label[for=cvv] {
+  font-weight: bold;
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+
+#cardName,
+#cardNumber {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: inset 0 0 5px #ccc;
+}
+
+
+#month,
+#year,
+#cvv {
+  width: 30%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: inset 0 0 5px #ccc;
+}
+
+#paymentButton {
+  background-color: #ffffff;
+  color: black;
+  padding: 8px 16px; /* decrease padding */
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block; /* make button full width */
+  margin: 20px auto 0; /* center and add margin top */
+}
+
+#paymentButton:hover {
+  opacity: 0.8;
+}
+
+
+#submit:hover,
+#signUp:hover {
+opacity: 0.8;
+}
