@@ -20,14 +20,14 @@ $("document").ready(function(){
           },
           success: function(res){
             console.log(res);
+
             if(Object.keys(res).length === 0){
               $.ajax({
-                url: "http://localhost:3000/Customer",
+                url: "/getCustomerbyName",
                 cache: false,
                 dataType: "json",
                 type: "Post",
                 data:{
-                  operation: "CREATE",
                   name: $("#name").val(),
                   phone_no: $("#phone").val(),
                   email: $("#email").val(),
@@ -35,17 +35,21 @@ $("document").ready(function(){
                 },
                 success: function(res){
                   console.log(res);
-                  if(Object.keys(res).length === 0){
-                    
-                  }
-                  document.cookie  = "CustomerLogin = true";
-                  document.cookie  = "StaffLogin = false";
-                  document.cookie  = "Cust_id =" + res.ID;
-                  window.location.replace("/Home.html");
+                  if(Object.keys(res).length !== 0){
+                    $.each(res,function(i,value){
+                      document.cookie  = "CustomerLogin = true";
+                      document.cookie  = "StaffLogin = false";
+                      document.cookie  = "Cust_id =" + value.id;
+                      window.location.replace("/Home.html");
+                    })
+                  }                  
                 }
               }); 
+
             }
           }
         });
+
     });
 });
+

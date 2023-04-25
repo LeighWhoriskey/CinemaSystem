@@ -174,6 +174,19 @@ exports.Screening = function(req, res, data){
 	}
 }
 
+exports.getCusomerbyName= function(req, res, data){
+	try{
+		connection.query("SELECT * FROM customers WHERE name ='"+data.name +"' AND email='"+data.email+"' AND password='"+data.password+"'",function(error, rows, feilds){
+			if(error){throw error};
+			res.send(JSON.stringify(rows));
+		});
+	}
+	catch(err)
+	{
+		console.log(err);
+	}
+}
+
 exports.Screens = function(req, res, data){
 	try{
 	if(data.operation == "CREATE"){

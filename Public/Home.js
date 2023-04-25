@@ -8,6 +8,7 @@ $("document").ready(function() {
         movieImageLink.append(movieImage);
         movieCard.append(movieImageLink);
 
+        
         // Check if the movie is released
         if (value.released == 1) {
           $("#released-films").append(movieCard);
