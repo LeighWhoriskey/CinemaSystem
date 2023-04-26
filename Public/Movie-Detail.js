@@ -57,7 +57,6 @@ $("document").ready(function(){
             </svg>
           </div>
           <p style="font-size: 20px; margin: 0;  font-color: white;>${value.duration} hours</p>
-
           <p style="width: 560px; margin-top: 20px; font-size: 17px; margin-bottom: 30px;">${value.description}</p>
         </div>
         <div class="movie-trailer" style="margin-left: auto;">
@@ -121,4 +120,4 @@ $("document").ready(function(){
             });  
         }
     });
-  });});});    
+  });});});  

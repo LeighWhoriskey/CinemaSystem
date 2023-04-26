@@ -112,4 +112,3 @@ function getAgeColor(age) {
   }
 
 }
-
