@@ -50,64 +50,64 @@ $("document").ready(function(){
     
     
     $("#paymentButton").on("click",function(){
-        if(custId != 0){
+        
 
-            $.ajax({
-                url: "/checkForOverBooking",
-                cache: false,
-                dataType: "json",
-                type: "POST",
-                data:{
-                  cust_id: custId,
-                  seats: totalTickets,
-                  screeningId: screeningId
-                },
-                success: function(res){
-                    if(Object.keys(res).length === 0){
+        $.ajax({
+            url: "/checkForOverBooking",
+            cache: false,
+            dataType: "json",
+            type: "POST",
+            data:{
+                cust_id: custId,
+                seats: totalTickets,
+                screeningId: screeningId
+            },
+            success: function(res){
+                if(Object.keys(res).length === 0){
+                    console.log(res);
+                    $.ajax({
+                        url: "/makeBooking",
+                        cache: false,
+                        dataType: "json",
+                        type: "POST",
+                        data:{
+                        ScreenId: screenNum,
+                        Seats: totalTickets,
+                        CustID: custId,
+                        totalSeats: totalSeats,
+                        screeningId: screeningId
+                        },
+                        success: function(res){
                         console.log(res);
-                        $.ajax({
-                            url: "/makeBooking",
-                            cache: false,
-                            dataType: "json",
-                            type: "POST",
-                            data:{
-                            ScreenId: screenNum,
-                            Seats: totalTickets,
-                            CustID: custId,
-                            totalSeats: totalSeats,
-                            screeningId: screeningId
-                            },
-                            success: function(res){
-                            console.log(res);
-                            alert("Booking has been Made");
+                        alert("Booking has been Made");
 
 
-                            //not right need to fix some stuff
-                            //will look and see if this is a viable option
-                            // Email.send({
-                            //     Host : "smtp.gmail.com",
-                            //     Username : "decadecinema@gmail.com",
-                            //     Password : "Decade247",
-                            //     To : 'bobysimpson4@gmail.com',
-                            //     From : "test?",
-                            //     Subject : "Test email",
-                            //     Body : "<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>"
-                            //     }).then(
-                            //         message => alert(message)
-                            //     );
-                            
-                            }
-                        });
-                    }else{
-                        $("#error").empty();
-                        $("#error").append("<p style='color:red'>Booking already Exists");
-                    }
-                  
+                        //not right need to fix some stuff
+                        //will look and see if this is a viable option
+                        Email.send({
+                            Host : "smtp.elasticemail.com",
+                            Username : "decadecinema@gmail.com",
+                            Password : "3427DEF415020DA8D677FFDA47E151070ED4",
+                            To : CustEmail,
+                            From : "decadecinema@gmail.com",
+                            Subject : "Test email",
+                            Body : "<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>"
+                            }).then(
+                                message => alert(message)
+                            );
+                        
+                        }
+                    });
+                }else{
+                    $("#error").empty();
+                    $("#error").append("<p style='color:red'>Booking already Exists");
                 }
-            });
-            
+                
+            }
+        });
+        
 
-        }
+        
         
     });
 });
