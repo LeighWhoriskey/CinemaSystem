@@ -99,7 +99,7 @@ $("document").ready(function(){
             $("#thead").append("<th>Name</th><th>Email</th><th>Password</th><th>Phone Number</th><th></th><th></th><th></th>");
             $.each(data,function(i, value){
 
-                $("#tbody").append("<tr><td><input id='name" + i + "' value =' " +  value.name + "'></input> </td><td><input id='email" + i + "' value =' " +  value.email + "'></input> </td><td> <input id='age" + i + "' value =' " +  value.age + "'></input> </td><td> <input id='password" + i + "' value =' " +  value.password + "'></input> </td><td> <input id='phone_no" + i + "' value =' " +  value.phone_no + "'></input> </td><td><button id='update"+i + "' type='button'>Update</button></td><td><button id='delete"+i + "' type='button'>Delete</button></td></tr>");
+                $("#tbody").append("<tr><td><input id='name" + i + "' value =' " +  value.name + "'></input> </td><td><input id='email" + i + "' value =' " +  value.email + "'></input> </td><td> <input id='password" + i + "' value =' " +  value.password + "'></input> </td><td> <input id='phone_no" + i + "' value =' " +  value.phone_no + "'></input> </td><td><button id='update"+i + "' type='button'>Update</button></td><td><button id='delete"+i + "' type='button'>Delete</button></td></tr>");
                 
                 //customer update
                 $("#update"+i).on('click',function(){
@@ -580,7 +580,7 @@ $("document").ready(function(){
             //create new film to add to website
             $("#thead").append("<th>Film Name</th><th>Director</th><th>Duration</th><th>Trailer Url</th><th>Age</th><th>Description</th><th>Released</th><th>Oscars</th><th></th><th></th>");
             
-            $("#tbody").append("<tr><td> <input id='NewFilm'> </input> </td><td> <input id='NewDirector'> </input> </td><td> <input id='NewDuration'> </input> </td><td> <input id='NewTrailer_url'> </input> </td><td> <input id='NewRating'> </input></td><td> <textarea id='NewDescription'> </textarea> </td><td><input id='NewReleased'></input> </td><td><button id='create' type='button'>Create Film</button></td></tr>");
+            $("#tbody").append("<tr><td> <input id='NewFilm'> </input> </td><td> <input id='NewDirector'> </input> </td><td> <input id='NewDuration'> </input> </td><td> <input id='NewTrailer_url'> </input> </td><td> <input id='NewRating'> </input></td><td> <textarea id='NewDescription'> </textarea> </td><td><input id='NewReleased'></input> </td><input id='NewReleased'></td><td><input id='NewOscar'></td><td><button id='create' type='button'>Create Film</button></td></tr>");
             $("#create").on('click',function(){
                 $.ajax({
                     url: "/Film",
@@ -596,6 +596,7 @@ $("document").ready(function(){
                         age: $("#NewRating").val(),
                         desc: $("#NewDescription").val(),
                         released: $("#NewReleased").val(),
+                        oscar: $("NewOscar").val(),
                     },success: function(res){
                         alert($("#NewFilm").val() +" has been Successfully Created.");
 
@@ -605,7 +606,7 @@ $("document").ready(function(){
             $.getJSON("/getData/"+ $("#crud").val(),function(data){
                 $.each(data,function(i, value){
 
-                    $("#tbody").append("<tr><td> <input id='name" + i + "' value =' " +  value.name + "'></input> </td><td> <input id='director" + i + "' value =' " +  value.director + "'></input> </td><td> <input id='duration" + i + "' value =' " +  value.duration + "'></input> </td><td> <input id='trailer_url" + i + "' value =' " +  value.trailer_url + "'></input> </td><td> <input id='age" + i + "' value =' " +  value.age + "'></input></td><td> <textarea id='description" + i + "' placeholder =' " +  value.description + "'></textarea> </td><td><input id='released" + i + "' value =' " +  value.released + "'></input> </td><td><button id='update"+i + "' type='button'>Update</button></td><td><button id='delete"+i + "' type='button'>Delete</button></td></tr>");
+                    $("#tbody").append("<tr><td> <input id='name" + i + "' value =' " +  value.name + "'></input> </td><td> <input id='director" + i + "' value =' " +  value.director + "'></input> </td><td> <input id='duration" + i + "' value =' " +  value.duration + "'></input> </td><td> <input id='trailer_url" + i + "' value =' " +  value.trailer_url + "'></input> </td><td> <input id='age" + i + "' value =' " +  value.age + "'></input></td><td> <textarea id='description" + i + "' placeholder =' " +  value.description + "'></textarea> </td><td><input id='released" + i + "' value =' " +  value.released + "'></input> </td><td><input id='oscar" + i + "' value =' " +  value.oscar + "'></input></td><td><button id='update"+i + "' type='button'>Update</button></td><td><button id='delete"+i + "' type='button'>Delete</button></td></tr>");
                    
                     //film update
                     $("#update"+i).on('click',function(){
@@ -624,6 +625,7 @@ $("document").ready(function(){
                                 age: $("#age" + i).val(),
                                 description: $("#description" + i).val(),
                                 released: $("#released" + i).val(),
+                                oscar: $("NewOscar").val(),
                             },success: function(res){
                                 alert($("#name" + i).val() +" has been Successfully Updated.");
 
