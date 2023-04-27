@@ -128,8 +128,7 @@ $("document").ready(function(){
                                                 Body : "<html><h2>"+value.name+"</h2><p> You have booked "+totalTickets +" tickets for the date of + "+dateIn +" </p><p><a href='http://localhost:3000/Booking.html'>View Bookings</a></p></html>"
                                             });
                                         }
-                                    })
-                                        
+                                    })    
                                 })
                             }
                         });
