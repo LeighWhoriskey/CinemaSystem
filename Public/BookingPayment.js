@@ -50,6 +50,7 @@ $("document").ready(function(){
     
     
     $("#paymentButton").on("click",function(){
+
         
 
         $.ajax({
@@ -82,6 +83,11 @@ $("document").ready(function(){
                         alert("Booking has been Made");
 
 
+        if($("#cardName").val()== 0 || $("#cardNumber").val()== 0 || $("#month").val()== 0 || $("#year").val()== 0 || $("#cvv").val()== 0){
+            $("#error").empty().append("<p style='color:red'>Please enter all details</p>");
+        }else{
+
+
                         //not right need to fix some stuff
                         //will look and see if this is a viable option
                         Email.send({
@@ -107,7 +113,33 @@ $("document").ready(function(){
         });
         
 
+
         
         
+                                //not right need to fix some stuff
+                                //will look and see if this is a viable option
+                                // Email.send({
+                                //     Host : "smtp.gmail.com",
+                                //     Username : "decadecinema@gmail.com",
+                                //     Password : "Decade247",
+                                //     To : 'bobysimpson4@gmail.com',
+                                //     From : "test?",
+                                //     Subject : "Test email",
+                                //     Body : "<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>"
+                                //     }).then(
+                                //         message => alert(message)
+                                //     );
+                                
+                                }
+                            });
+                        }else{
+                            $("#error").empty().append("<p style='color:red'>Booking already Exists</p>");
+                        }  
+                    }
+                }); 
+            }else{
+                $("#error").empty().append("<p style='color:red'>CardNumber or CVV Incorrect</p>");
+            }
+        }
     });
 });
