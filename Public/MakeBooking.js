@@ -1,5 +1,4 @@
-$("document").ready(function(){
-
+$(document).ready(function(){
 
     var url = window.location.href;
     var params = new URLSearchParams(url);
@@ -13,7 +12,6 @@ $("document").ready(function(){
     var BookedTickets = 0;
     var filmId = params.get("filmID");
     var custID =0;
-
 
     console.log(screeningId)
     var cookie = document.cookie;
@@ -30,26 +28,20 @@ $("document").ready(function(){
         console.log("moo")
     }
     
-
-    
     var aTicketPrice = 0;
     var cTicketPrice = 0;
 
-
     //you book without being a customer
     
-    
-
-
     $.ajax({
         url: "/ticketsBooked",
         cache: false,
         dataType: "json",
         type: "POST",
         data:{
-          FilmId: filmId,
-          ScreeningId: screeningId,
-          ScreenId: screenId
+            FilmId: filmId,
+            ScreeningId: screeningId,
+            ScreenId: screenId
         },
         success: function(res){
             $.each(res,function(i,value){
@@ -77,18 +69,16 @@ $("document").ready(function(){
         });
         console.log(cTicketPrice)
         console.log(aTicketPrice)
-        $("#adultLabel").append("Adult ticket @ €"+aTicketPrice);
-        $("#childLabel").append("Child ticket @ €"+cTicketPrice);
+        $("#adultLabel").text("Adult ticket @ €"+aTicketPrice).addClass("ticket-label");
+        $("#childLabel").text("Child ticket @ €"+cTicketPrice).addClass("ticket-label");
     });
-
-    
 
     $.getJSON("/movie-details/"+ filmId, function(data){
         $.each(data,function(i,value){
             console.log(data)
             //add small picture of film, the screen number, the time, show how many seats are able to be booked 
-            $("#filmDiv").append("<div id='image'><img src='images/"+value.id+".jpg'></div> <p id='filmName'>"+ value.name
-                +"</p><p id='dateTime'>" + dateIn + " @ " + time +"</p><p id='screen'> Showing in Screen "+ screenId +"</p><p id='runTime'>Duration: " +value.duration);
+            $("#filmDiv").append("<div id='image'><img src='images/"+value.id+".jpg'></div> <div id='filmDetails'><p id='filmName'>"+ value.name
+                +"</p><p id='dateTime'>" + dateIn + " @ " + time +"</p><p id='screen'> Showing in Screen "+ screenId +"</p><p id='runTime'>Duration: " +value.duration+"</p></div>");
         });
     });
 

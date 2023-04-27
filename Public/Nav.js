@@ -9,7 +9,7 @@ $("document").ready(function(){
   "<a href='Home.html'>Home</a>" +
   "<a href='Movie.html'>Now Showing</a>" +
   "<div class='dropdown'>" + // Add dropdown menu
-  "<a class='dropbtn' href='#'>Oscars</a>" +
+  "<a class='dropbtn' href='oscars.html'>Oscars</a>" +
   "<div class='dropdown-content'>" +
   "<a href='Picture.html'>Best Picture</a>" +
   "<a href='Actor.html'>Best Actor</a>" +
@@ -30,7 +30,7 @@ $("document").ready(function(){
     "<a href='Home.html'>Home</a>" +
     "<a href='Movie.html'>Now Showing</a>" +
     "<div class='dropdown'>" + // Add dropdown menu
-    "<a class='dropbtn' href='#'>Oscars</a>" +
+    "<a class='dropbtn' href='oscars.html'>Oscars</a>" +
     "<div class='dropdown-content'>" +
     "<a href='Picture.html'>Best Picture</a>" +
     "<a href='Actor.html'>Best Actor</a>" +
@@ -53,7 +53,7 @@ $("document").ready(function(){
     "<a href='Home.html'>Home</a>" +
     "<a href='Movie.html'>Now Showing</a>" +
     "<div class='dropdown'>" + // Add dropdown menu
-    "<a class='dropbtn' href='#'>Oscars</a>" +
+    "<a class='dropbtn' href='oscars.html'>Oscars</a>" +
     "<div class='dropdown-content'>" +
     "<a href='Picture.html'>Best Picture</a>" +
     "<a href='Actor.html'>Best Actor</a>" +
