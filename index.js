@@ -146,6 +146,9 @@ app.get("/getFilmsDate/:date?", function(req, res) {
   model.getFilmsDate(req, res, { date: req.params.date });
 });
 
+app.get("/getFilms2", function(req, res) {
+  model.getFilms2(req, res);
+});
 
 app.post("/delete",function(req,res){
 var data = req.body;

@@ -7,31 +7,35 @@ $("document").ready(function(){
     
     id = id[0];
     //console.log(id);
-
-    $.getJSON("/getBookingCustom/" + id, function(data){
-
-        $("#thead").append("<th>Name</th><th>Screen Number</th><th>Film Name</th><th>Duration</th><th>Seats Booked</th><th></th>");
+    if(id == 0 || id == null){
+        window.location.replace("/Login.html");
+    }else{
         
-        $.each(data,function(i, value){
+        $.getJSON("/getBookingCustom/" + id, function(data){
 
-            $("#tbody").append("<tr><td>"+ value.custname +"</td><td>"+ value.ScreenId +"</td><td>"+ value.filmname +"</td><td>"+ value.duration +"</td><td>"+ value.no_of_seats +"</td><td><button id='delete"+i +"'>Cancel</button></td></tr>");
-        
-            $("#delete"+i).on("click",function(){
+            $("#thead").append("<th>Name</th><th>Screen Number</th><th>Film Name</th><th>Duration</th><th>Seats Booked</th><th></th>");
+            
+            $.each(data,function(i, value){
 
-                $.ajax({
-                    url: "/delete",
-                    cache: false,
-                    dataType: "json",
-                    type: "POST",
-                    data:{
-                        Table: "booking",
-                        ID: value.id
-                    },
-                    success: function(res){
-                        window.location.replace("/Booking.html");
-                    }
-                });
-            }) 
+                $("#tbody").append("<tr><td>"+ value.custname +"</td><td>"+ value.ScreenId +"</td><td>"+ value.filmname +"</td><td>"+ value.duration +"</td><td>"+ value.no_of_seats +"</td><td><button id='delete"+i +"'>Cancel</button></td></tr>");
+            
+                $("#delete"+i).on("click",function(){
+
+                    $.ajax({
+                        url: "/delete",
+                        cache: false,
+                        dataType: "json",
+                        type: "POST",
+                        data:{
+                            Table: "booking",
+                            ID: value.id
+                        },
+                        success: function(res){
+                            window.location.replace("/Booking.html");
+                        }
+                    });
+                }) 
+            });
         });
-    });
+    }
 });

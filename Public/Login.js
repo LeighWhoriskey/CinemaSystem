@@ -5,11 +5,8 @@ $("document").ready(function(){
 
     if($("#email").val() != 0 || $("#password").val() != 0){
       var tmpEmail = $("#email").val();
-
-      var passReg = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-99!@#$%^&*]{7,}$/i;
-      var emailReg = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-      
-      if(emailReg.test(tmpEmail) && passReg.test($("#password").val())){
+      console.log($("#email").val())
+      console.log($("#password").val())
   
         var tmp2 = tmpEmail.substring(tmpEmail.indexOf("@") + 1);
   
@@ -45,9 +42,7 @@ $("document").ready(function(){
             }
           }
         });
-      }else{
-        $("#text").empty().append("<p style='color:red'>Invalid Email or Password</p>");
-      }
+
     }else{
       $("#text").empty().append("<p style='color:red'>Please enter Email and Password</p>");
     }

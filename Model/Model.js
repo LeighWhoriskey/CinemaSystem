@@ -6,8 +6,7 @@ var connection = mysql.createConnection({
   user     : 'root',
   password : '',
   database : 'cinema',
-  port: 3305
-  
+  port:3305
 });
 
 connection.connect(function(err){
@@ -275,6 +274,19 @@ exports.getCustomer = function(req,res,data){
 exports.getFilms = function(req,res,data){
 	try{
 	connection.query("SELECT * FROM films WHERE id =" + data.id ,function(error, rows, feilds){
+		if(error){throw error};
+		res.send(JSON.stringify(rows));	 
+	});
+	}
+	catch(err)
+	{
+		console.log(err);
+	}
+}
+
+exports.getFilms2 = function(req,res){
+	try{
+	connection.query("SELECT * FROM films ",function(error, rows, feilds){
 		if(error){throw error};
 		res.send(JSON.stringify(rows));	 
 	});
