@@ -5,18 +5,17 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'cinema',
-  port:3305
+  database : 'cinema'
 });
 
 connection.connect(function(err){
-	try{
+	//try{
 	if(err) throw err;
 	console.log(`Sucessfully connected to Cinema Database`);
-	}
-	catch(err){
-		console.log(err);
-	}
+	//}
+	//catch(err){
+	//console.log(err);
+	//}
 });
 
 

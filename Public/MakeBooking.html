@@ -6,21 +6,105 @@
         <script src="jquery-3.6.1.min.js"></script>
         <script src="MakeBooking.js" type="text/javascript"></script>
         <script src="Nav.js"></script>
-        <header id="NavBar">
-            <style></Style>
+        <style>
+#filmDiv {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+}
 
+#bookSeat {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#adultLabel {
+    margin-right: 10px;
+}
+
+#adult {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+#childLabel {
+    margin-right: 10px;
+}
+
+#child {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#error {
+    color: red;
+    margin: 10px 0;
+}
+
+#buttonDiv {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#BookTickets {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    #bookSeat {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #adultLabel {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    #childLabel {
+        margin-right: 0;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    #adult {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    #error {
+        margin-top: 15px;
+    }
+}
+        </style>
+        <header id="NavBar">
         </header>
     </head>
     <body>
         <div id='filmDiv'>
-
         </div>
         <div id='bookSeat'>
-            <label  id="adultLabel" for='adult'> </label>
+            <label  id="adultLabel" for='adult'>Adults: </label>
             <select id='adult' name='adult'> 
 
             </select>
-            <label id="childLabel" for='child'> </label>
+            <label id="childLabel" for='child'>Children: </label>
             <select id='child' name='child'>
             </select>
         </div>
@@ -30,8 +114,7 @@
         <div id='buttonDiv'>
             <button type='button' id='BookTickets'>Book</button>
         </div>
+        <footer id="footer">
+        </footer>
     </body>
-    <footer id="footer">
-
-    </footer>
 </html>

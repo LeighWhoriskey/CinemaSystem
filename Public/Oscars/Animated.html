@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Now Showing</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/NPY0ouc.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.6.1.min.js"></script>
+    <script src="Movie.js" type="text/javascript"></script>
+    <script src="Nav.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+      #wrapper {
+        margin: 0 auto;
+        width: 80%;
+        text-align: center;
+      }
+      #movies {
+        width: 100%;
+      }
+      .movie-container {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        gap: 10px;
+      }
+      .images {
+        flex: 1;
+        margin-right: 20px;
+      }
+      .details {
+        flex: 1;
+      }
+      .screens {
+        flex: 1;
+        text-align: center;
+        margin-top: 0%;
+      }
+      .time {
+        font-size: 20px;
+      }
+      #NavBar {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+      }
+      #footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+      }
+      h1 {
+        font-size: 32px;
+        margin-top: 0;
+      }
+      .title {
+        font-size: 24px;
+        margin-top: 20px;
+        margin-bottom: 0;
+      }
+      .age-rating {
+        font-size: 16px;
+        margin-top: 5px;
+      }
+      .duration {
+        font-size: 16px;
+        margin-top: 5px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header id="NavBar">
+    </header>
+    <div id="wrapper">
+      <br><br>
+      <h1>Now Showing</h1>
+      <div id="movies"></div>
+    </div>
+    <br><br>
+    </footer>
+  </body>
+</html> 

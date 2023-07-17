@@ -292,7 +292,7 @@ $("document").ready(function(){
                         type: "POST",
                         data:{
                             operation: "UPDATE",
-                            id : value.duration,
+                            id : value.id,
                             price :$("#price" + i).val(),
                             date: $("#date" + i).val(),
                             time: $("#time" + i).val(),
@@ -727,7 +727,7 @@ $("document").ready(function(){
                             type: "POST",
                             data:{
                                 operation: "UPDATE",
-                                id : value.duration,
+                                id : value.id,
                                 price :$("#price" + i).val(),
                                 date: $("#date" + i).val(),
                                 time: $("#time" + i).val(),

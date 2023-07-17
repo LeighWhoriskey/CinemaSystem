@@ -600,8 +600,8 @@ align-items: center;
     text-align: center;
   }
   #filmDate {
-    width: 100%;
-    padding: 10px;
+   
+    padding: 3px;
     border: 2px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
